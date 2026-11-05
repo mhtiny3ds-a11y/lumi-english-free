@@ -584,12 +584,12 @@ function bumpStreak(p) {
 const streakNow = p => (p.streak.last === dayKey() || p.streak.last === dayKey(addDays(new Date(), -1))) ? p.streak.count : 0;
 function nodeDone(p, node) { return node.type === 'unit' ? (p.lessons[node.key + 'l1'] > 0 && p.lessons[node.key + 'l2'] > 0) : p.lessons[node.key] > 0; }
 function nodeStars(p, node) { return node.type === 'unit' ? (p.lessons[node.key + 'l1'] || 0) + (p.lessons[node.key + 'l2'] || 0) : (p.lessons[node.key] || 0); }
-function gradeLocked(f, child, g) { return !f.unlockAll && g > child.grade; }
+const learnGrade = (f, c) => prog(f, c.id).lastGrade || c.grade;
 function nodeStates(f, child, g) {
   const p = prog(f, child.id), list = nodesOf(g); let currentSet = false;
   return list.map((n, i) => {
     const done = nodeDone(p, n);
-    let open = !gradeLocked(f, child, g) && (f.unlockAll || g < child.grade || i === 0 || nodeDone(p, list[i - 1]));
+    let open = f.unlockAll || i === 0 || nodeDone(p, list[i - 1]);
     let current = false; if (open && !done && !currentSet) { current = true; currentSet = true; }
     return { ...n, done, open, current, stars: nodeStars(p, n) };
   });
@@ -678,6 +678,7 @@ function render() {
   else if (v === 'profiles') html = vProfiles();
   else if (v === 'pin') html = vPin();
   else if (v === 'child') html = vChild();
+  else if (v === 'gradePick') html = vGradePick();
   else if (v === 'parent') html = vParent();
   else if (v === 'lesson') html = vLesson();
   else if (v === 'result') html = vResult();
@@ -809,7 +810,7 @@ function curChild() { const f = fam(); return f && childOf(f, DEV.session?.cid);
 function vChild() {
   const f = fam(), c = curChild(); if (!c) return vWelcome();
   const p = prog(f, c.id), ws = weekStars(f, c.id);
-  const top = `<div class="topbar">${ava(c.avatar, 'sm')}<div class="who"><b>${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Lớp ${c.grade} · ${GRADES[c.grade].world}</span></div>
+  const top = `<div class="topbar">${ava(c.avatar, 'sm')}<div class="who"><b>${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Đang học Lớp ${UI.grade || learnGrade(f, c)} · ${GRADES[UI.grade || learnGrade(f, c)].world}</span></div>
     <span class="statpill" title="Chuỗi ngày học">🔥 ${streakNow(p)}</span><span class="statpill" title="Sao tuần này">⭐ ${ws}/${capOf(f)}</span></div>`;
   let body = '';
   if (UI.tab === 'learn') body = vLearn(f, c, p);
@@ -820,11 +821,26 @@ function vChild() {
   const tabs = [['learn', '🗺️', 'Học'], ['missions', '🎯', 'Nhiệm vụ'], ['rewards', '⭐', 'Hũ sao'], ['me', ava(c.avatar, 'xs'), 'Của con']];
   return top + body + `<nav class="tabbar" aria-label="Điều hướng"><div class="in">${tabs.map(([k, i, t]) => `<button class="tab ${UI.tab === k ? 'on' : ''}" data-act="tab" data-t="${k}" aria-current="${UI.tab === k}"><span class="i">${i}</span>${t}${k === 'missions' && pending ? ` <span class="pill red" style="padding:0 6px;font-size:11px">${pending}</span>` : ''}</button>`).join('')}</div></nav>`;
 }
+function vGradePick() {
+  const f = fam(), c = curChild(); if (!c) return vWelcome();
+  const p = prog(f, c.id), last = p.lastGrade;
+  return `<div class="row"><button class="x" data-act="switchUser" aria-label="Đổi người dùng">←</button></div>
+  <div class="say">${lumi('happy', 64, 'bob')}<div class="bubble">Chào ${esc(c.name)}! Hôm nay con muốn học <b>lớp mấy</b>? Con chọn lớp nào cũng được, kể cả ôn lại lớp dưới.</div></div>
+  <div class="stack">${[1, 2, 3, 4, 5].map(g => {
+    const G = GRADES[g], st = nodeStates(f, c, g), done = st.filter(s => s.done).length, pct = Math.round(done / st.length * 100);
+    const tags = [g === c.grade ? '<span class="pill gold">⭐ Lớp của con</span>' : '', g === last ? '<span class="pill jade">Học gần nhất</span>' : ''].join('');
+    return `<button class="choice" data-act="pickGrade" data-g="${g}" style="border-color:${g === last ? G.c : 'var(--line)'}">
+      <span class="ic" style="background:${G.c};color:#fff;font-family:var(--f-display);font-weight:800;font-size:26px">${g}</span>
+      <span style="flex:1;min-width:0"><b>Lớp ${g} · ${G.world}</b><span class="tiny muted" style="font-weight:700;display:block">${CUR[g].length} Unit · ${esc(G.friend)}</span>
+      ${tags ? `<span class="row wrap" style="gap:6px;margin-top:4px">${tags}</span>` : ''}
+      <span class="meter" style="display:block;margin-top:6px;height:10px"><i style="width:${pct}%;background:${G.c}"></i></span>
+      <span class="tiny muted" style="font-weight:800">${done}/${st.length} chặng</span></span></button>`;
+  }).join('')}</div>`;
+}
 function vLearn(f, c, p) {
   const g = UI.grade || c.grade; const G = GRADES[g];
   const states = nodeStates(f, c, g); const done = states.filter(s => s.done).length;
   const cur = states.find(s => s.current);
-  const glocked = gradeLocked(f, c, g);
   const xs = [0, 46, 70, 46, 0, -46, -70, -46];
   let pathHtml = '', ui = 0;
   states.forEach((s, i) => {
@@ -838,9 +854,8 @@ function vLearn(f, c, p) {
       <span class="disc">${s.current ? '<span class="here">Học tiếp</span>' : ''}${s.open ? (s.type === 'unit' ? s.u.icon : '🏆') : '🔒'}<span class="no">${s.type === 'unit' ? s.u.n : 'Ôn ' + s.k}</span></span>
       <span class="lbl">${s.type === 'unit' ? esc(s.u.title) : 'Review ' + s.k}</span>${starTxt ? `<span class="st">${starTxt}</span>` : ''}</button>`;
   });
-  const hello = glocked ? `Lớp ${g} sẽ mở khi con lên lớp ${g}. Ba mẹ có thể mở sớm trong mục Tài khoản.`
-    : cur ? (cur.type === 'unit' ? `Hôm nay mình học <b>Unit ${cur.u.n}: ${esc(cur.u.title)}</b> nhé!` : `Đến lúc <b>ôn tập</b> rồi! Làm tốt là được 3 sao.`) : `Con đã xong cả ${G.world}! Giỏi quá!`;
-  return `<div class="gradebar" role="tablist">${[1, 2, 3, 4, 5].map(k => `<button class="chip ${k === g ? 'on' : ''}" style="--c:${GRADES[k].c}" data-act="grade" data-g="${k}" role="tab" aria-selected="${k === g}">${gradeLocked(f, c, k) ? '🔒 ' : ''}Lớp ${k}</button>`).join('')}</div>
+  const hello = cur ? (cur.type === 'unit' ? `Hôm nay mình học <b>Unit ${cur.u.n}: ${esc(cur.u.title)}</b> nhé!` : `Đến lúc <b>ôn tập</b> rồi! Làm tốt là được 3 sao.`) : `Con đã xong cả ${G.world}! Giỏi quá!`;
+  return `<div class="gradebar" role="tablist">${[1, 2, 3, 4, 5].map(k => `<button class="chip ${k === g ? 'on' : ''}" style="--c:${GRADES[k].c}" data-act="grade" data-g="${k}" role="tab" aria-selected="${k === g}">Lớp ${k}${k === c.grade ? ' ⭐' : ''}</button>`).join('')}<button class="chip" data-act="toGradePick" aria-label="Chọn lớp">Đổi lớp</button></div>
   <section class="world" style="--c:${G.c}">${lumi(cur ? 'happy' : 'cheer', 74, 'bob')}<div style="flex:1;min-width:0;position:relative;z-index:1"><div class="s">Lớp ${g} · Global Success</div><div class="t">${G.world}</div><div class="s">${done}/${states.length} chặng · ${CUR[g].length} Unit</div><div class="bar"><i style="width:${Math.round(done / states.length * 100)}%"></i></div></div></section>
   <div class="say">${lumi('happy', 44)}<div class="bubble" style="font-weight:600">${hello}</div></div>
   <div class="path">${pathHtml}</div>`;
@@ -1141,7 +1156,7 @@ function vParent() {
 }
 function insightFor(f, c) {
   const p = prog(f, c.id), wk = weekKey(); const lw = p.log.filter(l => weekKey(new Date(l.ts)) === wk);
-  const st = nodeStates(f, c, c.grade); const cur = st.find(s => s.current);
+  const lg = learnGrade(f, c); const st = nodeStates(f, c, lg); const cur = st.find(s => s.current);
   const pend = Object.values(p.missions).filter(m => m.status === 'pending').length;
   const ws = weekStars(f, c.id);
   const bits = [];
@@ -1151,7 +1166,7 @@ function insightFor(f, c) {
   if (weak.length) { const m = weak[0].match(/g(\d)u(\d+)l(\d)/); if (m) bits.push(`Unit ${m[2]} lớp ${m[1]} mới được 1 sao, nên cho con luyện lại.`); }
   if (pend) bits.push(`Có ${pend} nhiệm vụ đang chờ ba mẹ xác nhận.`);
   if (ws >= capOf(f)) bits.push(`Con đã đủ ${capOf(f)} sao tuần này.`);
-  else if (cur && cur.type === 'unit') bits.push(`Bài tiếp theo: Unit ${cur.u.n} – ${cur.u.title}.`);
+  else if (cur && cur.type === 'unit') bits.push(`Bài tiếp theo: Lớp ${lg}, Unit ${cur.u.n} – ${cur.u.title}.`);
   return bits.join(' ');
 }
 function vPHome(f) {
@@ -1167,9 +1182,9 @@ function vPHomeInner(f) {
     const wk = weekKey(); const lw = p.log.filter(l => weekKey(new Date(l.ts)) === wk).length;
     const mins = days.map(d => Math.round((p.secs[dayKey(d)] || 0) / 60)); const mx = Math.max(10, ...mins);
     const minsWeek = Object.entries(p.secs).filter(([d]) => d >= wk).reduce((a, [, s]) => a + s, 0);
-    const st = nodeStates(f, c, c.grade); const doneN = st.filter(s => s.done).length;
+    const lg = learnGrade(f, c); const st = nodeStates(f, c, lg); const doneN = st.filter(s => s.done).length;
     return `<section class="card kid">
-      <div class="row">${ava(c.avatar, 'sm')}<div style="flex:1;min-width:0"><b class="h3" style="display:block">${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Lớp ${c.grade} · ${doneN}/${st.length} chặng</span></div><span class="statpill">🔥 ${streakNow(p)}</span></div>
+      <div class="row">${ava(c.avatar, 'sm')}<div style="flex:1;min-width:0"><b class="h3" style="display:block">${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Lớp ${c.grade} · đang học Lớp ${lg} · ${doneN}/${st.length} chặng</span></div><span class="statpill">🔥 ${streakNow(p)}</span></div>
       <div><div class="row between tiny" style="font-weight:800"><span>Sao tuần này</span><span class="num">${ws}/${cp} · ${vnd(ws * STAR)}</span></div><div class="meter" style="margin-top:4px"><i style="width:${Math.round(ws / cp * 100)}%"></i></div></div>
       <div class="kv"><div><b>${lw}</b><span>bài tuần này</span></div><div><b>${Math.round(minsWeek / 60)}</b><span>phút học</span></div><div><b>${wordsLearned(p)}</b><span>từ đã gặp</span></div></div>
       <div><div class="tiny muted" style="font-weight:800;margin-bottom:6px">Số phút học 7 ngày qua</div><div class="bars">${days.map((d, k) => `<div class="b ${k === 6 ? 'today' : ''}" title="${mins[k]} phút"><i style="height:${Math.round(mins[k] / mx * 70)}px"></i><span>${k === 6 ? 'Nay' : wd[d.getDay()]}</span></div>`).join('')}</div></div>
@@ -1219,7 +1234,7 @@ function vPAccount(f) {
   <section class="card stack">
     <div class="field"><label for="cap">Mức sao tối đa mỗi tuần: <b class="num">${capOf(f)} sao = ${vnd(capOf(f) * STAR)}</b></label><input class="range" id="cap" type="range" min="10" max="50" step="5" value="${capOf(f)}" data-act-input="cap"><span class="tiny muted" style="font-weight:700">Tối đa 50 sao/tuần. Sao vượt mức được ghi là sao luyện tập, không tính tiền.</span></div>
     <div class="divider"></div>
-    <div class="row between"><div style="min-width:0"><b>Mở khóa toàn bộ bài học</b><p class="tiny muted" style="font-weight:700">Cho con học vượt lớp, không cần học theo thứ tự</p></div><button class="switch ${f.unlockAll ? 'on' : ''}" data-act="toggleUnlock" role="switch" aria-checked="${!!f.unlockAll}" aria-label="Mở khóa toàn bộ"></button></div>
+    <div class="row between"><div style="min-width:0"><b>Mở khóa toàn bộ bài học</b><p class="tiny muted" style="font-weight:700">Con có thể mở bất kỳ Unit nào, không cần học xong Unit trước. Con luôn được chọn lớp 1–5.</p></div><button class="switch ${f.unlockAll ? 'on' : ''}" data-act="toggleUnlock" role="switch" aria-checked="${!!f.unlockAll}" aria-label="Mở khóa toàn bộ"></button></div>
   </section>
   <h2 class="h3">Tài khoản ba mẹ</h2>
   <form class="card stack" data-form="parentInfo">
@@ -1271,10 +1286,12 @@ const ACT = {
   closeSheet: (d, t, e) => { if (e.target.closest('[data-stop]')) return; UI.sheet = null; UI.confirm = null; UI.edit = null; UI.err = ''; render(); },
   tab: d => { UI.tab = d.t; render(); window.scrollTo(0, 0); },
   ptab: d => { UI.ptab = d.t; UI.fresh = false; UI.err = ''; UI.confirm = null; render(); window.scrollTo(0, 0); },
-  grade: d => { UI.grade = +d.g; render(); },
+  grade: d => { UI.grade = +d.g; const f = fam(), c = curChild(); prog(f, c.id).lastGrade = +d.g; saveFam(f); render(); },
+  toGradePick: () => go('gradePick'),
+  pickGrade: d => { const f = fam(), c = curChild(); prog(f, c.id).lastGrade = +d.g; saveFam(f); go('child', { tab: 'learn', grade: +d.g }); },
   openNode: d => {
     const f = fam(), c = curChild(); const s = nodeStates(f, c, +d.g)[+d.i];
-    if (!s.open) return toast(gradeLocked(f, c, +d.g) ? `Lớp ${d.g} đang khóa. Ba mẹ có thể mở trong mục Tài khoản.` : 'Học xong chặng trước để mở chặng này nhé!');
+    if (!s.open) return toast('Học xong chặng trước để mở chặng này nhé!');
     UI.sheet = unitSheet(+d.g, +d.i); render();
   },
   startLesson: d => { UI.sheet = null; startLesson(d.key, d.kind, +d.g, +d.i); },
@@ -1349,7 +1366,7 @@ function checkPin() {
   const f = STORE.families[DEV.familyId]; if (!f) return go('welcome');
   if (UI.pinFor === '__parent') {
     if (UI.pin === f.parentPin) { DEV.session = { type: 'parent', fid: f.id }; saveDev(); return go('parent', { ptab: 'home' }); }
-  } else { const c = childOf(f, UI.pinFor); if (c && UI.pin === c.pin) { DEV.session = { type: 'child', fid: f.id, cid: c.id }; saveDev(); return go('child', { tab: 'learn', grade: c.grade }); } }
+  } else { const c = childOf(f, UI.pinFor); if (c && UI.pin === c.pin) { DEV.session = { type: 'child', fid: f.id, cid: c.id }; saveDev(); return go('gradePick'); } }
   UI.pin = ''; UI.pinBad = true; beep(false); render();
 }
 const FORMS = {
@@ -1460,6 +1477,7 @@ function handleBack() {
   if (v === 'parent') { UI.ptab = 'home'; render(); return; }
   if (v === 'result') return go('child', { tab: 'learn' });
   if (v === 'pin') return go('profiles');
+  if (v === 'gradePick') { DEV.session = null; saveDev(); return go('profiles'); }
   if (v === 'forgot') return go('parentLogin');
   if (v === 'register' && UI.reg.step === 2) { UI.reg.step = 1; return go('register'); }
   go('welcome');
@@ -1472,7 +1490,7 @@ function syncGuard() { if (!FREE) return; try { if (!isRoot() && !GUARD) { histo
   loadLocal();
   await seedDemo();
   const s = DEV.session; const f = s && STORE.families[s.fid];
-  if (f && s.type === 'child' && childOf(f, s.cid)) { UI.view = 'child'; UI.grade = childOf(f, s.cid).grade; }
+  if (f && s.type === 'child' && childOf(f, s.cid)) { UI.view = 'child'; UI.grade = learnGrade(f, childOf(f, s.cid)); }
   else { DEV.session = null; saveDev(); UI.view = (DEV.familyId && STORE.families[DEV.familyId]) ? 'profiles' : 'welcome'; }
   render();
   initRemote();

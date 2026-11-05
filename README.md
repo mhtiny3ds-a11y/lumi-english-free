@@ -30,6 +30,10 @@ git push -u origin main
 - Nếu xóa lịch sử hoặc dữ liệu trang web trong trình duyệt, dữ liệu sẽ mất. Ba mẹ nên tải file sao lưu định kỳ.
 - Mật khẩu được băm (SHA-256) trước khi lưu. Tuy vậy, đây là app dùng nội bộ trong gia đình hoặc lớp học, không phải hệ thống bảo mật nhiều người dùng.
 
+## Chọn lớp
+
+Sau khi nhập mã PIN, con chọn lớp muốn học (lớp 1 đến lớp 5), dù đang học lớp mấy. Ví dụ, một bạn lớp 4 vẫn có thể ôn lại lớp 1, 2, 3. Lớp của con được đánh dấu ⭐, lớp học gần nhất được ghi nhớ. Trong mỗi lớp, các Unit mở lần lượt theo đúng thứ tự sách. Ba mẹ có thể bật "Mở khóa toàn bộ bài học" để con vào bất kỳ Unit nào.
+
 ## Bảo vệ khu vực ba mẹ
 
 - Khu vực ba mẹ **tự khóa** khi mở lại app hoặc sau **10 phút** không thao tác. Muốn vào lại phải nhập mật khẩu hoặc mã PIN ba mẹ, nên con không tự duyệt nhiệm vụ hay tặng sao được.

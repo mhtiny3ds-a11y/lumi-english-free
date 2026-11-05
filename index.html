@@ -1,0 +1,1404 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lumi English</title>
+<meta name="description" content="Học tiếng Anh tiểu học lớp 1–5 theo sách Global Success. Miễn phí.">
+<meta name="theme-color" content="#FFF5E4"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%A6%89%3C/text%3E%3C/svg%3E"><link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Bố cục: một cột kiểu ứng dụng điện thoại (tối đa 480px), thanh tab dưới, mascot dẫn đường xuyên suốt. */
+:root{
+  --bg:#FFF5E4; --bg-2:#FCE9CC; --surface:#FFFFFF; --surface-2:#FFF1DA; --line:#EBD8BC;
+  --ink:#2B1D14; --ink-2:#6E5848; --ink-3:#A08B79;
+  --red:#D7263D; --red-ink:#FFFFFF; --gold:#F5A524; --gold-soft:#FFE7B3; --jade:#1F9E78; --jade-soft:#D7F1E7;
+  --sky:#3B82C4; --plum:#7C5CC4; --wrong:#E04F3A; --wrong-soft:#FDE1DA;
+  --shadow:0 2px 0 rgba(84,52,20,.10),0 10px 24px -12px rgba(84,52,20,.28);
+  --f-display:'Baloo 2','Nunito',system-ui,sans-serif;
+  --f-body:'Nunito','Baloo 2',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r-lg:22px; --r-md:16px; --r-sm:12px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1B1310; --bg-2:#241A15; --surface:#2A1F19; --surface-2:#33261E; --line:#4A3829;
+  --ink:#FBEFDF; --ink-2:#D3BFAB; --ink-3:#9C8573;
+  --red:#FF5468; --red-ink:#1B1310; --gold:#FFC24D; --gold-soft:#4A3716; --jade:#3CC79A; --jade-soft:#173B30;
+  --sky:#6AA8E6; --plum:#A88CF0; --wrong:#FF7A63; --wrong-soft:#4A221B;
+  --shadow:0 2px 0 rgba(0,0,0,.35),0 12px 26px -14px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1B1310; --bg-2:#241A15; --surface:#2A1F19; --surface-2:#33261E; --line:#4A3829;
+  --ink:#FBEFDF; --ink-2:#D3BFAB; --ink-3:#9C8573;
+  --red:#FF5468; --red-ink:#1B1310; --gold:#FFC24D; --gold-soft:#4A3716; --jade:#3CC79A; --jade-soft:#173B30;
+  --sky:#6AA8E6; --plum:#A88CF0; --wrong:#FF7A63; --wrong-soft:#4A221B;
+  --shadow:0 2px 0 rgba(0,0,0,.35),0 12px 26px -14px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input,select{font:inherit;color:var(--ink)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:10px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+
+#app{max-width:480px;margin:0 auto;min-height:100%;position:relative;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 110px;display:flex;flex-direction:column;gap:16px}
+#app.bare{padding-bottom:28px}
+
+/* ===== mascot ===== */
+.mascot{display:block;flex:none}
+.bob{animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes pop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+@keyframes rise{from{transform:translateY(12px);opacity:.0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.bubble{position:relative;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:10px 14px;font-weight:700;box-shadow:var(--shadow)}
+.bubble::before{content:"";position:absolute;left:-9px;top:22px;width:14px;height:14px;background:var(--surface);border-left:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(45deg)}
+.say{display:flex;align-items:flex-start;gap:10px}
+.say .bubble{flex:1;min-width:0}
+
+/* ===== shared ===== */
+.card{background:var(--surface);border:2px solid var(--line);border-radius:var(--r-lg);padding:16px;box-shadow:var(--shadow)}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.stack{display:flex;flex-direction:column;gap:12px}
+.muted{color:var(--ink-2)}
+.tiny{font-size:13px}
+.eyebrow{font-family:var(--f-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.h1{font-size:30px;font-weight:800}
+.h2{font-size:22px;font-weight:800}
+.h3{font-size:18px;font-weight:700}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 20px;border-radius:16px;font-family:var(--f-display);font-weight:800;font-size:18px;background:var(--red);color:var(--red-ink);box-shadow:0 4px 0 color-mix(in srgb,var(--red) 70%,#000);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 color-mix(in srgb,var(--red) 70%,#000)}
+.btn.block{width:100%}
+.btn.jade{background:var(--jade);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--jade) 65%,#000)}
+.btn.gold{background:var(--gold);color:#2B1D14;box-shadow:0 4px 0 color-mix(in srgb,var(--gold) 65%,#000)}
+.btn.ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line);box-shadow:0 3px 0 var(--line)}
+.btn.sm{min-height:40px;font-size:15px;padding:0 14px;border-radius:12px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.link{color:var(--sky);font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:13px;font-weight:800;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.pill.gold{background:var(--gold-soft);color:color-mix(in srgb,var(--gold) 55%,var(--ink))}
+.pill.jade{background:var(--jade-soft);color:var(--jade)}
+.pill.red{background:color-mix(in srgb,var(--red) 14%,var(--surface));color:var(--red)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:800;font-size:14px;color:var(--ink-2)}
+.input{min-height:50px;border-radius:14px;border:2px solid var(--line);background:var(--surface);padding:0 14px;width:100%}
+.input:focus{border-color:var(--sky);outline:none}
+.err{color:var(--wrong);font-weight:700;font-size:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:42px;padding:0 14px;border-radius:12px;border:2px solid var(--line);background:var(--surface);font-weight:800}
+.chip.on{border-color:var(--c,var(--red));background:color-mix(in srgb,var(--c,var(--red)) 14%,var(--surface));color:var(--c,var(--red))}
+.divider{height:2px;background:var(--line);border-radius:2px}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:14px;font-weight:800;z-index:60;max-width:calc(100% - 32px);text-align:center;animation:rise .25s}
+
+/* ===== welcome ===== */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding-top:18px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:40px;letter-spacing:-.01em;line-height:1}
+.brand b{color:var(--red)}
+.cast{display:flex;align-items:flex-end;justify-content:center;gap:4px}
+.choice{display:flex;align-items:center;gap:14px;text-align:left;padding:14px 16px;border-radius:var(--r-lg);background:var(--surface);border:2px solid var(--line);box-shadow:var(--shadow);width:100%}
+.choice .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:28px;flex:none;background:var(--surface-2)}
+.choice b{font-family:var(--f-display);font-size:19px;display:block}
+
+/* ===== PIN ===== */
+.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.prof{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 6px;border-radius:var(--r-lg);background:var(--surface);border:2px solid var(--line);box-shadow:var(--shadow);font-weight:800}
+.ava{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:36px;background:var(--ac,var(--surface-2));flex:none}
+.ava.sm{width:42px;height:42px;font-size:24px}
+.ava.xs{width:32px;height:32px;font-size:18px}
+.dots{display:flex;gap:14px;justify-content:center;margin:6px 0}
+.dots i{width:18px;height:18px;border-radius:50%;border:3px solid var(--ink-3)}
+.dots i.on{background:var(--red);border-color:var(--red)}
+.dots.bad{animation:shake .35s}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:300px;margin:0 auto;width:100%}
+.pad button{height:62px;border-radius:18px;background:var(--surface);border:2px solid var(--line);font-family:var(--f-display);font-size:26px;font-weight:800;box-shadow:0 3px 0 var(--line)}
+.pad button:active{transform:translateY(2px);box-shadow:none}
+
+/* ===== child header ===== */
+.topbar{display:flex;align-items:center;gap:10px;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:6px}
+.topbar .who{flex:1;min-width:0}
+.topbar .who b{font-family:var(--f-display);font-size:19px;display:block;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.statpill{display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:999px;background:var(--surface);border:2px solid var(--line);font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
+
+/* ===== world + path ===== */
+.world{border-radius:var(--r-lg);padding:16px;color:#fff;background:var(--c);position:relative;overflow:hidden;display:flex;gap:12px;align-items:center}
+.world::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.12)}
+.world .t{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.05}
+.world .s{font-weight:700;opacity:.92;font-size:14px}
+.world .bar{height:10px;border-radius:10px;background:rgba(255,255,255,.3);overflow:hidden;margin-top:8px}
+.world .bar i{display:block;height:100%;background:#fff;border-radius:10px}
+.gradebar{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.gradebar .chip{flex:none}
+.path{display:flex;flex-direction:column;align-items:center;gap:20px;padding:14px 0 10px}
+.book{align-self:stretch;display:flex;align-items:center;gap:10px;margin:8px 0 2px}
+.book::before,.book::after{content:"";flex:1;height:2px;background:var(--line)}
+.book span{font-family:var(--f-display);font-weight:800;color:var(--ink-3);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.node{display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateX(calc(var(--x,0) * 1px));width:150px}
+.node .disc{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:34px;background:var(--c);box-shadow:0 6px 0 color-mix(in srgb,var(--c) 62%,#000);position:relative;transition:transform .1s}
+.node:active .disc{transform:translateY(4px);box-shadow:0 2px 0 color-mix(in srgb,var(--c) 62%,#000)}
+.node.review .disc{border-radius:24px;background:var(--gold);box-shadow:0 6px 0 color-mix(in srgb,var(--gold) 60%,#000)}
+.node.locked .disc{background:var(--surface-2);box-shadow:0 6px 0 var(--line);filter:grayscale(1);opacity:.75}
+.node.current .disc{outline:5px solid color-mix(in srgb,var(--c) 35%,transparent);outline-offset:4px}
+.node .no{position:absolute;bottom:-6px;right:-6px;background:var(--surface);color:var(--ink);border:2px solid var(--line);border-radius:999px;font-size:12px;font-weight:800;padding:0 7px;font-family:var(--f-display)}
+.node .lbl{font-weight:800;font-size:14px;text-align:center;line-height:1.2}
+.node .st{font-size:13px;letter-spacing:1px;color:var(--gold);font-weight:800}
+.node .here{position:absolute;top:-30px;left:50%;transform:translateX(-50%);background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:0 8px;font-size:12px;font-weight:800;white-space:nowrap;color:var(--ink)}
+
+/* ===== sheet ===== */
+.scrim{position:fixed;inset:0;background:rgba(30,18,10,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center;animation:rise .15s}
+.sheet{background:var(--bg);width:100%;max-width:480px;max-height:88%;overflow:auto;border-radius:26px 26px 0 0;padding:18px max(16px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px}
+.sheet .grip{width:48px;height:5px;border-radius:5px;background:var(--line);align-self:center}
+.lessonrow{display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--r-md);background:var(--surface);border:2px solid var(--line);text-align:left;width:100%}
+.lessonrow .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:var(--surface-2);flex:none}
+.lessonrow .tx{flex:1;min-width:0}
+.lessonrow .tx b{display:block;font-family:var(--f-display);font-size:17px}
+.lessonrow[disabled]{opacity:.5}
+.vocab{display:flex;flex-wrap:wrap;gap:6px}
+.vocab span{background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:2px 8px;font-weight:700;font-size:14px}
+
+/* ===== tabbar ===== */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;justify-content:center;background:var(--surface);border-top:2px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+.tabbar .in{display:flex;width:100%;max-width:480px;justify-content:space-around}
+.tab{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 8px;border-radius:14px;font-weight:800;font-size:12px;color:var(--ink-3);min-width:64px}
+.tab .i{font-size:24px;line-height:1;filter:grayscale(.8);opacity:.75}
+.tab.on{color:var(--red);background:color-mix(in srgb,var(--red) 10%,transparent)}
+.tab.on .i{filter:none;opacity:1}
+.tab .dot{position:absolute}
+
+/* ===== lesson player ===== */
+.player{min-height:100%;display:flex;flex-direction:column;gap:16px;padding-bottom:150px}
+.ptop{display:flex;align-items:center;gap:12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:6px;z-index:5}
+.x{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:22px;font-weight:800;color:var(--ink-3)}
+.prog{flex:1;height:16px;border-radius:16px;background:var(--surface-2);border:2px solid var(--line);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--jade);border-radius:16px;transition:width .3s}
+.qtitle{font-family:var(--f-display);font-weight:800;font-size:22px}
+.flash{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;padding:26px 16px;animation:rise .25s}
+.big{font-size:96px;line-height:1.1}
+.glyph{display:inline-grid;place-items:center;min-width:1.6em;padding:0 .2em;height:1.3em;border-radius:.3em;background:var(--gold-soft);color:color-mix(in srgb,var(--gold) 45%,var(--ink));font-family:var(--f-display);font-weight:800;line-height:1;font-size:.7em}
+.big .glyph{font-size:64px}
+.word{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1.1}
+.mean{font-size:18px;color:var(--ink-2);font-weight:700}
+.speak{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border-radius:14px;background:var(--sky);color:#fff;font-weight:800;box-shadow:0 4px 0 color-mix(in srgb,var(--sky) 60%,#000)}
+.speak.round{width:96px;height:96px;border-radius:50%;justify-content:center;font-size:42px;padding:0}
+.speak.sm{min-height:40px;padding:0 12px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opts.one{grid-template-columns:1fr}
+.opt{min-height:96px;border-radius:var(--r-lg);background:var(--surface);border:2px solid var(--line);box-shadow:0 4px 0 var(--line);font-weight:800;font-size:19px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center}
+.opt.pic{font-size:54px}
+.opt.pic .glyph{font-size:40px}
+.opts.one .opt{min-height:60px;font-size:17px;justify-content:flex-start;flex-direction:row;text-align:left;padding:12px 16px}
+.opt.ok{border-color:var(--jade);background:var(--jade-soft);box-shadow:0 4px 0 var(--jade)}
+.opt.no{border-color:var(--wrong);background:var(--wrong-soft);box-shadow:0 4px 0 var(--wrong);animation:shake .35s}
+.opt[disabled]{pointer-events:none}
+.sent{font-family:var(--f-display);font-weight:700;font-size:24px;line-height:1.3;text-align:center}
+.sent .gap{display:inline-block;min-width:90px;border-bottom:4px solid var(--ink-3);margin:0 4px;color:var(--jade)}
+.tray{min-height:64px;border-radius:var(--r-md);border:2px dashed var(--line);padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--surface-2)}
+.tray.ok{border-color:var(--jade);background:var(--jade-soft)}
+.tray.no{border-color:var(--wrong);background:var(--wrong-soft)}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tile{min-height:48px;min-width:48px;padding:0 12px;border-radius:12px;background:var(--surface);border:2px solid var(--line);box-shadow:0 3px 0 var(--line);font-family:var(--f-display);font-weight:800;font-size:20px}
+.tile.used{visibility:hidden}
+.feedback{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--surface);border-top:2px solid var(--line)}
+.feedback.ok{background:var(--jade-soft);border-color:var(--jade)}
+.feedback.no{background:var(--wrong-soft);border-color:var(--wrong)}
+.feedback .in{width:100%;max-width:448px;display:flex;flex-direction:column;gap:10px}
+.feedback .msg{display:flex;align-items:center;gap:10px}
+.feedback .msg b{font-family:var(--f-display);font-size:20px;display:block}
+.feedback.ok .msg b{color:var(--jade)}
+.feedback.no .msg b{color:var(--wrong)}
+
+/* ===== result ===== */
+.result{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding-top:20px}
+.stars3{display:flex;gap:8px;font-size:56px;line-height:1}
+.stars3 span{animation:pop .5s both}
+.stars3 span:nth-child(2){animation-delay:.15s}
+.stars3 span:nth-child(3){animation-delay:.3s}
+.stars3 .off{filter:grayscale(1);opacity:.25}
+.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+.stat{background:var(--surface);border:2px solid var(--line);border-radius:var(--r-md);padding:10px 6px;text-align:center}
+.stat b{display:block;font-family:var(--f-display);font-size:24px;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{font-size:12px;font-weight:800;color:var(--ink-3)}
+
+/* ===== rewards ===== */
+.jar{display:flex;gap:16px;align-items:center}
+.ring{--p:0;width:132px;height:132px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--surface-2) 0)}
+.ring>div{width:104px;height:104px;border-radius:50%;background:var(--surface);display:grid;place-items:center;text-align:center}
+.ring b{font-family:var(--f-display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
+.money{font-family:var(--f-display);font-weight:800;font-size:30px;color:var(--jade);font-variant-numeric:tabular-nums;line-height:1.1}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.badge{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 6px;border-radius:var(--r-md);background:var(--surface);border:2px solid var(--line);text-align:center;font-weight:800;font-size:13px;line-height:1.2}
+.badge .b{font-size:34px;line-height:1}
+.badge.off{opacity:.45}
+.badge.off .b{filter:grayscale(1)}
+.ledger{display:flex;flex-direction:column}
+.ledger .li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:2px solid var(--line)}
+.ledger .li:last-child{border-bottom:0}
+.ledger .li .tx{flex:1;min-width:0;font-weight:700}
+.ledger .li .tx small{display:block;color:var(--ink-3);font-weight:700;font-size:12px}
+.ledger .li .n{font-weight:800;color:color-mix(in srgb,var(--gold) 55%,var(--ink));font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ===== missions ===== */
+.mission{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:var(--r-lg);background:var(--surface);border:2px solid var(--line);box-shadow:var(--shadow)}
+.mission .hd{display:flex;align-items:center;gap:10px}
+.mission .hd .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:var(--surface-2);flex:none}
+.mission .hd .tx{flex:1;min-width:0}
+.mission .hd b{font-family:var(--f-display);font-size:16px;display:block;line-height:1.2}
+.mission p{font-weight:600}
+
+/* ===== parent ===== */
+.pheader{display:flex;align-items:center;gap:12px;padding-block:6px}
+.kid{display:flex;flex-direction:column;gap:12px}
+.meter{height:14px;border-radius:14px;background:var(--surface-2);overflow:hidden;border:2px solid var(--line)}
+.meter i{display:block;height:100%;background:var(--gold);border-radius:14px}
+.bars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end;height:90px}
+.bars .b{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.bars .b i{display:block;width:100%;max-width:26px;border-radius:7px 7px 3px 3px;background:var(--sky);min-height:3px}
+.bars .b.today i{background:var(--red)}
+.bars .b span{font-size:11px;font-weight:800;color:var(--ink-3)}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kv div{background:var(--surface-2);border-radius:12px;padding:8px;text-align:center}
+.kv b{display:block;font-family:var(--f-display);font-size:20px;font-variant-numeric:tabular-nums;line-height:1.1}
+.kv span{font-size:12px;font-weight:800;color:var(--ink-3)}
+.switch{width:56px;height:32px;border-radius:32px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.switch.on{background:var(--jade)}
+.switch.on::after{left:28px}
+.range{width:100%;accent-color:var(--gold)}
+.table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.table th,.table td{text-align:left;padding:8px 4px;border-bottom:2px solid var(--line);font-size:14px}
+.table th{color:var(--ink-3);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.table td.r,.table th.r{text-align:right}
+.avpick{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.avpick button{aspect-ratio:1;border-radius:14px;font-size:28px;border:2px solid var(--line);background:var(--surface);max-width:100%}
+.avpick button.on{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--surface))}
+.demo{background:var(--gold-soft);border-radius:var(--r-md);padding:10px 12px;font-weight:700;font-size:14px;color:var(--ink)}
+.sync{font-size:12px;font-weight:800;color:var(--ink-3);text-align:center}
+</style>
+</head><body><div id="app"></div>
+<noscript>Lumi English cần bật JavaScript.</noscript>
+<script>window.LUMI_EDITION="free";
+/* Chương trình Tiếng Anh Global Success lớp 1–5 (NXB Giáo dục Việt Nam).
+   Mỗi dòng: Tên Unit | Tên tiếng Việt | Biểu tượng | Từ vựng (en=vi=hình;...) | Mẫu câu (en=vi@chỉ số từ;...) | Nhiệm vụ thực tế
+   Mẫu câu: {w} từ, {aw} a/an + từ, {ws} số nhiều, {W} viết hoa, {v} nghĩa tiếng Việt. */
+const CURRICULUM_TEXT = `
+#1
+In the school playground|Ở sân trường|🛝|bag=cái cặp=🎒;ball=quả bóng=⚽;bike=xe đạp=🚲;book=quyển sách=📕|Hello. I'm Bill.=Xin chào. Mình là Bill.;It's {aw}.=Đó là {v}.;Look at the {w}.=Nhìn {v} kìa.|Chào ba mẹ bằng câu "Hello! I'm ..." rồi chỉ vào cặp sách, quả bóng, quyển sách và nói tên tiếng Anh.
+In the dining room|Trong phòng ăn|🍽️|cake=bánh ngọt=🍰;car=ô tô=🚗;cat=con mèo=🐱;cup=cái cốc=☕|Goodbye. Bye.=Tạm biệt.;It's {aw}.=Đó là {v}.;Look at the {w}.=Nhìn {v} kìa.|Trong bữa ăn, chỉ vào cái cốc và nói "cup". Khi ba mẹ đi làm, chào "Goodbye!".
+At the street market|Ở chợ phiên|🧺|apple=quả táo=🍎;hat=cái mũ=👒;ant=con kiến=🐜;map=bản đồ=🗺️|I have {aw}.=Mình có {v}.;It's {aw}.=Đó là {v}.|Đi chợ cùng ba mẹ, tìm quả táo và cái mũ, nói to "apple", "hat".
+In the bedroom|Trong phòng ngủ|🛏️|dog=con chó=🐶;door=cửa ra vào=🚪;doll=búp bê=🪆;duck=con vịt=🦆|This is my {w}.=Đây là {v} của mình.;Open the door.=Mở cửa ra.|Giới thiệu với ba mẹ 2 món đồ trong phòng ngủ: "This is my ...".
+At the fish and chip shop|Ở quán cá và khoai chiên|🐟|chips=khoai tây chiên=🍟;fish=con cá=🐟;milk=sữa=🥛;six=số sáu=6️⃣|I like {w}.=Mình thích {v}.@1,2,3;Look at the fish.=Nhìn con cá kìa.|Khi uống sữa, nói "I like milk." Đếm 6 món đồ chơi bằng tiếng Anh.
+In the classroom|Trong lớp học|🏫|pen=bút mực=🖊️;bell=cái chuông=🔔;egg=quả trứng=🥚;bed=cái giường=🛏️|I have {aw}.=Mình có {v}.;Look at the {w}.=Nhìn {v} kìa.|Tìm trong nhà một quả trứng, một cây bút và một cái giường, nói tên tiếng Anh từng thứ.
+In the garden|Trong khu vườn|🌻|garden=khu vườn=🏡;gate=cánh cổng=⛩️;girl=bạn gái=👧;goat=con dê=🐐|This is {aw}.=Đây là {v}.;Look at the {w}.=Nhìn {v} kìa.|Ra sân hoặc ban công, chỉ vào cánh cổng và nói "gate". Vẽ một con dê (goat).
+In the park|Trong công viên|🌳|hand=bàn tay=✋;horse=con ngựa=🐴;hen=con gà mái=🐔;house=ngôi nhà=🏠|This is {aw}.=Đây là {v}.;Wave your hand.=Vẫy tay nào.|Đi công viên, vẫy tay chào ba mẹ và nói "Wave your hand!".
+In the shop|Trong cửa hàng|🏪|box=cái hộp=📦;clock=đồng hồ=🕰️;lock=ổ khóa=🔒;mop=cây lau nhà=🧹|I want {aw}.=Mình muốn {v}.;It's {aw}.=Đó là {v}.|Giúp ba mẹ lau nhà một góc nhỏ và nói "mop". Tìm cái đồng hồ trong nhà: "It's a clock."
+At the zoo|Ở sở thú|🐒|monkey=con khỉ=🐒;mouse=con chuột=🐭;mango=quả xoài=🥭;moon=mặt trăng=🌙|It's {aw}.=Đó là {v}.;Look at the {w}.=Nhìn {v} kìa.|Buổi tối ra ngắm trăng cùng ba mẹ: "Look at the moon!".
+At the bus stop|Ở trạm xe buýt|🚌|bus=xe buýt=🚌;sun=mặt trời=☀️;umbrella=cái ô=☂️;truck=xe tải=🚚|Look at the {w}.=Nhìn {v} kìa.;It's {aw}.=Đó là {v}.|Trên đường đi, đếm xem gặp mấy chiếc xe buýt (bus) và xe tải (truck).
+At the lake|Ở bên hồ|🏞️|lake=cái hồ=🏞️;leaf=chiếc lá=🍃;lion=sư tử=🦁;lemon=quả chanh=🍋|I see {aw}.=Mình thấy {v}.;Look at the {w}.=Nhìn {v} kìa.|Nhặt một chiếc lá đẹp, mang về khoe ba mẹ: "Look at the leaf!".
+In the school canteen|Ở căng tin trường|🍜|noodles=mì sợi=🍜;nuts=các loại hạt=🥜;nose=cái mũi=👃;nest=cái tổ chim=🪺|Look at the {w}.=Nhìn {v} kìa.;I like noodles.=Mình thích mì.;Touch your nose.=Chạm vào mũi nào.|Chơi trò "Touch your nose" với ba mẹ 3 lần.
+In the toy shop|Ở cửa hàng đồ chơi|🧸|teddy bear=gấu bông=🧸;yo-yo=con quay yo-yo=🪀;tiger=con hổ=🐯;train=tàu hỏa=🚂|I have {aw}.=Mình có {v}.;It's {aw}.=Đó là {v}.|Xếp đồ chơi của con, giới thiệu: "I have a teddy bear."
+At the football match|Ở trận bóng đá|⚽|face=khuôn mặt=😊;father=bố=👨;foot=bàn chân=🦶;football=bóng đá=⚽|This is my {w}.=Đây là {v} của mình.@1,2,3;Let's play football.=Cùng chơi bóng đá nào.|Rủ bố đá bóng 5 phút và nói "Let's play football!".
+At home|Ở nhà|🏠|window=cửa sổ=🪟;water=nước=💧;watch=đồng hồ đeo tay=⌚;worm=con sâu=🪱|Look at the {w}.=Nhìn {v} kìa.;Drink some water.=Uống chút nước nào.|Mời ba mẹ uống nước: "Drink some water, please!".
+#2
+At my birthday party|Ở tiệc sinh nhật|🎂|pizza=bánh pizza=🍕;pear=quả lê=🍐;present=món quà=🎁;pie=bánh nướng=🥧|Here's {aw}.=Đây là {v}.;Happy birthday!=Chúc mừng sinh nhật!|Làm một tấm thiệp nhỏ, viết "Happy birthday!" tặng người thân.
+In the backyard|Ở sân sau|🪁|kite=con diều=🪁;kitten=mèo con=🐱;key=chìa khóa=🔑;kangaroo=chuột túi=🦘|Look at the {w}.=Nhìn {v} kìa.;I'm flying a kite.=Mình đang thả diều.|Tìm chìa khóa nhà và nói "key". Vẽ một con diều (kite).
+At the seaside|Ở bờ biển|🏖️|sea=biển=🌊;sand=cát=⏳;ship=con tàu=🚢;shell=vỏ sò=🐚|Look at the {w}.=Nhìn {v} kìa.;I like the sea.=Mình thích biển.|Kể cho ba mẹ một lần con đi biển, dùng 2 từ: sea, sand.
+In the countryside|Ở vùng quê|🌾|river=dòng sông=🏞️;road=con đường=🛣️;rainbow=cầu vồng=🌈;rabbit=con thỏ=🐰|I can see {aw}.=Mình nhìn thấy {v}.;Look at the {w}.=Nhìn {v} kìa.|Vẽ cầu vồng 7 màu và nói "I can see a rainbow."
+In the classroom|Trong lớp học|❓|quiz=câu đố=🧩;question=câu hỏi=❓;queen=nữ hoàng=👑;square=hình vuông=🟥|Look at the {w}.=Nhìn {v} kìa.;Be quiet, please.=Xin giữ trật tự.;Let's do a quiz.=Cùng làm câu đố nào.|Đố ba mẹ 1 câu đố tiếng Anh: "Let's do a quiz!".
+On the farm|Ở nông trại|🚜|fox=con cáo=🦊;ox=con bò đực=🐂;box=cái hộp=📦;taxi=xe taxi=🚕|There is {aw}.=Có {v}.;Look at the fox.=Nhìn con cáo kìa.|Gấp một cái hộp giấy (box) và đặt một món đồ vào trong.
+In the kitchen|Trong nhà bếp|🍯|jam=mứt=🍯;jelly=thạch=🍮;juice=nước ép=🧃;jackfruit=quả mít=🍈|I like {w}.=Mình thích {v}.;Let's make some juice.=Cùng làm nước ép nào.|Phụ ba mẹ pha một cốc nước ép và nói "I like juice."
+In the village|Ở làng quê|🏘️|van=xe tải nhỏ=🚐;village=ngôi làng=🏘️;volleyball=bóng chuyền=🏐;violin=đàn vi-ô-lông=🎻|Look at the {w}.=Nhìn {v} kìa.;I play volleyball.=Mình chơi bóng chuyền.|Kể tên 2 thứ con thấy ở làng hoặc khu phố của mình bằng tiếng Anh.
+In the grocery shop|Ở cửa hàng tạp hóa|🛒|yogurt=sữa chua=🥣;yam=khoai mỡ=🍠;yo-yo=con quay yo-yo=🪀;yacht=du thuyền=🛥️|Look at the {w}.=Nhìn {v} kìa.;I'd like some yogurt.=Mình muốn một ít sữa chua.|Đi siêu thị cùng ba mẹ, tìm hộp sữa chua và nói "yogurt".
+At the zoo|Ở sở thú|🦓|zebra=ngựa vằn=🦓;giraffe=hươu cao cổ=🦒;elephant=con voi=🐘;panda=gấu trúc=🐼|I can see {aw}.=Mình nhìn thấy {v}.;Look at the {w}.=Nhìn {v} kìa.|Bắt chước dáng đi của 2 con vật, ba mẹ đoán, con nói tên tiếng Anh.
+In the playground|Ở sân chơi|🤸|run=chạy=🏃;jump=nhảy=🤸;climb=leo trèo=🧗;skip=nhảy dây=🪢|I can {w}.=Mình có thể {v}.;Let's play!=Cùng chơi nào!|Biểu diễn cho ba mẹ: "I can jump!" rồi nhảy 10 cái.
+At the café|Ở quán cà phê|☕|bread=bánh mì=🍞;tea=trà=🍵;soup=súp=🍲;ice cream=kem=🍦|Would you like some {w}? Yes, please.=Bạn có muốn một ít {v} không? Có ạ.;I like {w}.=Mình thích {v}.|Mời ba mẹ: "Would you like some tea?" khi pha trà cùng ông bà.
+In the maths class|Trong giờ học toán|🔢|eleven=mười một=11;twelve=mười hai=12;thirteen=mười ba=13;fourteen=mười bốn=14;fifteen=mười lăm=15;twenty=hai mươi=20|I have {w} pens.=Mình có {v} cái bút.;Let's count!=Cùng đếm nào!|Đếm từ 1 đến 20 bằng tiếng Anh cho ba mẹ nghe.
+At home|Ở nhà|👪|mother=mẹ=👩;father=bố=👨;brother=anh/em trai=👦;sister=chị/em gái=👧;grandma=bà=👵;grandpa=ông=👴|This is my {w}.=Đây là {v} của mình.;I love my family.=Mình yêu gia đình mình.|Chỉ vào ảnh gia đình, giới thiệu từng người: "This is my ...".
+In the clothes shop|Ở cửa hàng quần áo|👕|shirt=áo sơ mi=👔;T-shirt=áo phông=👕;dress=váy liền=👗;coat=áo khoác=🧥;cap=mũ lưỡi trai=🧢|I like this {w}.=Mình thích {v} này.;Look at the {w}.=Nhìn {v} kìa.|Tự chọn quần áo đi học ngày mai, nói tên tiếng Anh từng món.
+At the campsite|Ở khu cắm trại|⛺|tent=cái lều=⛺;fire=lửa trại=🔥;torch=đèn pin=🔦;star=ngôi sao=⭐;tree=cái cây=🌲|Look at the {w}.=Nhìn {v} kìa.;Let's go camping.=Cùng đi cắm trại nào.|Dựng "lều" bằng chăn gối trong nhà, cầm đèn pin và nói "Look at the tent!".
+#3
+Hello|Xin chào|👋|hello=xin chào=👋;hi=chào=🙋;goodbye=tạm biệt=🚶;fine=khỏe=😊;thank you=cảm ơn=🙏|Hello. I'm Mai.=Xin chào. Mình là Mai.;How are you? Fine, thank you.=Bạn khỏe không? Mình khỏe, cảm ơn.;Goodbye, Ben.=Tạm biệt Ben.|Sáng nay chào ba mẹ "Hello!" và hỏi "How are you?".
+Our names|Tên của chúng mình|📛|name=tên=📛;seven=số bảy=7️⃣;eight=số tám=8️⃣;nine=số chín=9️⃣;ten=số mười=🔟|What's your name? My name's Linh.=Bạn tên là gì? Mình tên là Linh.;How old are you? I'm {w} years old.=Bạn bao nhiêu tuổi? Mình {v} tuổi.@2,3,4,5|Hỏi tên và tuổi của một người thân bằng tiếng Anh.
+Our friends|Bạn bè của chúng mình|🧑‍🤝‍🧑|friend=bạn bè=🧑‍🤝‍🧑;this=đây (ở gần)=👇;that=kia (ở xa)=👉;yes=vâng, đúng=✅;no=không=❌|This is Ben.=Đây là Ben.;Is that Mary? Yes, it is.=Kia là Mary phải không? Đúng vậy.;Is this your friend? No, it isn't.=Đây là bạn của bạn à? Không phải.|Giới thiệu một người bạn thân với ba mẹ: "This is ... . She's my friend."
+Our bodies|Cơ thể chúng mình|🙆|ear=cái tai=👂;eye=con mắt=👁️;face=khuôn mặt=😀;hand=bàn tay=✋;mouth=cái miệng=👄;nose=cái mũi=👃|What's this? It's {aw}.=Đây là gì? Đó là {v}.;Touch your {w}.=Chạm vào {v} của con.|Chơi "Touch your ..." với ba mẹ: con ra lệnh 5 lần, ba mẹ làm theo.
+My hobbies|Sở thích của mình|🎨|dancing=nhảy múa=💃;drawing=vẽ=✏️;painting=tô màu=🎨;running=chạy bộ=🏃;singing=ca hát=🎤;swimming=bơi lội=🏊;cooking=nấu ăn=🍳;walking=đi bộ=🚶|What's your hobby? It's {w}.=Sở thích của bạn là gì? Đó là {v}.;I like {w}.=Mình thích {v}.|Hỏi ba mẹ "What's your hobby?" và kể sở thích của con.
+Our school|Trường của chúng mình|🏫|classroom=lớp học=🏫;library=thư viện=📚;playground=sân chơi=🛝;gym=phòng thể dục=🏋️;computer room=phòng máy tính=💻;art room=phòng mĩ thuật=🎨;music room=phòng âm nhạc=🎵|Is this our {w}? Yes, it is.=Đây là {v} của chúng mình phải không? Đúng vậy.;Let's go to the {w}.=Cùng đến {v} nào.|Vẽ sơ đồ trường của con, ghi tên tiếng Anh 3 phòng.
+Classroom instructions|Mệnh lệnh trong lớp|🙋|stand up=đứng lên=🧍;sit down=ngồi xuống=🪑;open your book=mở sách ra=📖;close your book=gấp sách lại=📕;come in=đi vào=🚪;go out=đi ra ngoài=🏃|{W}, please.=Mời con {v}.;May I go out? Yes, you can.=Con ra ngoài được không ạ? Được.;May I come in? No, you can't.=Con vào được không ạ? Chưa được.|Làm "cô giáo" 3 phút: ra lệnh "Stand up! Sit down!" cho ba mẹ làm theo.
+My school things|Đồ dùng học tập|✏️|book=quyển sách=📕;eraser=cục tẩy=🧽;pen=bút mực=🖊️;pencil=bút chì=✏️;ruler=thước kẻ=📏;school bag=cặp sách=🎒;pencil case=hộp bút=👝|I have {aw}.=Mình có {v}.;Do you have {aw}? Yes, I do.=Bạn có {v} không? Có.|Tự soạn cặp sách tối nay, nói tên tiếng Anh từng đồ dùng.
+Colours|Màu sắc|🌈|red=màu đỏ=🔴;blue=xanh dương=🔵;green=xanh lá=🟢;yellow=màu vàng=🟡;orange=màu cam=🟠;black=màu đen=⚫;white=màu trắng=⚪;brown=màu nâu=🟤|What colour is it? It's {w}.=Nó màu gì? Nó màu {v}.;My pen is {w}.=Bút của mình màu {v}.|Tìm trong nhà 5 đồ vật khác màu, nói "It's red", "It's blue"...
+Break time activities|Hoạt động giờ ra chơi|⏰|football=bóng đá=⚽;basketball=bóng rổ=🏀;badminton=cầu lông=🏸;volleyball=bóng chuyền=🏐;chess=cờ vua=♟️;table tennis=bóng bàn=🏓;word puzzles=giải ô chữ=🧩|I play {w} at break time.=Mình chơi {v} vào giờ ra chơi.@1,2,3,4,5,6;Do you like {w}? Yes, I do.=Bạn có thích {v} không? Có.|Chơi một ván cờ hoặc cầu lông với ba mẹ và hỏi "Do you like ...?".
+My family|Gia đình của mình|👨‍👩‍👧|father=bố=👨;mother=mẹ=👩;brother=anh/em trai=👦;sister=chị/em gái=👧;grandfather=ông=👴;grandmother=bà=👵|Who's this? It's my {w}.=Đây là ai? Đây là {v} của mình.;How old is your {w}?={V} của bạn bao nhiêu tuổi?|Vẽ cây gia đình, ghi tên tiếng Anh: father, mother, ...
+Jobs|Nghề nghiệp|👩‍⚕️|cook=đầu bếp=👨‍🍳;doctor=bác sĩ=👩‍⚕️;driver=tài xế=🚕;farmer=nông dân=👨‍🌾;nurse=y tá=🧑‍⚕️;teacher=giáo viên=👩‍🏫;worker=công nhân=👷;singer=ca sĩ=🎤|What's her job? She's {aw}.=Cô ấy làm nghề gì? Cô ấy là {v}.;My father is {aw}.=Bố mình là {v}.|Hỏi một người thân "What's your job?" và nói lại bằng tiếng Anh.
+My house|Ngôi nhà của mình|🏠|house=ngôi nhà=🏠;bedroom=phòng ngủ=🛏️;bathroom=phòng tắm=🛁;kitchen=nhà bếp=🍳;living room=phòng khách=🛋️;garden=khu vườn=🌷|Where's the ball? It's in the {w}.=Quả bóng ở đâu? Nó ở trong {v}.@2,3,4,5,6;This is my {w}.=Đây là {v} của mình.|Dẫn ba mẹ "tham quan" nhà: "This is the kitchen. This is my bedroom."
+My bedroom|Phòng ngủ của mình|🛏️|bed=cái giường=🛏️;chair=cái ghế=🪑;desk=bàn học=🗄️;door=cửa ra vào=🚪;lamp=đèn bàn=💡;window=cửa sổ=🪟;picture=bức tranh=🖼️|There's {aw} in my bedroom.=Có {v} trong phòng ngủ của mình.;The {w} is big.={V} thì to.|Dọn gọn phòng ngủ, kể 3 đồ vật: "There's a bed..."
+At the dining table|Bên bàn ăn|🍚|bread=bánh mì=🍞;chicken=thịt gà=🍗;fish=cá=🐟;rice=cơm=🍚;milk=sữa=🥛;juice=nước ép=🧃;water=nước=💧;beans=đậu=🫘|Would you like some {w}? Yes, please.=Bạn có muốn một ít {v} không? Có ạ.;I like {w}.=Mình thích {v}.|Trong bữa tối, mời mọi người "Would you like some rice?".
+My pets|Thú cưng của mình|🐶|cat=con mèo=🐱;dog=con chó=🐶;goldfish=cá vàng=🐠;parrot=con vẹt=🦜;rabbit=con thỏ=🐰;tortoise=con rùa=🐢|Do you have {aw}? Yes, I do.=Bạn có nuôi {v} không? Có.;I have two {ws}.=Mình có hai con {v}.@1,2,4,5,6|Vẽ con vật con muốn nuôi và giới thiệu "I have a ...".
+Our toys|Đồ chơi của chúng mình|🧸|ball=quả bóng=⚽;car=ô tô=🚗;doll=búp bê=🪆;kite=con diều=🪁;robot=người máy=🤖;ship=tàu thủy=🚢;teddy bear=gấu bông=🧸;plane=máy bay=✈️|I have {aw}.=Mình có {v}.;How many {ws} do you have? I have three.=Bạn có bao nhiêu {v}? Mình có ba cái.|Đếm đồ chơi và trả lời ba mẹ "How many cars do you have?".
+Playing and doing|Vui chơi và hoạt động|📖|reading=đọc sách=📖;writing=viết=✍️;drawing=vẽ=✏️;singing=ca hát=🎤;dancing=nhảy múa=💃;cooking=nấu ăn=🍳;listening to music=nghe nhạc=🎧|What are you doing? I'm {w}.=Bạn đang làm gì? Mình đang {v}.;She's {w}.=Bạn ấy đang {v}.|Chơi trò đoán: con làm động tác, ba mẹ hỏi "What are you doing?".
+Outdoor activities|Hoạt động ngoài trời|🚴|cycling=đạp xe=🚴;skating=trượt patin=⛸️;skipping=nhảy dây=🪢;flying a kite=thả diều=🪁;playing football=chơi bóng đá=⚽;painting=vẽ tranh=🎨|What's he doing? He's {w}.=Bạn ấy đang làm gì? Bạn ấy đang {v}.;They're {w} in the park.=Họ đang {v} trong công viên.|Ra ngoài vận động 15 phút, kể lại "I'm cycling / skipping".
+At the zoo|Ở sở thú|🐘|elephant=con voi=🐘;giraffe=hươu cao cổ=🦒;monkey=con khỉ=🐒;peacock=con công=🦚;tiger=con hổ=🐯;crocodile=cá sấu=🐊;lion=sư tử=🦁|What can you see? I can see {aw}.=Bạn nhìn thấy gì? Mình nhìn thấy {v}.;The monkey is climbing.=Con khỉ đang leo trèo.|Xem một video về động vật cùng ba mẹ, gọi tên 5 con bằng tiếng Anh.
+#4
+My friends|Bạn bè của mình|🌏|America=nước Mỹ=🇺🇸;Australia=nước Úc=🇦🇺;Britain=nước Anh=🇬🇧;Japan=Nhật Bản=🇯🇵;Malaysia=Ma-lai-xi-a=🇲🇾;Singapore=Xin-ga-po=🇸🇬;Thailand=Thái Lan=🇹🇭;Viet Nam=Việt Nam=🇻🇳|Where are you from? I'm from {w}.=Bạn đến từ đâu? Mình đến từ {v}.;My friend is from {w}.=Bạn của mình đến từ {v}.|Tìm 3 nước trên quả địa cầu hoặc bản đồ, nói "This is Japan..."
+Time and daily routines|Giờ giấc và thói quen|⏰|get up=thức dậy=⏰;have breakfast=ăn sáng=🥣;go to school=đi học=🏫;have lunch=ăn trưa=🍱;have dinner=ăn tối=🍲;go to bed=đi ngủ=😴|What time do you {w}? At six o'clock.=Bạn {v} lúc mấy giờ? Lúc sáu giờ.;I {w} at seven o'clock.=Mình {v} lúc bảy giờ.;What time is it? It's nine o'clock.=Bây giờ là mấy giờ? Chín giờ.|Lập thời gian biểu một ngày bằng tiếng Anh, dán lên bàn học.
+My week|Tuần của mình|📅|Monday=thứ Hai=T2;Tuesday=thứ Ba=T3;Wednesday=thứ Tư=T4;Thursday=thứ Năm=T5;Friday=thứ Sáu=T6;Saturday=thứ Bảy=T7;Sunday=Chủ nhật=CN|What day is it today? It's {w}.=Hôm nay là thứ mấy? Hôm nay là {v}.;I help my parents on {w}s.=Mình giúp bố mẹ vào các {v}.|Mỗi sáng tuần này, nói với ba mẹ "Today is Monday..."
+My birthday party|Tiệc sinh nhật của mình|🎉|January=tháng Một=1;February=tháng Hai=2;March=tháng Ba=3;April=tháng Tư=4;May=tháng Năm=5;June=tháng Sáu=6;July=tháng Bảy=7;August=tháng Tám=8;September=tháng Chín=9;October=tháng Mười=10;November=tháng Mười một=11;December=tháng Mười hai=12|When's your birthday? It's in {w}.=Sinh nhật bạn khi nào? Vào {v}.;Let's have some juice and cake.=Cùng uống nước ép và ăn bánh nào.|Hỏi sinh nhật của 3 người thân: "When's your birthday?".
+Things we can do|Những việc mình có thể làm|🏊|cook=nấu ăn=🍳;dance=nhảy=💃;draw=vẽ=✏️;ride a bike=đi xe đạp=🚲;roller skate=trượt patin=⛸️;sing=hát=🎤;swim=bơi=🏊;play the piano=chơi đàn piano=🎹;play the guitar=chơi đàn ghi-ta=🎸|Can you {w}? Yes, I can.=Bạn có thể {v} không? Có, mình có thể.;I can {w}.=Mình có thể {v}.|Phỏng vấn ba mẹ: "Can you swim? Can you dance?" và ghi lại.
+Our school facilities|Cơ sở vật chất trường|🏫|school=trường học=🏫;building=tòa nhà=🏢;garden=khu vườn=🌳;playground=sân chơi=🛝;computer room=phòng máy tính=💻;library=thư viện=📚;village=ngôi làng=🏘️;town=thị trấn=🏙️|Where's your school? It's in the {w}.=Trường bạn ở đâu? Ở trong {v}.@7,8;Is there {aw} at your school? Yes, there is.=Trường bạn có {v} không? Có.@2,3,4,5,6|Kể cho ba mẹ: "There is a library at my school."
+Our timetables|Thời khóa biểu|🗓️|maths=môn Toán=➗;English=tiếng Anh=🔤;Vietnamese=tiếng Việt=📝;science=môn Khoa học=🔬;art=môn Mĩ thuật=🎨;music=môn Âm nhạc=🎵;PE=môn Thể dục=🤸;IT=môn Tin học=💻|What subjects do you have today? I have {w}.=Hôm nay bạn có môn gì? Mình có môn {v}.;When do you have {w}? I have it on Mondays.=Khi nào bạn học {v}? Mình học vào thứ Hai.|Chép thời khóa biểu tuần này bằng tên môn tiếng Anh.
+My favourite subjects|Môn học yêu thích|❤️|favourite=yêu thích=❤️;subject=môn học=📚;because=bởi vì=💬;interesting=thú vị=🤩;fun=vui=😄;teacher=giáo viên=👩‍🏫|What's your favourite subject? It's English.=Môn học yêu thích của bạn là gì? Là tiếng Anh.;Why do you like maths? Because it's fun.=Tại sao bạn thích Toán? Bởi vì nó vui.;I want to be a teacher.=Mình muốn trở thành giáo viên.|Kể cho ba mẹ môn con thích nhất và lý do: "Because it's interesting."
+Our sports day|Ngày hội thể thao|🏅|sports day=ngày hội thể thao=🏅;running=chạy=🏃;jumping=nhảy xa=🤸;race=cuộc đua=🏁;team=đội=👥;tug of war=kéo co=🪢|When is sports day? It's in June.=Ngày hội thể thao là khi nào? Vào tháng Sáu.;Our team will win!=Đội chúng mình sẽ thắng!;We are {w}.=Chúng mình đang {v}.@2,3|Thi chạy hoặc kéo co với ba mẹ, hô "Our team will win!".
+Our summer holidays|Kỳ nghỉ hè|🏖️|beach=bãi biển=🏖️;countryside=vùng quê=🌾;campsite=khu cắm trại=⛺;mountain=núi=⛰️;island=hòn đảo=🏝️;city=thành phố=🏙️|Where were you last summer? I was at the {w}.=Hè năm ngoái bạn ở đâu? Mình ở {v}.@1,3;I was in the {w}.=Mình đã ở {v}.@2,6;What did you do? I swam in the sea.=Bạn đã làm gì? Mình đã bơi ở biển.|Chọn một bức ảnh kỳ nghỉ, kể bằng tiếng Anh: "I was at the beach."
+My home|Nhà của mình|🏡|house=ngôi nhà=🏠;flat=căn hộ=🏢;road=con đường=🛣️;street=con phố=🚸;busy=đông đúc=🚦;quiet=yên tĩnh=🤫|Where do you live? I live in {aw}.=Bạn sống ở đâu? Mình sống ở {v}.@1,2;What's the street like? It's {w}.=Con phố đó thế nào? Nó {v}.@5,6;I live on Tran Phu Street.=Mình sống ở phố Trần Phú.|Nói địa chỉ nhà mình bằng tiếng Anh: "I live on ... Street."
+Jobs|Nghề nghiệp|👮|actor=diễn viên=🎭;farmer=nông dân=👨‍🌾;nurse=y tá=🧑‍⚕️;office worker=nhân viên văn phòng=💼;policeman=chú công an=👮;doctor=bác sĩ=🩺;hospital=bệnh viện=🏥;farm=nông trại=🚜|What does your father do? He's {aw}.=Bố bạn làm nghề gì? Bố mình là {v}.@1,2,3,4,5,6;She works at a {w}.=Cô ấy làm việc ở {v}.@7,8|Phỏng vấn bố mẹ: "What do you do? Where do you work?".
+Appearance|Ngoại hình|🧍|tall=cao=🦒;short=thấp=🐿️;big=to lớn=🐘;slim=mảnh khảnh=🧍;young=trẻ=👶;old=già=👴;strong=khỏe mạnh=💪|What does he look like? He's {w}.=Bạn ấy trông thế nào? Bạn ấy {v}.;My father is {w}.=Bố mình {v}.|Tả ngoại hình một người thân bằng 2 từ tiếng Anh.
+Daily activities|Hoạt động hằng ngày|🧹|cook dinner=nấu bữa tối=🍲;do homework=làm bài tập=📝;wash the dishes=rửa bát=🍽️;water the plants=tưới cây=🪴;clean the floor=lau nhà=🧹;watch TV=xem tivi=📺;listen to music=nghe nhạc=🎧|What do you do in the evening? I {w}.=Buổi tối bạn làm gì? Mình {v}.;I {w} after school.=Mình {v} sau giờ học.|Phụ ba mẹ một việc nhà (rửa bát, tưới cây...) và nói "I wash the dishes."
+My family's weekends|Cuối tuần của gia đình|🎬|go shopping=đi mua sắm=🛍️;go swimming=đi bơi=🏊;go to the cinema=đi xem phim=🎬;play tennis=chơi quần vợt=🎾;visit grandparents=thăm ông bà=👵;have a picnic=đi dã ngoại=🧺|What do you do at the weekend? We {w}.=Cuối tuần gia đình bạn làm gì? Chúng mình {v}.;On Sundays, we {w}.=Vào Chủ nhật, chúng mình {v}.|Cùng ba mẹ lên kế hoạch cuối tuần bằng tiếng Anh: "We go to the cinema."
+Weather|Thời tiết|🌤️|sunny=trời nắng=☀️;rainy=trời mưa=🌧️;cloudy=nhiều mây=☁️;windy=có gió=🌬️;stormy=có bão=⛈️;snowy=có tuyết=❄️;hot=nóng=🥵;cold=lạnh=🥶|What's the weather like? It's {w}.=Thời tiết thế nào? Trời {v}.;It's {w} today.=Hôm nay trời {v}.|Làm "phát thanh viên thời tiết" 3 ngày liền: "Today it's sunny."
+In the city|Trong thành phố|🏙️|bakery=tiệm bánh=🥐;bookshop=hiệu sách=📚;cinema=rạp chiếu phim=🎬;pharmacy=hiệu thuốc=💊;supermarket=siêu thị=🛒;post office=bưu điện=📮;turn left=rẽ trái=⬅️;turn right=rẽ phải=➡️|Where's the {w}? It's on the left.={V} ở đâu? Nó ở bên trái.@1,2,3,4,5,6;Go straight. Then {w}.=Đi thẳng. Rồi {v}.@7,8|Chỉ đường cho ba mẹ từ nhà ra cửa hàng gần nhất: "Go straight, turn left..."
+At the shopping centre|Ở trung tâm mua sắm|🛍️|T-shirt=áo phông=👕;jeans=quần bò=👖;jacket=áo khoác=🧥;shoes=đôi giày=👟;dress=váy liền=👗;hat=cái mũ=👒;money=tiền=💵|How much is the {w}? It's 70,000 dong.=Cái {v} giá bao nhiêu? 70.000 đồng.@1,3,5,6;How much are the {w}? They're 150,000 dong.={V} giá bao nhiêu? 150.000 đồng.@2,4|Chơi bán hàng: con làm người bán, hỏi "How much is the T-shirt?".
+The animal world|Thế giới động vật|🦒|crocodile=cá sấu=🐊;giraffe=hươu cao cổ=🦒;hippo=hà mã=🦛;kangaroo=chuột túi=🦘;lion=sư tử=🦁;elephant=con voi=🐘;zebra=ngựa vằn=🦓;tiger=con hổ=🐯|What animal is this? It's {aw}.=Đây là con vật gì? Đó là {v}.;Why do you like {ws}? Because they're funny.=Tại sao bạn thích {v}? Vì chúng vui nhộn.|Làm thẻ hình 3 con vật con thích, ghi tên tiếng Anh phía sau.
+At summer camp|Ở trại hè|🏕️|putting up a tent=dựng lều=⛺;singing songs=hát=🎤;dancing=nhảy múa=💃;playing tug of war=chơi kéo co=🪢;telling stories=kể chuyện=📖;playing games=chơi trò chơi=🎲|What are they doing? They're {w}.=Họ đang làm gì? Họ đang {v}.;We're {w} at the camp.=Chúng mình đang {v} ở trại hè.|Kể một câu chuyện ngắn trước giờ ngủ, mở đầu bằng "We're telling stories."
+#5
+All about me!|Tất cả về mình|🙋|student=học sinh=🧑‍🎓;class=lớp học=🏫;friendly=thân thiện=🤗;helpful=hay giúp đỡ=🤝;favourite=yêu thích=❤️;colour=màu sắc=🎨;food=món ăn=🍔;animal=con vật=🐼|Can you tell me about yourself? I'm a student in class 5A.=Bạn có thể kể về bản thân không? Mình là học sinh lớp 5A.;What's your favourite {w}?=Bạn thích {v} nào nhất?@6,7,8;I'm friendly and helpful.=Mình thân thiện và hay giúp đỡ.|Viết 3 câu giới thiệu bản thân bằng tiếng Anh, đọc cho ba mẹ nghe.
+Our homes|Nhà của chúng mình|🏢|house=ngôi nhà=🏠;flat=căn hộ=🏢;street=con phố=🛣️;village=ngôi làng=🏘️;address=địa chỉ=📮;floor=tầng=🔼;city=thành phố=🏙️|Where do you live? I live in {aw}.=Bạn sống ở đâu? Mình sống ở {v}.@1,2;What's your address? It's 15 Tran Phu Street.=Địa chỉ của bạn là gì? Là số 15 phố Trần Phú.;I live on the fifth floor.=Mình sống ở tầng năm.|Viết địa chỉ nhà mình bằng tiếng Anh lên một tấm thiệp.
+My foreign friends|Bạn nước ngoài của mình|🌐|American=người Mỹ=🇺🇸;Australian=người Úc=🇦🇺;British=người Anh=🇬🇧;Japanese=người Nhật=🇯🇵;Malaysian=người Ma-lai-xi-a=🇲🇾;Thai=người Thái Lan=🇹🇭;kind=tốt bụng=💗;clever=thông minh=🧠|What nationality is she? She's {w}.=Bạn ấy quốc tịch gì? Bạn ấy là {v}.@1,2,3,4,5,6;What's he like? He's {w}.=Bạn ấy là người thế nào? Bạn ấy {v}.@7,8|Tưởng tượng một người bạn nước ngoài, giới thiệu: "She's Japanese. She's kind."
+Our free-time activities|Hoạt động lúc rảnh|🎮|surf the internet=lướt mạng=💻;go camping=đi cắm trại=⛺;go shopping=đi mua sắm=🛍️;water the flowers=tưới hoa=🌷;go to the park=đi công viên=🌳;watch films=xem phim=🎬;once a week=một lần mỗi tuần=1️⃣;twice a week=hai lần mỗi tuần=2️⃣|What do you do in your free time? I {w}.=Lúc rảnh bạn làm gì? Mình {v}.@1,2,3,4,5,6;How often do you go camping? {W}.=Bạn đi cắm trại bao lâu một lần? {V}.@7,8|Hỏi ba mẹ "What do you do in your free time?" và ghi lại câu trả lời.
+My future job|Nghề nghiệp tương lai|🚀|writer=nhà văn=✍️;pilot=phi công=👨‍✈️;firefighter=lính cứu hỏa=🧑‍🚒;gardener=người làm vườn=🧑‍🌾;reporter=phóng viên=🎙️;engineer=kỹ sư=👷;teacher=giáo viên=👩‍🏫;doctor=bác sĩ=👨‍⚕️|What would you like to be in the future? I'd like to be {aw}.=Trong tương lai bạn muốn làm nghề gì? Mình muốn trở thành {v}.;Why? Because I like writing stories.=Tại sao? Bởi vì mình thích viết truyện.|Vẽ con khi lớn lên và viết: "I'd like to be a ... because ..."
+Our school rooms|Các phòng trong trường|🚪|computer room=phòng máy tính=💻;art room=phòng mĩ thuật=🎨;music room=phòng âm nhạc=🎵;gym=phòng thể dục=🏋️;library=thư viện=📚;first floor=tầng một=1️⃣;second floor=tầng hai=2️⃣;upstairs=lên tầng trên=⬆️|Where's the {w}? It's on the second floor.={V} ở đâu? Nó ở tầng hai.@1,2,3,4,5;The library is on the {w}.=Thư viện ở {v}.@6,7;Go upstairs and turn left.=Đi lên tầng trên rồi rẽ trái.|Vẽ sơ đồ các tầng của trường, ghi tên phòng bằng tiếng Anh.
+Our favourite school activities|Hoạt động yêu thích ở trường|🎭|act=đóng kịch=🎭;solve maths problems=giải toán=🧮;read books=đọc sách=📚;play games=chơi trò chơi=🎲;do projects=làm dự án=🗂️;sing songs=hát=🎤;interesting=thú vị=🤩;useful=hữu ích=👍|What school activity do you like? I like to {w}.=Bạn thích hoạt động nào ở trường? Mình thích {v}.@1,2,3,4,5,6;Why? Because it's {w}.=Tại sao? Bởi vì nó {v}.@7,8|Kể với ba mẹ hoạt động con thích nhất ở trường tuần này và vì sao.
+In our classroom|Trong lớp học của chúng mình|🗺️|board=cái bảng=🟩;map=bản đồ=🗺️;poster=áp phích=🪧;clock=đồng hồ=🕰️;bookshelf=giá sách=📚;next to=bên cạnh=↔️;behind=phía sau=🔙;in front of=phía trước=🔜|Where's the {w}? It's on the wall.={V} ở đâu? Nó ở trên tường.@1,2,3,4;The bookshelf is {w} the board.=Giá sách ở {v} cái bảng.@6,7,8|Giấu một món đồ, cho ba mẹ gợi ý "It's next to the TV" để tìm.
+Our outdoor activities|Hoạt động ngoài trời|🪁|flew a kite=đã thả diều=🪁;played badminton=đã chơi cầu lông=🏸;rode a bike=đã đạp xe=🚲;swam=đã bơi=🏊;went fishing=đã đi câu cá=🎣;had a picnic=đã đi dã ngoại=🧺|What did you do yesterday? I {w}.=Hôm qua bạn đã làm gì? Mình {v}.;We {w} in the park last weekend.=Cuối tuần trước chúng mình {v} ở công viên.@1,2,3,6|Kể lại bằng tiếng Anh một việc con đã làm hôm qua: "Yesterday I ..."
+Our school trip|Chuyến tham quan của trường|🚌|museum=bảo tàng=🏛️;zoo=sở thú=🦁;bay=vịnh=🌊;palace=cung điện=🏯;park=công viên=🌳;took photos=đã chụp ảnh=📸;visited=đã thăm=👣|Where did you go on your school trip? We went to the {w}.=Chuyến tham quan bạn đã đi đâu? Chúng mình đã đến {v}.@1,2,3,4,5;We {w} there.=Chúng mình đã {v} ở đó.@6;We visited Ha Long Bay.=Chúng mình đã thăm vịnh Hạ Long.|Chọn ảnh một chuyến đi, kể: "We went to ... We took photos."
+Family time|Thời gian bên gia đình|👨‍👩‍👧‍👦|visited my grandparents=đã thăm ông bà=👵;had a picnic=đã đi dã ngoại=🧺;cleaned the house=đã dọn nhà=🧹;went to the cinema=đã đi xem phim=🎬;did the shopping=đã đi chợ=🛒;cooked dinner=đã nấu bữa tối=🍲|What did you do at the weekend? I {w}.=Cuối tuần bạn đã làm gì? Mình {v}.;Last Sunday, my family {w}.=Chủ nhật trước, gia đình mình {v}.|Cùng cả nhà làm một việc cuối tuần, tối Chủ nhật kể lại bằng tiếng Anh.
+Our Tet holiday|Tết của chúng mình|🧧|banh chung=bánh chưng=🟩;lucky money=tiền lì xì=🧧;fireworks=pháo hoa=🎆;peach blossoms=hoa đào=🌸;new clothes=quần áo mới=👘;decorate the house=trang trí nhà=🎍;visit relatives=thăm họ hàng=🏡|What will you do at Tet? I'll {w}.=Tết bạn sẽ làm gì? Mình sẽ {v}.@6,7;We'll make {w}.=Chúng mình sẽ gói {v}.@1;I'll get {w}.=Mình sẽ được nhận {v}.@2|Làm thiệp chúc Tết bằng tiếng Anh: "Happy New Year!" tặng ông bà.
+Our special days|Những ngày đặc biệt|🎊|Teachers' Day=Ngày Nhà giáo=👩‍🏫;Children's Day=Ngày Thiếu nhi=🧒;Mid-Autumn Festival=Tết Trung thu=🥮;New Year=Năm mới=🎉;have a party=tổ chức tiệc=🥳;give flowers=tặng hoa=💐|What will you do on {w}?=Bạn sẽ làm gì vào {v}?@1,2,4;We'll {w}.=Chúng mình sẽ {v}.@5,6;We eat mooncakes at Mid-Autumn Festival.=Chúng mình ăn bánh trung thu vào Tết Trung thu.|Viết lời chúc ngắn bằng tiếng Anh cho thầy cô hoặc bạn bè.
+Staying healthy|Giữ gìn sức khỏe|🥦|eat healthy food=ăn đồ ăn lành mạnh=🥗;do exercise=tập thể dục=🏃;go to bed early=đi ngủ sớm=😴;brush my teeth=đánh răng=🪥;wash my hands=rửa tay=🧼;drink water=uống nước=💧;eat fruit=ăn hoa quả=🍎|What do you do to stay healthy? I {w}.=Bạn làm gì để khỏe mạnh? Mình {v}.;I {w} every day.=Mình {v} mỗi ngày.|Cả tuần đi ngủ trước 9 giờ tối và tự đánh răng sáng tối.
+Our health|Sức khỏe của chúng mình|🤒|headache=đau đầu=🤕;toothache=đau răng=🦷;stomach ache=đau bụng=🤢;fever=sốt=🤒;sore throat=đau họng=😷;cough=ho=🤧;see a doctor=đi khám bác sĩ=👩‍⚕️;take a rest=nghỉ ngơi=🛌|What's the matter with you? I have {aw}.=Bạn bị làm sao? Mình bị {v}.@1,2,3,4,5,6;You should {w}.=Bạn nên {v}.@7,8|Đóng vai bác sĩ với ba mẹ: hỏi "What's the matter?" và khuyên "You should ...".
+Seasons and the weather|Mùa và thời tiết|🍂|spring=mùa xuân=🌸;summer=mùa hè=☀️;autumn=mùa thu=🍂;winter=mùa đông=⛄;warm=ấm áp=🌤️;hot=nóng=🥵;cool=mát mẻ=🍃;cold=lạnh=🥶|What's the weather like in {w}?=Thời tiết vào {v} thế nào?@1,2,3,4;It's {w}.=Trời {v}.@5,6,7,8|Vẽ 4 mùa trong năm, mỗi mùa viết 1 câu thời tiết bằng tiếng Anh.
+Stories for children|Truyện cho thiếu nhi|📚|story=câu chuyện=📖;character=nhân vật=🧚;brave=dũng cảm=🦸;clever=thông minh=🧠;kind=tốt bụng=💗;greedy=tham lam=🤑;lazy=lười biếng=🦥;fairy tale=truyện cổ tích=🏰|What's he like? He's {w}.=Anh ấy là người thế nào? Anh ấy {v}.@3,4,5,6,7;I'm reading a {w}.=Mình đang đọc {v}.@1,8|Kể tóm tắt một truyện cổ tích cho ba mẹ, dùng 2 tính từ tiếng Anh.
+Means of transport|Phương tiện giao thông|🚆|bus=xe buýt=🚌;bike=xe đạp=🚲;car=ô tô=🚗;motorbike=xe máy=🛵;train=tàu hỏa=🚆;plane=máy bay=✈️;boat=con thuyền=⛵;taxi=xe taxi=🚕|How do you get to school? By {w}.=Bạn đến trường bằng gì? Bằng {v}.;I go to Da Nang by {w}.=Mình đi Đà Nẵng bằng {v}.|Trên đường đi học, gọi tên tiếng Anh 5 phương tiện con nhìn thấy.
+Places of interest|Địa điểm tham quan|🏯|museum=bảo tàng=🏛️;temple=ngôi đền=⛩️;pagoda=ngôi chùa=🛕;bridge=cây cầu=🌉;tower=tòa tháp=🗼;palace=cung điện=🏯;market=khu chợ=🏪|Where would you like to go? I'd like to go to the {w}.=Bạn muốn đi đâu? Mình muốn đến {v}.;What do you think of the {w}? It's beautiful.=Bạn thấy {v} thế nào? Rất đẹp.|Chọn một địa điểm nổi tiếng ở Việt Nam, giới thiệu bằng 2 câu tiếng Anh.
+Our summer holidays|Kỳ nghỉ hè của chúng mình|🌞|beach=bãi biển=🏖️;mountains=vùng núi=🏔️;countryside=vùng quê=🌾;build sandcastles=xây lâu đài cát=🏰;go hiking=đi bộ đường dài=🥾;take photos=chụp ảnh=📸;eat seafood=ăn hải sản=🦐;swim in the sea=bơi ở biển=🏊|Where will you go this summer? I'll go to the {w}.=Hè này bạn sẽ đi đâu? Mình sẽ đến {v}.@1,2,3;What will you do there? I'll {w}.=Bạn sẽ làm gì ở đó? Mình sẽ {v}.@4,5,6,7,8|Cùng ba mẹ lập kế hoạch hè bằng tiếng Anh: "We'll go to ... We'll ..."
+`;
+'use strict';
+/* =========================================================
+   Lumi English — học tiếng Anh tiểu học theo Global Success
+   ========================================================= */
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad2 = n => String(n).padStart(2, '0');
+const uid = () => Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-4);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pick = a => a[Math.floor(Math.random() * a.length)];
+const cap1 = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const vnd = n => n.toLocaleString('vi-VN') + 'đ';
+const dayKey = (d = new Date()) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+function weekKey(d = new Date()) { const x = new Date(d.getFullYear(), d.getMonth(), d.getDate()); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return dayKey(x); }
+function addDays(d, n) { const x = new Date(d); x.setDate(x.getDate() + n); return x; }
+const STAR = 1000, MAX_CAP = 50;
+const FREE = window.LUMI_EDITION === 'free';
+
+/* ---------- curriculum ---------- */
+const GRADES = {
+  1: { world: 'Vườn Chữ Cái', c: '#E8702F', books: 1, block: 4, friend: 'Lumi dạy con làm quen chữ cái và từ đầu tiên' },
+  2: { world: 'Làng Âm Vần', c: '#1C9670', books: 1, block: 4, friend: 'Mỗi Unit là một âm mới ở làng' },
+  3: { world: 'Phố Bạn Bè', c: '#3478BE', books: 2, block: 5, friend: 'Kết bạn, nói về trường lớp và gia đình' },
+  4: { world: 'Thành Phố Khám Phá', c: '#7556C0', books: 2, block: 5, friend: 'Khám phá thời gian, thành phố và thế giới' },
+  5: { world: 'Đảo Ước Mơ', c: '#C8223A', books: 2, block: 5, friend: 'Kể chuyện, ước mơ và những chuyến đi' }
+};
+const CUR = {};
+(function parse() {
+  let g = 0;
+  CURRICULUM_TEXT.trim().split('\n').forEach(line => {
+    line = line.trim(); if (!line) return;
+    if (line[0] === '#') { g = +line.slice(1); CUR[g] = []; return; }
+    const [title, vi, icon, words, pats, mission] = line.split('|');
+    const W = words.split(';').map(s => { const [en, v, e] = s.split('='); return { en, vi: v, emo: e }; });
+    const P = pats.split(';').map(s => { const [body, f] = s.split('@'); const [en, v] = body.split('='); let idx = null; if (f) idx = f.split(',').map(n => +n - 1); return { en, vi: v, idx }; });
+    CUR[g].push({ g, n: CUR[g].length + 1, title, vi, icon, words: W, pats: P, mission });
+  });
+})();
+function unitKey(g, n) { return `g${g}u${n}`; }
+function nodesOf(g) {
+  const out = []; const us = CUR[g]; const bl = GRADES[g].block; let blockStart = 0;
+  us.forEach((u, i) => {
+    out.push({ type: 'unit', g, u, key: unitKey(g, u.n) });
+    if ((i + 1) % bl === 0) { const k = (i + 1) / bl; out.push({ type: 'review', g, k, key: `g${g}r${k}`, units: us.slice(blockStart, i + 1) }); blockStart = i + 1; }
+  });
+  return out;
+}
+
+/* ---------- language helpers ---------- */
+const art = w => /^[aeiou]/i.test(w) && !/^(uni|use|eu)/i.test(w) ? 'an' : 'a';
+function plural(w) { if (/(s|x|z|ch|sh)$/i.test(w)) return w + 'es'; if (/[^aeiou]y$/i.test(w)) return w.slice(0, -1) + 'ies'; return w + 's'; }
+function realize(p, word) {
+  let surface = null; let en = p.en, vi = p.vi;
+  if (word) {
+    const forms = { '{aw}': art(word.en) + ' ' + word.en, '{ws}': plural(word.en), '{W}': cap1(word.en), '{w}': word.en };
+    for (const k of ['{aw}', '{ws}', '{W}', '{w}']) if (en.includes(k)) { surface = forms[k]; en = en.split(k).join(forms[k]); }
+    vi = vi.split('{V}').join(cap1(word.vi)).split('{v}').join(word.vi);
+  }
+  return { en, vi, surface, word };
+}
+const hasSlot = p => /\{(aw|ws|W|w)\}/.test(p.en);
+function slotForm(p, word) { for (const k of ['{aw}', '{ws}', '{W}', '{w}']) if (p.en.includes(k)) return { '{aw}': art(word.en) + ' ' + word.en, '{ws}': plural(word.en), '{W}': cap1(word.en), '{w}': word.en }[k]; return word.en; }
+function allowed(p, u) { return p.idx ? p.idx.map(i => u.words[i]).filter(Boolean) : u.words; }
+const reEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/* ---------- mascots (original characters) ---------- */
+function lumi(mood = 'happy', size = 96, cls = '') {
+  const eyesOpen = `<circle cx="44" cy="56" r="14" fill="#fff"/><circle cx="76" cy="56" r="14" fill="#fff"/><circle cx="46" cy="57" r="7" fill="#3A2416"/><circle cx="74" cy="57" r="7" fill="#3A2416"/><circle cx="48.6" cy="54" r="2.4" fill="#fff"/><circle cx="76.6" cy="54" r="2.4" fill="#fff"/>`;
+  const eyes = mood === 'cheer'
+    ? `<path d="M34 58q10-12 20 0M66 58q10-12 20 0" stroke="#3A2416" stroke-width="4.5" fill="none" stroke-linecap="round"/>`
+    : mood === 'oops'
+    ? `<circle cx="44" cy="56" r="13" fill="#fff"/><circle cx="76" cy="56" r="13" fill="#fff"/><circle cx="44" cy="60" r="5.5" fill="#3A2416"/><circle cx="76" cy="60" r="5.5" fill="#3A2416"/><path d="M97 34c3 6 4 9 0 12c-4-3-3-6 0-12z" fill="#7CC6F2"/>`
+    : mood === 'think'
+    ? `<circle cx="44" cy="56" r="14" fill="#fff"/><circle cx="76" cy="56" r="14" fill="#fff"/><circle cx="48" cy="51" r="7" fill="#3A2416"/><circle cx="80" cy="51" r="7" fill="#3A2416"/>`
+    : eyesOpen;
+  const wingL = mood === 'cheer' ? `<ellipse cx="18" cy="56" rx="9" ry="20" fill="#E08A1E" transform="rotate(-35 18 56)"/>` : `<ellipse cx="21" cy="80" rx="9" ry="20" fill="#E08A1E" transform="rotate(14 21 80)"/>`;
+  const wingR = mood === 'cheer' ? `<ellipse cx="102" cy="56" rx="9" ry="20" fill="#E08A1E" transform="rotate(35 102 56)"/>` : `<ellipse cx="99" cy="80" rx="9" ry="20" fill="#E08A1E" transform="rotate(-14 99 80)"/>`;
+  const mouth = mood === 'oops' ? `<path d="M54 66 L66 66 L60 72 Z" fill="#F07B3F"/>` : `<path d="M54 64 L66 64 L60 73 Z" fill="#F07B3F"/>`;
+  return `<svg class="mascot ${cls}" width="${size}" height="${size}" viewBox="0 0 120 120" aria-hidden="true">
+  <path d="M27 36 L31 10 L48 28 Z" fill="#E08A1E"/><path d="M93 36 L89 10 L72 28 Z" fill="#E08A1E"/>
+  ${wingL}${wingR}
+  <ellipse cx="60" cy="68" rx="40" ry="44" fill="#F5B042"/>
+  <ellipse cx="60" cy="92" rx="23" ry="18" fill="#FFE9C7"/>
+  <path d="M51 92q3 3 6 0M63 92q3 3 6 0M57 100q3 3 6 0" stroke="#E9B66E" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="60" cy="56" rx="33" ry="23" fill="#FFE3B0"/>
+  ${eyes}${mouth}
+  <circle cx="31" cy="67" r="5" fill="#F79A8B" opacity=".75"/><circle cx="89" cy="67" r="5" fill="#F79A8B" opacity=".75"/>
+  <path d="M31 77 Q60 90 89 77 L88 84 Q60 97 32 84 Z" fill="#D7263D"/>
+  <path d="M63 86 L74 106 L81 98 L70 85 Z" fill="#B51D31"/><circle cx="64" cy="87" r="4" fill="#B51D31"/>
+  <path d="M46 111l-4 5M50 111v6M54 111l4 5M66 111l-4 5M70 111v6M74 111l4 5" stroke="#F07B3F" stroke-width="3" stroke-linecap="round"/>
+</svg>`;
+}
+function kiki(size = 80, cls = '') {
+  return `<svg class="mascot ${cls}" width="${size}" height="${size}" viewBox="0 0 120 120" aria-hidden="true">
+  <ellipse cx="42" cy="30" rx="10" ry="26" fill="#FFFFFF" stroke="#EBC8D0" stroke-width="2" transform="rotate(-10 42 30)"/><ellipse cx="42" cy="32" rx="5" ry="17" fill="#F8B7C6" transform="rotate(-10 42 32)"/>
+  <ellipse cx="78" cy="30" rx="10" ry="26" fill="#FFFFFF" stroke="#EBC8D0" stroke-width="2" transform="rotate(10 78 30)"/><ellipse cx="78" cy="32" rx="5" ry="17" fill="#F8B7C6" transform="rotate(10 78 32)"/>
+  <ellipse cx="60" cy="98" rx="28" ry="18" fill="#FFFFFF" stroke="#EBC8D0" stroke-width="2"/>
+  <circle cx="60" cy="68" r="32" fill="#FFFFFF" stroke="#EBC8D0" stroke-width="2"/>
+  <circle cx="48" cy="64" r="5" fill="#3A2416"/><circle cx="72" cy="64" r="5" fill="#3A2416"/><circle cx="49.5" cy="62.5" r="1.6" fill="#fff"/><circle cx="73.5" cy="62.5" r="1.6" fill="#fff"/>
+  <ellipse cx="60" cy="74" rx="4" ry="3" fill="#F28AA0"/><path d="M60 77v4M55 82q5 4 10 0" stroke="#3A2416" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <circle cx="40" cy="76" r="5" fill="#F8B7C6"/><circle cx="80" cy="76" r="5" fill="#F8B7C6"/>
+  <rect x="68" y="88" width="26" height="30" rx="4" fill="#1F9E78"/><path d="M73 97l3 3 5-6M73 108l3 3 5-6" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M84 98h6M84 109h6" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+</svg>`;
+}
+function bobo(size = 80, cls = '') {
+  return `<svg class="mascot ${cls}" width="${size}" height="${size}" viewBox="0 0 120 120" aria-hidden="true">
+  <circle cx="32" cy="34" r="13" fill="#A86F45"/><circle cx="32" cy="34" r="6" fill="#E9B98F"/><circle cx="88" cy="34" r="13" fill="#A86F45"/><circle cx="88" cy="34" r="6" fill="#E9B98F"/>
+  <ellipse cx="60" cy="100" rx="32" ry="20" fill="#A86F45"/>
+  <circle cx="60" cy="62" r="36" fill="#B87A4B"/>
+  <ellipse cx="60" cy="74" rx="17" ry="13" fill="#F1CFA8"/>
+  <circle cx="46" cy="58" r="5" fill="#2B1A10"/><circle cx="74" cy="58" r="5" fill="#2B1A10"/><circle cx="47.5" cy="56.5" r="1.6" fill="#fff"/><circle cx="75.5" cy="56.5" r="1.6" fill="#fff"/>
+  <ellipse cx="60" cy="69" rx="5.5" ry="4" fill="#2B1A10"/><path d="M60 73v4M54 78q6 5 12 0" stroke="#2B1A10" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <circle cx="38" cy="72" r="5" fill="#E7907A" opacity=".7"/><circle cx="82" cy="72" r="5" fill="#E7907A" opacity=".7"/>
+  <path d="M60 86l6.5 13.2 14.5 2.1-10.5 10.2 2.5 14.5L60 119l-13 6.9 2.5-14.5L39 101.3l14.5-2.1z" fill="#F5A524" stroke="#C97F0E" stroke-width="2" transform="translate(0 -6) scale(1 .92)"/>
+</svg>`;
+}
+const AVATARS = ['🐰', '🐻', '🐱', '🐼', '🦊', '🐸', '🐥', '🐯', '🐨', '🐶', '🦄', '🐧'];
+const AVA_BG = ['#FFE1E6', '#FCE6CF', '#FFEFC2', '#E4F1E1', '#FFE0CC', '#DDF3E4', '#FFF4C4', '#FFE6C9', '#E6E9F5', '#F3E5D8', '#F1E2FA', '#DDEBF7'];
+const avaBg = a => AVA_BG[Math.max(0, AVATARS.indexOf(a))] || '#FCE6CF';
+function ava(a, cls = '') { return `<span class="ava ${cls}" style="--ac:${avaBg(a)}">${a}</span>`; }
+function emo(e, cls = '') { return /^[0-9A-Za-zĐđ]{1,3}$/.test(e) ? `<span class="glyph ${cls}">${esc(e)}</span>` : esc(e); }
+
+/* ---------- storage: local + Claude account sync ---------- */
+const LS = 'lumi.store.v1', LSD = 'lumi.device.v1';
+let STORE = { families: {} };
+let DEV = { familyId: null, session: null };
+const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+function loadLocal() {
+  try { const r = lsGet(LS); if (r) STORE = JSON.parse(r) || STORE; } catch (e) {}
+  try { const d = lsGet(LSD); if (d) DEV = Object.assign(DEV, JSON.parse(d)); } catch (e) {}
+  if (!STORE.families) STORE.families = {};
+}
+function persist() { lsSet(LS, JSON.stringify(STORE)); }
+function saveFam(fam) { fam.updatedAt = Date.now(); persist(); queueRemote(); }
+function saveDev() { lsSet(LSD, JSON.stringify(DEV)); }
+let REMOTE = null, rTimer = null, rBusy = false, rDirty = false, SYNC = 'local';
+async function initRemote() {
+  if (FREE) return;
+  try {
+    if (!window.claude || !window.claude.use) return;
+    const [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
+    if (!db || !user) return;
+    const id = await user.id(); if (!id) return;
+    const ref = db.collection('data/users/' + id).doc('lumi');
+    const snap = await ref.get();
+    REMOTE = { ref };
+    let changed = false, needPush = false;
+    if (snap.exists) {
+      const d = snap.data();
+      let rem = {}; try { rem = JSON.parse(d.json || '{}'); } catch (e) {}
+      for (const [fid, rf] of Object.entries(rem)) {
+        const lf = STORE.families[fid];
+        if (!lf || (rf.updatedAt || 0) > (lf.updatedAt || 0)) { STORE.families[fid] = rf; changed = true; }
+      }
+      for (const [fid, lf] of Object.entries(STORE.families)) { const rf = rem[fid]; if (!rf || (lf.updatedAt || 0) > (rf.updatedAt || 0)) needPush = true; }
+    } else needPush = Object.keys(STORE.families).length > 0;
+    SYNC = 'cloud';
+    if (changed) { persist(); if (UI.view !== 'lesson') render(); }
+    else if (UI.view !== 'lesson') render();
+    if (needPush) queueRemote();
+  } catch (e) { /* stay local */ }
+}
+function queueRemote() { if (!REMOTE) return; rDirty = true; clearTimeout(rTimer); rTimer = setTimeout(flushRemote, 1200); }
+async function flushRemote() {
+  if (!REMOTE || rBusy || !rDirty) return; rBusy = true; rDirty = false;
+  try { await REMOTE.ref.set({ json: JSON.stringify(STORE.families), updatedAt: Date.now() }); }
+  catch (e) { if (e && e.code === 'unavailable') { rDirty = true; setTimeout(flushRemote, 2500 + Math.random() * 1500); } }
+  rBusy = false; if (rDirty) queueRemote();
+}
+
+function syncLabel() { return SYNC === 'cloud' ? '☁️ Dữ liệu đồng bộ vào tài khoản Claude của bạn' : FREE ? '💾 Dữ liệu lưu trong trình duyệt của máy này · ba mẹ nhớ sao lưu định kỳ' : '💾 Dữ liệu lưu trên thiết bị này'; }
+
+/* ---------- password hash ---------- */
+async function hashPw(s) {
+  try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('lumi:' + s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
+  catch (e) { let h = 2166136261; for (const c of 'lumi:' + s) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return 'f' + (h >>> 0).toString(16); }
+}
+
+/* ---------- domain ---------- */
+const fam = () => STORE.families[DEV.session?.fid || DEV.familyId];
+const childOf = (f, cid) => f?.children.find(c => c.id === cid);
+function prog(f, cid) { f.progress[cid] ||= { lessons: {}, missions: {}, ledger: [], log: [], streak: { last: null, count: 0 }, secs: {} }; return f.progress[cid]; }
+const capOf = f => Math.min(MAX_CAP, Math.max(5, f.weeklyCap || MAX_CAP));
+function weekStars(f, cid, wk = weekKey()) { return prog(f, cid).ledger.filter(e => e.wk === wk).reduce((a, e) => a + e.counted, 0); }
+function award(f, cid, n, reason) {
+  const p = prog(f, cid), wk = weekKey(), have = weekStars(f, cid, wk);
+  const counted = Math.max(0, Math.min(n, capOf(f) - have));
+  p.ledger.push({ id: uid(), ts: Date.now(), wk, n, counted, reason, paid: false });
+  return { n, counted, over: n - counted, total: have + counted };
+}
+const unpaid = (f, cid) => prog(f, cid).ledger.filter(e => !e.paid).reduce((a, e) => a + e.counted, 0);
+function bumpStreak(p) {
+  const t = dayKey(), y = dayKey(addDays(new Date(), -1));
+  if (p.streak.last === t) return; p.streak.count = p.streak.last === y ? p.streak.count + 1 : 1; p.streak.last = t;
+}
+const streakNow = p => (p.streak.last === dayKey() || p.streak.last === dayKey(addDays(new Date(), -1))) ? p.streak.count : 0;
+function nodeDone(p, node) { return node.type === 'unit' ? (p.lessons[node.key + 'l1'] > 0 && p.lessons[node.key + 'l2'] > 0) : p.lessons[node.key] > 0; }
+function nodeStars(p, node) { return node.type === 'unit' ? (p.lessons[node.key + 'l1'] || 0) + (p.lessons[node.key + 'l2'] || 0) : (p.lessons[node.key] || 0); }
+function gradeLocked(f, child, g) { return !f.unlockAll && g > child.grade; }
+function nodeStates(f, child, g) {
+  const p = prog(f, child.id), list = nodesOf(g); let currentSet = false;
+  return list.map((n, i) => {
+    const done = nodeDone(p, n);
+    let open = !gradeLocked(f, child, g) && (f.unlockAll || g < child.grade || i === 0 || nodeDone(p, list[i - 1]));
+    let current = false; if (open && !done && !currentSet) { current = true; currentSet = true; }
+    return { ...n, done, open, current, stars: nodeStars(p, n) };
+  });
+}
+function lessonsDone(p) { return Object.values(p.lessons).filter(v => v > 0).length; }
+function wordsLearned(p) { let n = 0; for (const g in CUR) CUR[g].forEach(u => { if (p.lessons[unitKey(g, u.n) + 'l1'] > 0) n += u.words.length; }); return n; }
+function badgesOf(f, cid) {
+  const p = prog(f, cid), ld = lessonsDone(p), three = Object.values(p.lessons).filter(v => v === 3).length;
+  const mApproved = Object.values(p.missions).filter(m => m.status === 'approved').length;
+  const weeks = {}; p.ledger.forEach(e => weeks[e.wk] = (weeks[e.wk] || 0) + e.counted);
+  const maxWeek = Math.max(0, ...Object.values(weeks));
+  const gradeDone = g => nodesOf(g).every(n => nodeDone(p, n));
+  const list = [
+    ['🌱', 'Bước đầu tiên', ld >= 1], ['📚', 'Chăm học 10 bài', ld >= 10], ['🏅', 'Chăm học 30 bài', ld >= 30],
+    ['🌟', '5 bài 3 sao', three >= 5], ['🔥', 'Học 3 ngày liền', p.streak.count >= 3], ['☄️', 'Học 7 ngày liền', p.streak.count >= 7],
+    ['🎯', 'Nhiệm vụ đầu tiên', mApproved >= 1], ['🤝', '5 nhiệm vụ', mApproved >= 5], ['💰', 'Đủ 50 sao một tuần', maxWeek >= MAX_CAP]
+  ];
+  for (let g = 1; g <= 5; g++) list.push(['🎓', 'Xong Lớp ' + g, gradeDone(g)]);
+  return list.map(([b, t, on]) => ({ b, t, on }));
+}
+
+/* ---------- demo family (sample data, clearly marked) ---------- */
+async function seedDemo() {
+  if (STORE.families.demo) return;
+  const now = Date.now(), wk = weekKey(), lastWk = weekKey(addDays(new Date(), -7));
+  const f = { id: 'demo', demo: true, parentName: 'Ba mẹ Bông & Tí', login: 'demo', passHash: await hashPw('123456'), parentPin: '0000', weeklyCap: 50, unlockAll: false, createdAt: now, updatedAt: 0,
+    children: [{ id: 'bong', name: 'Bông', grade: 1, avatar: '🐰', pin: '1111' }, { id: 'ti', name: 'Tí', grade: 3, avatar: '🐻', pin: '2222' }],
+    progress: {}, payouts: [] };
+  const today = dayKey(), d = k => dayKey(addDays(new Date(), -k));
+  f.progress.bong = { lessons: { g1u1l1: 3, g1u1l2: 2, g1u2l1: 2 }, missions: { g1u1: { status: 'pending', ts: now - 3600e3 } },
+    ledger: [{ id: 'b1', ts: now - 864e5, wk, n: 3, counted: 3, reason: 'Unit 1 · Từ vựng', paid: false }, { id: 'b2', ts: now - 80e6, wk, n: 2, counted: 2, reason: 'Unit 1 · Mẫu câu', paid: false }, { id: 'b3', ts: now - 2e6, wk, n: 2, counted: 2, reason: 'Unit 2 · Từ vựng', paid: false }],
+    log: [{ ts: now - 864e5, key: 'g1u1l1', stars: 3 }, { ts: now - 80e6, key: 'g1u1l2', stars: 2 }, { ts: now - 2e6, key: 'g1u2l1', stars: 2 }],
+    streak: { last: today, count: 2 }, secs: { [d(1)]: 540, [today]: 420 } };
+  const tiLessons = {}; [1, 2, 3, 4].forEach(n => { tiLessons[`g3u${n}l1`] = n === 3 ? 2 : 3; tiLessons[`g3u${n}l2`] = n === 4 ? 2 : 3; });
+  f.progress.ti = { lessons: tiLessons, missions: { g3u2: { status: 'approved', ts: now - 3 * 864e5 }, g3u4: { status: 'pending', ts: now - 1800e3 } },
+    ledger: [
+      { id: 't0', ts: now - 9 * 864e5, wk: lastWk, n: 14, counted: 14, reason: 'Unit 1–2', paid: true },
+      { id: 't1', ts: now - 3 * 864e5, wk, n: 2, counted: 2, reason: 'Nhiệm vụ Unit 2', paid: false },
+      { id: 't2', ts: now - 2 * 864e5, wk, n: 6, counted: 6, reason: 'Unit 3 · 2 bài', paid: false },
+      { id: 't3', ts: now - 864e5, wk, n: 5, counted: 5, reason: 'Unit 4 · 2 bài', paid: false }],
+    log: [{ ts: now - 2 * 864e5, key: 'g3u3l1', stars: 2 }, { ts: now - 2 * 864e5, key: 'g3u3l2', stars: 3 }, { ts: now - 864e5, key: 'g3u4l1', stars: 3 }, { ts: now - 864e5, key: 'g3u4l2', stars: 2 }],
+    streak: { last: d(1), count: 4 }, secs: { [d(4)]: 600, [d(3)]: 780, [d(2)]: 1260, [d(1)]: 900 } };
+  f.payouts = [{ id: 'p0', ts: now - 6 * 864e5, cid: 'ti', stars: 14, amount: 14000 }];
+  STORE.families.demo = f; persist();
+}
+
+/* ---------- speech + sound ---------- */
+let VOICE = null;
+function pickVoice() { try { const vs = speechSynthesis.getVoices(); VOICE = vs.find(v => /^en[-_]US/i.test(v.lang) && /samantha|google us|aria|jenny|female/i.test(v.name)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; } catch (e) {} }
+try { speechSynthesis.onvoiceschanged = pickVoice; pickVoice(); } catch (e) {}
+function say(t, slow) { try { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if (VOICE) u.voice = VOICE; u.rate = slow ? 0.6 : 0.85; u.pitch = 1.05; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }
+let AC = null;
+function beep(ok) {
+  try { AC ||= new (window.AudioContext || window.webkitAudioContext)(); const t = AC.currentTime;
+    const notes = ok ? [660, 880] : [300, 220];
+    notes.forEach((fq, i) => { const o = AC.createOscillator(), g = AC.createGain(); o.type = ok ? 'triangle' : 'sine'; o.frequency.value = fq; g.gain.setValueAtTime(0.0001, t + i * 0.11); g.gain.exponentialRampToValueAtTime(0.18, t + i * 0.11 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.11 + 0.2); o.connect(g).connect(AC.destination); o.start(t + i * 0.11); o.stop(t + i * 0.11 + 0.22); });
+  } catch (e) {}
+}
+
+/* ---------- UI state ---------- */
+const UI = { view: 'welcome', tab: 'learn', ptab: 'home', grade: null, sheet: null, toast: null, pin: '', pinFor: null, pinBad: false, err: '', reg: { step: 1 }, L: null, result: null, confirm: null, edit: null };
+let toastTimer = null;
+function toast(msg) { UI.toast = msg; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { UI.toast = null; render(); }, 2600); }
+function go(view, extra = {}) { Object.assign(UI, { view, err: '', pin: '', pinBad: false, sheet: null, confirm: null }, extra); render(); window.scrollTo(0, 0); }
+
+/* ---------- render root ---------- */
+function render() {
+  const app = $('#app'); let html = '';
+  const v = UI.view;
+  if (v === 'welcome') html = vWelcome();
+  else if (v === 'parentLogin') html = vParentLogin();
+  else if (v === 'register') html = vRegister();
+  else if (v === 'family') html = vFamilyFind();
+  else if (v === 'profiles') html = vProfiles();
+  else if (v === 'pin') html = vPin();
+  else if (v === 'child') html = vChild();
+  else if (v === 'parent') html = vParent();
+  else if (v === 'lesson') html = vLesson();
+  else if (v === 'result') html = vResult();
+  app.className = (v === 'child' || v === 'parent') ? '' : 'bare';
+  app.innerHTML = html + (UI.sheet ? `<div class="scrim" data-act="closeSheet"><div class="sheet" data-stop="1">${UI.sheet()}</div></div>` : '') + (UI.toast ? `<div class="toast" role="status">${esc(UI.toast)}</div>` : '');
+  const af = app.querySelector('[autofocus]'); if (af && !('ontouchstart' in window)) af.focus();
+}
+
+/* ---------- welcome / auth ---------- */
+function vWelcome() {
+  const f = DEV.familyId && STORE.families[DEV.familyId];
+  return `<div class="hero">
+    <div class="cast">${kiki(70)}${lumi('cheer', 132, 'bob')}${bobo(70)}</div>
+    <div class="brand">Lumi <b>English</b></div>
+    ${FREE ? '<span class="pill jade">Miễn phí 100% · không quảng cáo</span>' : ''}
+    <p class="muted" style="max-width:34ch;font-weight:700">Học tiếng Anh lớp 1–5 theo sách <b>Global Success</b>. Mỗi ngày một bài, làm nhiệm vụ thật, nhận sao thưởng.</p>
+  </div>
+  <div class="say">${lumi('happy', 56)}<div class="bubble">Chào con! Mình là <b>cú Lumi</b>, đeo khăn quàng đỏ nè. Bạn thỏ <b>Kiki</b> giữ nhiệm vụ, gấu <b>Bobo</b> giữ hũ sao.</div></div>
+  <div class="stack">
+    <button class="choice" data-act="toChild"><span class="ic" style="background:var(--gold-soft)">🎒</span><span><b>Con vào học</b><span class="muted tiny">${f ? 'Gia đình: ' + esc(f.parentName) : 'Chọn hồ sơ và nhập mã PIN 4 số'}</span></span></button>
+    <button class="choice" data-act="go" data-v="parentLogin"><span class="ic" style="background:var(--jade-soft)">👨‍👩‍👧</span><span><b>Ba mẹ đăng nhập</b><span class="muted tiny">Theo dõi tiến độ, duyệt nhiệm vụ, trao thưởng</span></span></button>
+    <button class="choice" data-act="startReg"><span class="ic" style="background:color-mix(in srgb,var(--red) 14%,var(--surface))">✨</span><span><b>Tạo tài khoản gia đình</b><span class="muted tiny">Miễn phí · thêm nhiều con, mỗi con một mã PIN</span></span></button>
+  </div>
+  <div class="demo">Muốn xem thử? <button class="link" data-act="demo">Mở gia đình mẫu</button> · ba mẹ: <b>demo</b> / <b>123456</b> · Bông lớp 1: PIN <b>1111</b> · Tí lớp 3: PIN <b>2222</b></div>
+  <p class="sync">${syncLabel()}</p>`;
+}
+function backBtn(v = 'welcome') { return `<div class="row"><button class="x" data-act="go" data-v="${v}" aria-label="Quay lại">←</button></div>`; }
+function vParentLogin() {
+  return `${backBtn()}
+  <div class="say">${lumi('happy', 64)}<div class="bubble">Chào ba mẹ! Đăng nhập để xem con học thế nào nhé.</div></div>
+  <form class="card stack" data-form="parentLogin" autocomplete="on">
+    <h1 class="h2">Ba mẹ đăng nhập</h1>
+    <div class="field"><label for="pl-login">Số điện thoại hoặc email</label><input class="input" id="pl-login" name="login" autocomplete="username" autofocus></div>
+    <div class="field"><label for="pl-pass">Mật khẩu</label><input class="input" id="pl-pass" name="pass" type="password" autocomplete="current-password"></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block" type="submit">Đăng nhập</button>
+    <p class="tiny muted">Chưa có tài khoản? <button type="button" class="link" data-act="startReg">Tạo tài khoản gia đình</button></p>
+  </form>`;
+}
+function vRegister() {
+  const r = UI.reg;
+  if (r.step === 1) return `${backBtn()}
+  <div class="say">${lumi('cheer', 64)}<div class="bubble">Mình cùng tạo tài khoản gia đình nhé! Chỉ mất 1 phút.</div></div>
+  <form class="card stack" data-form="reg1">
+    <div class="eyebrow">Bước 1/2 · Thông tin ba mẹ</div>
+    <div class="field"><label for="r-name">Tên hiển thị</label><input class="input" id="r-name" name="name" placeholder="VD: Ba mẹ An" value="${esc(r.name || '')}" autofocus></div>
+    <div class="field"><label for="r-login">Số điện thoại hoặc email</label><input class="input" id="r-login" name="login" autocomplete="username" value="${esc(r.login || '')}"></div>
+    <div class="field"><label for="r-pass">Mật khẩu (ít nhất 6 ký tự)</label><input class="input" id="r-pass" name="pass" type="password" autocomplete="new-password"></div>
+    <div class="field"><label for="r-ppin">Mã PIN ba mẹ (4 số)</label><input class="input" id="r-ppin" name="ppin" inputmode="numeric" maxlength="4" placeholder="Dùng để vào khu ba mẹ trên máy của con"></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block" type="submit">Tiếp tục</button>
+  </form>`;
+  return `<div class="row"><button class="x" data-act="regBack" aria-label="Quay lại">←</button></div>
+  <div class="say">${kiki(60)}<div class="bubble">Giờ thêm hồ sơ cho con. Mỗi con có lộ trình, sao và mã PIN riêng.</div></div>
+  ${childForm('reg2', { name: '', grade: 1, avatar: '🐰', pin: '' }, 'Bước 2/2 · Hồ sơ của con', 'Hoàn tất')}
+  <p class="tiny muted" style="text-align:center;font-weight:700">Có nhiều con? Thêm hồ sơ tiếp trong mục Tài khoản sau khi hoàn tất.</p>`;
+}
+function childForm(form, c, title, btn) {
+  const sel = UI.edit?.avatar || c.avatar, gsel = UI.edit?.grade || c.grade;
+  return `<form class="card stack" data-form="${form}">
+    <div class="eyebrow">${title}</div>
+    <div class="field"><label for="c-name">Tên của con</label><input class="input" id="c-name" name="name" value="${esc(UI.edit?.name ?? c.name)}" placeholder="VD: Bông" autofocus></div>
+    <div class="field"><label>Con học lớp mấy?</label><div class="chips">${[1, 2, 3, 4, 5].map(g => `<button type="button" class="chip ${gsel == g ? 'on' : ''}" style="--c:${GRADES[g].c}" data-act="editSet" data-k="grade" data-val="${g}">Lớp ${g}</button>`).join('')}</div></div>
+    <div class="field"><label>Chọn bạn đồng hành</label><div class="avpick">${AVATARS.map(a => `<button type="button" class="${sel === a ? 'on' : ''}" data-act="editSet" data-k="avatar" data-val="${a}" aria-label="Ảnh đại diện ${a}">${a}</button>`).join('')}</div></div>
+    <div class="field"><label for="c-pin">Mã PIN của con (4 số)</label><input class="input" id="c-pin" name="pin" inputmode="numeric" maxlength="4" value="${esc(UI.edit?.pin ?? c.pin)}"></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block jade" type="submit">${btn}</button>
+  </form>`;
+}
+function vFamilyFind() {
+  return `${backBtn()}
+  <div class="say">${lumi('think', 64)}<div class="bubble">Máy này chưa biết gia đình con. Nhờ ba mẹ nhập số điện thoại hoặc email của tài khoản nhé.</div></div>
+  <form class="card stack" data-form="family">
+    <div class="field"><label for="f-login">Số điện thoại hoặc email của ba mẹ</label><input class="input" id="f-login" name="login" autofocus></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block" type="submit">Tìm gia đình</button>
+  </form>`;
+}
+function vProfiles() {
+  const f = STORE.families[DEV.familyId]; if (!f) return vWelcome();
+  return `${backBtn()}
+  <div class="say">${lumi('happy', 64)}<div class="bubble">Ai đang học đó? Chạm vào tên của con nha!</div></div>
+  <div class="row between"><h1 class="h2">${esc(f.parentName)}</h1>${f.demo ? '<span class="pill gold">Gia đình mẫu</span>' : ''}</div>
+  <div class="profiles">
+    ${f.children.map(c => `<button class="prof" data-act="pinFor" data-cid="${c.id}">${ava(c.avatar)}<span>${esc(c.name)}</span><span class="pill" style="color:${GRADES[c.grade].c}">Lớp ${c.grade}</span></button>`).join('')}
+    <button class="prof" data-act="pinFor" data-cid="__parent"><span class="ava" style="--ac:var(--jade-soft)">🔑</span><span>Ba mẹ</span><span class="pill">Mã PIN</span></button>
+  </div>
+  ${f.demo ? '<div class="demo">Mã PIN mẫu: Bông <b>1111</b> · Tí <b>2222</b> · Ba mẹ <b>0000</b></div>' : ''}
+  <p class="tiny muted" style="text-align:center">Không phải gia đình này? <button class="link" data-act="forgetFamily">Đổi gia đình</button></p>`;
+}
+function vPin() {
+  const f = STORE.families[DEV.familyId]; const isP = UI.pinFor === '__parent'; const c = !isP && childOf(f, UI.pinFor);
+  const dots = [0, 1, 2, 3].map(i => `<i class="${i < UI.pin.length ? 'on' : ''}"></i>`).join('');
+  return `${backBtn('profiles')}
+  <div class="hero" style="padding-top:0">${isP ? `<span class="ava" style="--ac:var(--jade-soft)">🔑</span>` : ava(c.avatar)}
+    <h1 class="h2">${isP ? 'Mã PIN ba mẹ' : 'Chào ' + esc(c.name) + '!'}</h1>
+    <p class="muted" style="font-weight:700">${UI.pinBad ? '<span class="err">Mã chưa đúng, thử lại nhé!</span>' : 'Nhập mã PIN 4 số'}</p>
+    <div class="dots ${UI.pinBad ? 'bad' : ''}" aria-label="Đã nhập ${UI.pin.length} trên 4 số">${dots}</div>
+  </div>
+  <div class="pad">${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => `<button data-act="pinKey" data-k="${n}">${n}</button>`).join('')}<span></span><button data-act="pinKey" data-k="0">0</button><button data-act="pinKey" data-k="del" aria-label="Xóa">⌫</button></div>
+  <p class="tiny muted" style="text-align:center">${isP ? 'Quên mã PIN? Đăng nhập bằng mật khẩu ở màn hình chính.' : 'Quên mã PIN? Nhờ ba mẹ đặt lại trong mục Tài khoản.'}</p>`;
+}
+
+/* ---------- child app ---------- */
+function curChild() { const f = fam(); return f && childOf(f, DEV.session?.cid); }
+function vChild() {
+  const f = fam(), c = curChild(); if (!c) return vWelcome();
+  const p = prog(f, c.id), ws = weekStars(f, c.id);
+  const top = `<div class="topbar">${ava(c.avatar, 'sm')}<div class="who"><b>${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Lớp ${c.grade} · ${GRADES[c.grade].world}</span></div>
+    <span class="statpill" title="Chuỗi ngày học">🔥 ${streakNow(p)}</span><span class="statpill" title="Sao tuần này">⭐ ${ws}/${capOf(f)}</span></div>`;
+  let body = '';
+  if (UI.tab === 'learn') body = vLearn(f, c, p);
+  else if (UI.tab === 'missions') body = vMissions(f, c, p);
+  else if (UI.tab === 'rewards') body = vRewards(f, c, p);
+  else body = vMe(f, c, p);
+  const pending = Object.values(p.missions).filter(m => m.status === 'pending').length;
+  const tabs = [['learn', '🗺️', 'Học'], ['missions', '🎯', 'Nhiệm vụ'], ['rewards', '⭐', 'Hũ sao'], ['me', ava(c.avatar, 'xs'), 'Của con']];
+  return top + body + `<nav class="tabbar" aria-label="Điều hướng"><div class="in">${tabs.map(([k, i, t]) => `<button class="tab ${UI.tab === k ? 'on' : ''}" data-act="tab" data-t="${k}" aria-current="${UI.tab === k}"><span class="i">${i}</span>${t}${k === 'missions' && pending ? ` <span class="pill red" style="padding:0 6px;font-size:11px">${pending}</span>` : ''}</button>`).join('')}</div></nav>`;
+}
+function vLearn(f, c, p) {
+  const g = UI.grade || c.grade; const G = GRADES[g];
+  const states = nodeStates(f, c, g); const done = states.filter(s => s.done).length;
+  const cur = states.find(s => s.current);
+  const glocked = gradeLocked(f, c, g);
+  const xs = [0, 46, 70, 46, 0, -46, -70, -46];
+  let pathHtml = '', ui = 0;
+  states.forEach((s, i) => {
+    if (s.type === 'unit' && G.books === 2 && (s.u.n === 1 || s.u.n === 11)) pathHtml += `<div class="book"><span>${s.u.n === 1 ? 'Tập một' : 'Tập hai'}</span></div>`;
+    const x = xs[i % xs.length];
+    const cls = ['node', s.type === 'review' ? 'review' : '', !s.open ? 'locked' : '', s.current ? 'current' : ''].join(' ');
+    const maxS = s.type === 'unit' ? 6 : 3;
+    const starTxt = s.stars ? '★'.repeat(Math.min(s.stars, maxS)) : '';
+    if (s.type === 'unit') ui++;
+    pathHtml += `<button class="${cls}" style="--x:${x};--c:${G.c}" data-act="openNode" data-g="${g}" data-i="${i}" aria-label="${s.type === 'unit' ? 'Unit ' + s.u.n + ': ' + esc(s.u.title) : 'Ôn tập ' + s.k}${s.open ? '' : ' (đang khóa)'}">
+      <span class="disc">${s.current ? '<span class="here">Học tiếp</span>' : ''}${s.open ? (s.type === 'unit' ? s.u.icon : '🏆') : '🔒'}<span class="no">${s.type === 'unit' ? s.u.n : 'Ôn ' + s.k}</span></span>
+      <span class="lbl">${s.type === 'unit' ? esc(s.u.title) : 'Review ' + s.k}</span>${starTxt ? `<span class="st">${starTxt}</span>` : ''}</button>`;
+  });
+  const hello = glocked ? `Lớp ${g} sẽ mở khi con lên lớp ${g}. Ba mẹ có thể mở sớm trong mục Tài khoản.`
+    : cur ? (cur.type === 'unit' ? `Hôm nay mình học <b>Unit ${cur.u.n}: ${esc(cur.u.title)}</b> nhé!` : `Đến lúc <b>ôn tập</b> rồi! Làm tốt là được 3 sao.`) : `Con đã xong cả ${G.world}! Giỏi quá!`;
+  return `<div class="gradebar" role="tablist">${[1, 2, 3, 4, 5].map(k => `<button class="chip ${k === g ? 'on' : ''}" style="--c:${GRADES[k].c}" data-act="grade" data-g="${k}" role="tab" aria-selected="${k === g}">${gradeLocked(f, c, k) ? '🔒 ' : ''}Lớp ${k}</button>`).join('')}</div>
+  <section class="world" style="--c:${G.c}">${lumi(cur ? 'happy' : 'cheer', 74, 'bob')}<div style="flex:1;min-width:0;position:relative;z-index:1"><div class="s">Lớp ${g} · Global Success</div><div class="t">${G.world}</div><div class="s">${done}/${states.length} chặng · ${CUR[g].length} Unit</div><div class="bar"><i style="width:${Math.round(done / states.length * 100)}%"></i></div></div></section>
+  <div class="say">${lumi('happy', 44)}<div class="bubble" style="font-weight:600">${hello}</div></div>
+  <div class="path">${pathHtml}</div>`;
+}
+function unitSheet(g, i) {
+  return () => {
+    const f = fam(), c = curChild(), p = prog(f, c.id); const s = nodeStates(f, c, g)[i];
+    if (s.type === 'review') {
+      const st = p.lessons[s.key] || 0;
+      return `<span class="grip"></span><div class="row">${bobo(60)}<div><div class="eyebrow">Lớp ${g} · Review ${s.k}</div><h2 class="h2">Ôn tập Unit ${s.units[0].n}–${s.units[s.units.length - 1].n}</h2></div></div>
+      <p class="muted" style="font-weight:600">12 câu trộn từ vựng và mẫu câu của ${s.units.length} Unit vừa học. Đúng từ 90% được 3 sao.</p>
+      <button class="lessonrow" data-act="startLesson" data-key="${s.key}" data-kind="review" data-g="${g}" data-i="${i}"><span class="ic">🏆</span><span class="tx"><b>Bài ôn tập</b><span class="tiny muted">Tối đa 3 sao</span></span><span class="pill gold">${'★'.repeat(st) || 'Chưa làm'}</span></button>`;
+    }
+    const u = s.u, k = s.key, s1 = p.lessons[k + 'l1'] || 0, s2 = p.lessons[k + 'l2'] || 0, m = p.missions[k];
+    const mBtn = !m ? (s1 > 0 ? `<button class="btn sm jade" data-act="missionDone" data-key="${k}">Con đã làm xong</button>` : `<span class="pill">Học xong Bài 1 để mở</span>`)
+      : m.status === 'pending' ? `<span class="pill gold">Chờ ba mẹ xác nhận</span>` : `<span class="pill jade">Đã nhận 2 sao ✓</span>`;
+    return `<span class="grip"></span>
+    <div class="row"><span class="ava" style="--ac:color-mix(in srgb,${GRADES[g].c} 18%,var(--surface));border-radius:18px">${u.icon}</span><div style="min-width:0"><div class="eyebrow">Lớp ${g} · Unit ${u.n}</div><h2 class="h2">${esc(u.title)}</h2><p class="muted" style="font-weight:700">${esc(u.vi)}</p></div></div>
+    <div class="vocab">${u.words.map(w => `<span>${emo(w.emo)} ${esc(w.en)}</span>`).join('')}</div>
+    <button class="lessonrow" data-act="startLesson" data-key="${k}l1" data-kind="l1" data-g="${g}" data-i="${i}"><span class="ic">🔤</span><span class="tx"><b>Bài 1 · Từ vựng</b><span class="tiny muted">Nghe, nhìn hình, ghép chữ · tối đa 3 sao</span></span><span class="pill gold">${s1 ? '★'.repeat(s1) : 'Bắt đầu'}</span></button>
+    <button class="lessonrow" data-act="startLesson" data-key="${k}l2" data-kind="l2" data-g="${g}" data-i="${i}" ${s1 ? '' : 'disabled'}><span class="ic">💬</span><span class="tx"><b>Bài 2 · Mẫu câu</b><span class="tiny muted">${s1 ? 'Điền từ, xếp câu, nghe chọn câu · tối đa 3 sao' : 'Mở sau khi xong Bài 1'}</span></span><span class="pill gold">${s2 ? '★'.repeat(s2) : (s1 ? 'Bắt đầu' : '🔒')}</span></button>
+    <div class="mission"><div class="hd"><span class="ic">${kiki(40)}</span><div class="tx"><b>Nhiệm vụ thực tế của Kiki</b><span class="tiny muted">Làm ở nhà · ba mẹ xác nhận · +2 sao</span></div></div><p>${esc(u.mission)}</p><div class="row">${mBtn}</div></div>`;
+  };
+}
+function vMissions(f, c, p) {
+  const g = c.grade; const items = [];
+  const today = dayKey(); const todayLessons = p.log.filter(l => dayKey(new Date(l.ts)) === today).length;
+  for (let gg = 1; gg <= 5; gg++) CUR[gg].forEach(u => { const k = unitKey(gg, u.n); const m = p.missions[k]; const l1 = p.lessons[k + 'l1'] > 0; if (m || l1) items.push({ g: gg, u, k, m, l1 }); });
+  const pending = items.filter(x => x.m?.status === 'pending'), todo = items.filter(x => !x.m && x.l1), done = items.filter(x => x.m?.status === 'approved');
+  const card = x => `<div class="mission"><div class="hd"><span class="ic">${x.u.icon}</span><div class="tx"><b>Unit ${x.u.n}: ${esc(x.u.title)}</b><span class="tiny muted">Lớp ${x.g} · ${esc(x.u.vi)}</span></div>${x.m?.status === 'approved' ? '<span class="pill jade">+2 ⭐</span>' : ''}</div><p>${esc(x.u.mission)}</p>
+    ${!x.m ? `<div class="row"><button class="btn sm jade" data-act="missionDone" data-key="${x.k}">Con đã làm xong</button></div>` : x.m.status === 'pending' ? '<div class="row"><span class="pill gold">⏳ Chờ ba mẹ xác nhận</span></div>' : ''}</div>`;
+  const goal = Math.min(todayLessons, 2);
+  return `<div class="say">${kiki(64, 'bob')}<div class="bubble">Mình là <b>Kiki</b>! Mỗi Unit có một nhiệm vụ làm ở nhà. Làm xong, bấm nút, ba mẹ xác nhận là con được <b>2 sao</b>.</div></div>
+  <section class="card stack"><div class="row between"><h2 class="h3">Mục tiêu hôm nay</h2><span class="pill ${goal >= 2 ? 'jade' : ''}">${goal}/2 bài</span></div>
+    <div class="meter"><i style="width:${goal * 50}%;background:var(--jade)"></i></div>
+    <p class="tiny muted" style="font-weight:700">${goal >= 2 ? 'Tuyệt vời! Con đã hoàn thành mục tiêu hôm nay.' : 'Học 2 bài mỗi ngày để giữ chuỗi 🔥 và nhớ từ lâu hơn.'}</p></section>
+  ${pending.length ? `<h2 class="h3">Đang chờ ba mẹ (${pending.length})</h2>${pending.map(card).join('')}` : ''}
+  <h2 class="h3">Nên làm ngay</h2>
+  ${todo.length ? todo.slice(0, 6).map(card).join('') : `<div class="card muted" style="font-weight:700">Học xong <b>Bài 1</b> của một Unit là nhiệm vụ của Unit đó hiện ra ở đây.</div>`}
+  ${done.length ? `<h2 class="h3">Đã hoàn thành (${done.length})</h2>${done.slice(-6).reverse().map(card).join('')}` : ''}`;
+}
+function vRewards(f, c, p) {
+  const ws = weekStars(f, c.id), cp = capOf(f), up = unpaid(f, c.id);
+  const pct = Math.round(ws / cp * 100);
+  const bs = badgesOf(f, c.id);
+  const recent = p.ledger.slice(-8).reverse();
+  return `<div class="say">${bobo(64, 'bob')}<div class="bubble">Mình là <b>Bobo</b>, giữ hũ sao cho con. Mỗi sao = <b>1.000đ</b>, tối đa <b>${cp} sao</b> mỗi tuần.</div></div>
+  <section class="card jar"><div class="ring" style="--p:${pct}"><div><div><b>${ws}</b><div class="tiny muted" style="font-weight:800">/ ${cp} sao</div></div></div></div>
+    <div class="stack" style="gap:4px;min-width:0"><span class="eyebrow">Tuần này</span><span class="money">${vnd(ws * STAR)}</span>
+    <span class="tiny muted" style="font-weight:700">${ws >= cp ? 'Con đã đạt tối đa tuần này! Cứ học tiếp, sao luyện tập vẫn được ghi lại.' : `Còn ${cp - ws} sao nữa là đầy hũ tuần này.`}</span></div></section>
+  <section class="card row between"><div><div class="eyebrow">Ba mẹ sẽ trao cho con</div><div class="money" style="font-size:24px">${vnd(up * STAR)}</div></div><span style="font-size:40px">🎁</span></section>
+  <h2 class="h3">Huy hiệu</h2>
+  <div class="badges">${bs.map(b => `<div class="badge ${b.on ? '' : 'off'}"><span class="b">${b.b}</span>${esc(b.t)}</div>`).join('')}</div>
+  <h2 class="h3">Sao gần đây</h2>
+  <section class="card ledger">${recent.length ? recent.map(e => `<div class="li"><span>⭐</span><span class="tx">${esc(e.reason)}<small>${new Date(e.ts).toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'numeric' })}${e.counted < e.n ? ` · ${e.n - e.counted} sao luyện tập (vượt mức tuần)` : ''}</small></span><span class="n">+${e.counted}</span></div>`).join('') : '<p class="muted">Chưa có sao nào. Học bài đầu tiên để nhận sao nhé!</p>'}</section>`;
+}
+function vMe(f, c, p) {
+  const secsWeek = Object.entries(p.secs).filter(([d]) => d >= weekKey()).reduce((a, [, s]) => a + s, 0);
+  return `<section class="card stack" style="align-items:center;text-align:center">${ava(c.avatar)}<h2 class="h2">${esc(c.name)}</h2><span class="pill" style="color:${GRADES[c.grade].c}">Lớp ${c.grade} · ${GRADES[c.grade].world}</span>
+    <div class="statgrid"><div class="stat"><b>${lessonsDone(p)}</b><span>bài đã học</span></div><div class="stat"><b>${wordsLearned(p)}</b><span>từ đã gặp</span></div><div class="stat"><b>${Math.round(secsWeek / 60)}</b><span>phút tuần này</span></div></div></section>
+  <div class="say">${lumi('happy', 56)}<div class="bubble" style="font-weight:600">Bí quyết của Lumi: bấm 🔊 và <b>đọc to theo</b> mỗi từ. Đọc to giúp con nhớ lâu gấp đôi!</div></div>
+  <div class="stack"><button class="btn ghost block" data-act="switchUser">🔁 Đổi người dùng</button><button class="btn ghost block" data-act="toParentPin">🔑 Khu vực ba mẹ</button></div>`;
+}
+
+/* ---------- lesson builder ---------- */
+function letterOpts(correct) { const pool = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(x => x !== correct.toLowerCase()); return shuffle([correct.toLowerCase(), ...shuffle(pool).slice(0, 3)]); }
+function spellItem(g, w) {
+  const single = /^[A-Za-z]{3,9}$/.test(w.en);
+  if (g >= 3 && single) { const letters = w.en.toLowerCase().split(''); return { t: 'spell', w, tiles: shuffle(letters.map((ch, i) => ({ ch, id: i }))), scored: true }; }
+  const tokens = w.en.split(/[\s-]/).filter(t => /^[A-Za-z']{3,}$/.test(t)); const target = tokens.length ? tokens.sort((a, b) => b.length - a.length)[0] : w.en;
+  const pos = g === 1 ? 0 : Math.floor(Math.random() * target.length); const ch = target[pos];
+  if (!/[a-z]/i.test(ch)) return null;
+  const masked = w.en.replace(target, target.slice(0, pos) + '_' + target.slice(pos + 1));
+  return { t: 'letter', w, masked, answer: ch.toLowerCase(), opts: letterOpts(ch), scored: true };
+}
+function distractWords(u, w, n) { return shuffle(u.words.filter(x => x.en !== w.en && x.emo !== w.emo)).slice(0, n); }
+function buildL1(u) {
+  const items = u.words.map(w => ({ t: 'card', w }));
+  const ws = shuffle(u.words), quiz = [];
+  ws.slice(0, 5).forEach(w => quiz.push({ t: 'listen', w, opts: shuffle([w, ...distractWords(u, w, 3)]), scored: true }));
+  shuffle(u.words).slice(0, 4).forEach(w => quiz.push({ t: 'pic', w, opts: shuffle([w, ...distractWords(u, w, 3)]), scored: true }));
+  if (u.g >= 2) shuffle(u.words).slice(0, 2).forEach(w => quiz.push({ t: 'meaning', w, opts: shuffle([w, ...distractWords(u, w, 3)]), scored: true }));
+  shuffle(u.words).map(w => spellItem(u.g, w)).filter(Boolean).slice(0, 3).forEach(x => quiz.push(x));
+  return items.concat(shuffle(quiz));
+}
+function fillItem(u, p) {
+  if (hasSlot(p)) {
+    const al = allowed(p, u); if (al.length < 2) return null; const w = pick(al); const r = realize(p, w);
+    const others = shuffle(al.filter(x => x !== w)).slice(0, 3).map(x => slotForm(p, x));
+    const opts = shuffle([r.surface, ...others]);
+    return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: r.surface, opts, scored: true };
+  }
+  const r = realize(p); const words = u.words.slice().sort((a, b) => b.en.length - a.en.length);
+  for (const w of words) {
+    const m = r.en.match(new RegExp('\\b' + reEsc(w.en) + '\\b', 'i'));
+    if (m) { const upper = m[0][0] !== m[0][0].toLowerCase() && w.en[0] === w.en[0].toLowerCase(); const fx = s => upper ? cap1(s) : s;
+      const opts = shuffle([m[0], ...distractWords(u, w, 3).map(x => fx(x.en))]);
+      return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: m[0], opts, scored: true }; }
+  }
+  return null;
+}
+function orderItem(u, p) {
+  const w = hasSlot(p) ? pick(allowed(p, u)) : null; const r = realize(p, w);
+  let part = r.en; const qi = r.en.indexOf('? ');
+  if (qi > 0) { const ans = r.en.slice(qi + 2); if (ans.split(' ').length >= 3) part = ans; }
+  let toks = part.split(' ').filter(Boolean); if (toks.length > 9 || toks.length < 3) { toks = r.en.split(' '); if (toks.length > 10 || toks.length < 3) return null; part = r.en; }
+  return { t: 'order', w, target: part, vi: r.vi, tiles: shuffle(toks.map((x, i) => ({ x, id: i }))), scored: true };
+}
+function listenSentItem(u, p) {
+  const al = hasSlot(p) ? allowed(p, u) : [null]; const w = pick(al); const r = realize(p, w);
+  let opts = new Set([r.en]);
+  if (hasSlot(p)) shuffle(al.filter(x => x !== w)).forEach(x => { if (opts.size < 3) opts.add(realize(p, x).en); });
+  shuffle(u.pats).forEach(q => { if (opts.size < 3) opts.add(realize(q, hasSlot(q) ? pick(allowed(q, u)) : null).en); });
+  if (opts.size < 2) return null;
+  return { t: 'listenSent', w, sentence: r.en, vi: r.vi, opts: shuffle([...opts]), scored: true };
+}
+function buildL2(u) {
+  const cards = u.pats.map(p => { const w = hasSlot(p) ? allowed(p, u)[0] : null; const r = realize(p, w); return { t: 'pattern', sentence: r.en, vi: r.vi, w }; });
+  const quiz = [];
+  for (let i = 0; i < 4; i++) { const it = fillItem(u, u.pats[i % u.pats.length]) || fillItem(u, pick(u.pats)); if (it) quiz.push(it); }
+  for (let i = 0; i < 3; i++) { const it = orderItem(u, u.pats[(i + 1) % u.pats.length]); if (it) quiz.push(it); }
+  for (let i = 0; i < 3; i++) { const it = listenSentItem(u, u.pats[i % u.pats.length]); if (it) quiz.push(it); }
+  return cards.concat(shuffle(quiz));
+}
+function buildReview(units) {
+  const quiz = []; let guard = 0;
+  while (quiz.length < 12 && guard++ < 60) {
+    const u = pick(units), w = pick(u.words), r = Math.random();
+    if (r < 0.35) quiz.push({ t: 'listen', w, opts: shuffle([w, ...distractWords(u, w, 3)]), scored: true });
+    else if (r < 0.6) quiz.push({ t: 'pic', w, opts: shuffle([w, ...distractWords(u, w, 3)]), scored: true });
+    else { const it = fillItem(u, pick(u.pats)); if (it) quiz.push(it); }
+  }
+  return quiz;
+}
+
+/* ---------- lesson player ---------- */
+function startLesson(key, kind, g, i) {
+  const f = fam(), c = curChild(); const s = nodeStates(f, c, g)[i];
+  let items, title;
+  if (kind === 'review') { items = buildReview(s.units); title = `Review ${s.k}`; }
+  else if (kind === 'l1') { items = buildL1(s.u); title = `Unit ${s.u.n} · Từ vựng`; }
+  else { items = buildL2(s.u); title = `Unit ${s.u.n} · Mẫu câu`; }
+  UI.L = { key, kind, g, i, title, items, idx: 0, state: null, picked: null, built: [], scored: items.filter(x => x.scored).length, correct: 0, missed: new Set(), retried: new Set(), start: Date.now(), unitTitle: s.type === 'unit' ? s.u.title : 'Ôn tập' };
+  go('lesson'); autoSpeak();
+}
+function curItem() { return UI.L.items[UI.L.idx]; }
+function autoSpeak() {
+  const it = curItem(); if (!it) return;
+  setTimeout(() => {
+    if (it.t === 'card' || it.t === 'listen') say(it.w.en);
+    else if (it.t === 'pattern' || it.t === 'listenSent') say(it.sentence);
+  }, 250);
+}
+const PRAISE = ['Giỏi quá!', 'Tuyệt vời!', 'Đúng rồi!', 'Excellent!', 'Great job!', 'Siêu ghê!', 'Well done!'];
+const COMFORT = ['Gần đúng rồi!', 'Không sao đâu!', 'Mình thử lại sau nhé!', 'Cố lên nào!'];
+function vLesson() {
+  const L = UI.L, it = curItem(); const pct = Math.round(L.idx / L.items.length * 100);
+  let q = '', title = '';
+  const sp = (t, cls = '') => `<button class="speak ${cls}" data-act="say" data-t="${esc(t)}" aria-label="Nghe">🔊</button>`;
+  const spSlow = t => `<button class="speak sm" style="background:var(--jade);box-shadow:0 4px 0 color-mix(in srgb,var(--jade) 60%,#000)" data-act="say" data-t="${esc(t)}" data-slow="1" aria-label="Nghe chậm">🐢</button>`;
+  const answered = L.state !== null;
+  const optCls = (o, correct) => { if (!answered) return ''; if (correct) return 'ok'; if (L.picked === o) return 'no'; return ''; };
+  switch (it.t) {
+    case 'card':
+      title = 'Từ mới';
+      q = `<div class="card flash"><div class="big">${emo(it.w.emo)}</div><div class="word">${esc(it.w.en)}</div><div class="mean">${esc(it.w.vi)}</div><div class="row" style="margin-top:8px">${sp(it.w.en)}${spSlow(it.w.en)}</div></div>
+        <div class="say">${lumi('happy', 48)}<div class="bubble" style="font-weight:600">Nghe rồi <b>đọc to theo</b> 2 lần nhé: <i>${esc(it.w.en)}</i>!</div></div>`;
+      break;
+    case 'pattern':
+      title = 'Mẫu câu';
+      q = `<div class="card flash">${it.w ? `<div class="big" style="font-size:72px">${emo(it.w.emo)}</div>` : `<div>${lumi('happy', 90)}</div>`}<div class="sent">${esc(it.sentence)}</div><div class="mean">${esc(it.vi)}</div><div class="row" style="margin-top:8px">${sp(it.sentence)}${spSlow(it.sentence)}</div></div>
+        <div class="say">${kiki(48)}<div class="bubble" style="font-weight:600">Đọc theo cả câu nhé. Con có thể thay từ khác vào chỗ in đậm!</div></div>`;
+      break;
+    case 'listen':
+      title = 'Nghe và chọn hình đúng';
+      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.w.en, 'round')}${spSlow(it.w.en)}</div>
+        <div class="opts">${it.opts.map((o, k) => `<button class="opt pic ${optCls(o, o === it.w)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''} aria-label="Lựa chọn ${k + 1}">${emo(o.emo)}</button>`).join('')}</div>`;
+      break;
+    case 'pic':
+      title = 'Hình này là gì?';
+      q = `<div class="card flash" style="padding:18px"><div class="big">${emo(it.w.emo)}</div></div>
+        <div class="opts">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.w)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o.en)}</button>`).join('')}</div>`;
+      break;
+    case 'meaning':
+      title = 'Chọn nghĩa tiếng Việt';
+      q = `<div class="card flash" style="padding:18px"><div class="word">${esc(it.w.en)}</div><div class="row">${sp(it.w.en)}</div></div>
+        <div class="opts">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.w)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o.vi)}</button>`).join('')}</div>`;
+      break;
+    case 'letter':
+      title = 'Chọn chữ cái còn thiếu';
+      q = `<div class="card flash" style="padding:18px"><div class="big" style="font-size:72px">${emo(it.w.emo)}</div><div class="word" style="letter-spacing:.06em">${esc(answered ? it.w.en : it.masked)}</div><div class="row">${sp(it.w.en)}</div></div>
+        <div class="opts" style="grid-template-columns:repeat(4,1fr)">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.answer)}" style="min-height:72px;font-size:30px;font-family:var(--f-display)" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>`;
+      break;
+    case 'spell': {
+      title = 'Xếp chữ thành từ';
+      const built = L.built.map(id => it.tiles.find(t => t.id === id).ch).join('');
+      q = `<div class="card flash" style="padding:16px"><div class="big" style="font-size:72px">${emo(it.w.emo)}</div><div class="mean">${esc(it.w.vi)}</div><div class="row">${sp(it.w.en)}</div></div>
+        <div class="tray ${answered ? (L.state ? 'ok' : 'no') : ''}" aria-live="polite">${L.built.map((id, k) => `<button class="tile" data-act="unbuild" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(it.tiles.find(t => t.id === id).ch)}</button>`).join('') || '<span class="muted tiny" style="font-weight:700;padding:0 6px">Chạm vào chữ bên dưới</span>'}</div>
+        ${answered && !L.state ? `<p style="text-align:center;font-weight:800">Đáp án: <span style="color:var(--jade)">${esc(it.w.en)}</span></p>` : ''}
+        <div class="tiles">${it.tiles.map(t => `<button class="tile ${L.built.includes(t.id) ? 'used' : ''}" data-act="build" data-id="${t.id}" ${answered ? 'disabled' : ''}>${esc(t.ch)}</button>`).join('')}</div>
+        ${!answered ? `<button class="btn block jade" data-act="checkBuild" ${L.built.length === it.tiles.length ? '' : 'disabled'}>Kiểm tra</button>` : ''}`;
+      void built; break;
+    }
+    case 'fill': {
+      title = 'Chọn từ điền vào chỗ trống';
+      const parts = it.sentence.split(it.answer); const shown = answered ? `<span class="gap">${esc(it.answer)}</span>` : '<span class="gap">&nbsp;</span>';
+      q = `<div class="card flash" style="padding:18px"><div class="big" style="font-size:64px">${emo(it.w.emo)}</div><div class="sent">${esc(parts[0])}${shown}${esc(parts.slice(1).join(it.answer))}</div><div class="mean">${esc(it.vi)}</div>${answered ? `<div class="row">${sp(it.sentence)}</div>` : ''}</div>
+        <div class="opts">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.answer)}" style="min-height:64px" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>`;
+      break;
+    }
+    case 'order':
+      title = 'Xếp từ thành câu đúng';
+      q = `<div class="card" style="text-align:center"><div class="mean">${esc(it.vi)}</div>${it.w ? `<div style="font-size:44px">${emo(it.w.emo)}</div>` : ''}</div>
+        <div class="tray ${answered ? (L.state ? 'ok' : 'no') : ''}" aria-live="polite">${L.built.map((id, k) => `<button class="tile" style="font-size:18px" data-act="unbuild" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(it.tiles.find(t => t.id === id).x)}</button>`).join('') || '<span class="muted tiny" style="font-weight:700;padding:0 6px">Chạm vào từ theo đúng thứ tự</span>'}</div>
+        ${answered && !L.state ? `<p style="text-align:center;font-weight:800">Đáp án: <span style="color:var(--jade)">${esc(it.target)}</span></p>` : ''}
+        <div class="tiles">${it.tiles.map(t => `<button class="tile ${L.built.includes(t.id) ? 'used' : ''}" style="font-size:18px" data-act="build" data-id="${t.id}" ${answered ? 'disabled' : ''}>${esc(t.x)}</button>`).join('')}</div>
+        ${!answered ? `<button class="btn block jade" data-act="checkBuild" ${L.built.length === it.tiles.length ? '' : 'disabled'}>Kiểm tra</button>` : ''}`;
+      break;
+    case 'listenSent':
+      title = 'Nghe và chọn câu đúng';
+      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.sentence, 'round')}${spSlow(it.sentence)}</div>
+        <div class="opts one">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.sentence)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>
+        ${answered ? `<p class="mean" style="text-align:center">${esc(it.vi)}</p>` : ''}`;
+      break;
+  }
+  let foot = '';
+  if (!it.scored) foot = `<div class="feedback"><div class="in"><button class="btn block" data-act="next">${L.idx === L.items.length - 1 ? 'Hoàn thành' : 'Tiếp tục'}</button></div></div>`;
+  else if (answered) {
+    const ok = L.state;
+    const right = ok ? '' : `Đáp án đúng: <b>${esc(it.t === 'listen' || it.t === 'pic' || it.t === 'meaning' || it.t === 'spell' || it.t === 'letter' ? it.w.en : it.t === 'order' ? it.target : it.t === 'fill' ? it.answer : it.sentence)}</b>${L.retried.has(L.idx) ? '' : ' · câu này sẽ quay lại cuối bài'}`;
+    foot = `<div class="feedback ${ok ? 'ok' : 'no'}" role="status"><div class="in"><div class="msg">${lumi(ok ? 'cheer' : 'oops', 54)}<div><b>${ok ? pick(PRAISE) : pick(COMFORT)}</b><span class="tiny" style="font-weight:700">${right}</span></div></div><button class="btn block ${ok ? 'jade' : ''}" data-act="next">Tiếp tục</button></div></div>`;
+  }
+  return `<div class="player"><div class="ptop"><button class="x" data-act="quitLesson" aria-label="Thoát bài học">✕</button><div class="prog" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><span class="tiny muted num" style="font-weight:800">${L.idx + 1}/${L.items.length}</span></div>
+  <div class="eyebrow">${esc(L.title)}</div><h1 class="qtitle">${title}</h1>${q}</div>${foot}
+  ${UI.confirm === 'quit' ? `<div class="scrim"><div class="sheet"><span class="grip"></span><div class="say">${lumi('oops', 56)}<div class="bubble">Con muốn dừng bài này à? Bài chưa xong sẽ không được tính sao.</div></div><button class="btn block jade" data-act="cancelQuit">Học tiếp</button><button class="btn block ghost" data-act="doQuit">Dừng lại</button></div></div>` : ''}`;
+}
+function answer(ok) {
+  const L = UI.L; L.state = ok; beep(ok);
+  const firstTime = !L.retried.has(L.idx);
+  if (firstTime) { if (ok) L.correct++; }
+  if (!ok && firstTime) { const copy = Object.assign({}, curItem(), { retry: true }); if (copy.tiles) copy.tiles = shuffle(copy.tiles); if (copy.opts) copy.opts = shuffle(copy.opts); L.items.push(copy); L.retried.add(L.items.length - 1); }
+  render();
+}
+function nextItem() {
+  const L = UI.L;
+  if (L.idx >= L.items.length - 1) return finishLesson();
+  L.idx++; L.state = null; L.picked = null; L.built = [];
+  render(); window.scrollTo(0, 0); autoSpeak();
+}
+function finishLesson() {
+  const L = UI.L, f = fam(), c = curChild(), p = prog(f, c.id);
+  const pct = L.scored ? L.correct / L.scored : 1;
+  const stars = pct >= 0.9 ? 3 : pct >= 0.7 ? 2 : 1;
+  const prev = p.lessons[L.key] || 0; const gain = Math.max(0, stars - prev);
+  if (stars > prev) p.lessons[L.key] = stars;
+  const label = L.kind === 'review' ? `Lớp ${L.g} · ${L.title}` : `${L.title}`;
+  const aw = gain ? award(f, c.id, gain, label) : null;
+  p.log.push({ ts: Date.now(), key: L.key, stars });
+  if (p.log.length > 400) p.log = p.log.slice(-400);
+  bumpStreak(p);
+  const secs = Math.min(1200, Math.round((Date.now() - L.start) / 1000)); const dk = dayKey(); p.secs[dk] = (p.secs[dk] || 0) + secs;
+  saveFam(f);
+  UI.result = { stars, prev, gain, aw, pct, title: L.title, unitTitle: L.unitTitle, g: L.g, i: L.i, kind: L.kind, key: L.key, ws: weekStars(f, c.id), cap: capOf(f) };
+  go('result');
+}
+function vResult() {
+  const r = UI.result; const star = k => `<span class="${k < r.stars ? '' : 'off'}">⭐</span>`;
+  let earned;
+  if (!r.gain) earned = r.prev >= 3 ? 'Con đã giữ kỷ lục 3 sao bài này rồi. Luyện lại giúp nhớ lâu hơn!' : `Kỷ lục cũ là ${r.prev} sao. Làm lại để được nhiều sao hơn nhé!`;
+  else if (r.aw.over > 0) earned = r.aw.counted ? `+${r.aw.counted} sao vào hũ. ${r.aw.over} sao còn lại là sao luyện tập vì tuần này đã đủ ${r.cap} sao.` : `Hũ sao tuần này đã đầy ${r.cap} sao! Sao lần này được ghi là sao luyện tập.`;
+  else earned = `+${r.aw.counted} sao vào hũ = ${vnd(r.aw.counted * STAR)}`;
+  const nextLabel = r.kind === 'l1' ? 'Học Bài 2 · Mẫu câu' : 'Về bản đồ';
+  return `<div class="result">${lumi('cheer', 140, 'bob')}
+    <h1 class="h1">${r.stars === 3 ? 'Xuất sắc!' : r.stars === 2 ? 'Làm tốt lắm!' : 'Hoàn thành rồi!'}</h1>
+    <p class="muted" style="font-weight:700">${esc(r.title)} · ${esc(r.unitTitle)}</p>
+    <div class="stars3">${star(0)}${star(1)}${star(2)}</div>
+    <div class="statgrid"><div class="stat"><b>${Math.round(r.pct * 100)}%</b><span>đúng lần đầu</span></div><div class="stat"><b>+${r.gain ? r.aw.counted : 0}</b><span>sao vào hũ</span></div><div class="stat"><b>${r.ws}/${r.cap}</b><span>sao tuần này</span></div></div>
+    <div class="say" style="text-align:left;width:100%">${bobo(52)}<div class="bubble" style="font-weight:600">${earned}</div></div>
+    <div class="stack" style="width:100%">
+      ${r.kind === 'l1' ? `<button class="btn block jade" data-act="startLesson" data-key="${r.key.replace(/l1$/, 'l2')}" data-kind="l2" data-g="${r.g}" data-i="${r.i}">${nextLabel}</button>` : `<button class="btn block jade" data-act="backMap">${nextLabel}</button>`}
+      ${r.kind !== 'review' ? `<button class="btn block ghost" data-act="backMap" data-sheet="1">Xem nhiệm vụ của Unit</button>` : ''}
+      <button class="btn block ghost" data-act="startLesson" data-key="${r.key}" data-kind="${r.kind}" data-g="${r.g}" data-i="${r.i}">Làm lại</button>
+    </div></div>`;
+}
+
+/* ---------- parent app ---------- */
+function vParent() {
+  const f = fam(); if (!f) return vWelcome();
+  let body = '';
+  if (UI.ptab === 'home') body = vPHome(f);
+  else if (UI.ptab === 'approve') body = vPApprove(f);
+  else if (UI.ptab === 'wallet') body = vPWallet(f);
+  else body = vPAccount(f);
+  const pend = f.children.reduce((a, c) => a + Object.values(prog(f, c.id).missions).filter(m => m.status === 'pending').length, 0);
+  const tabs = [['home', '📊', 'Tổng quan'], ['approve', '✅', 'Duyệt'], ['wallet', '💰', 'Thưởng'], ['account', '⚙️', 'Tài khoản']];
+  return `<div class="pheader">${lumi('happy', 48)}<div style="flex:1;min-width:0"><div class="eyebrow">Khu vực ba mẹ</div><h1 class="h2" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(f.parentName)}</h1></div>${f.demo ? '<span class="pill gold">Mẫu</span>' : ''}</div>`
+    + body + `<nav class="tabbar" aria-label="Điều hướng ba mẹ"><div class="in">${tabs.map(([k, i, t]) => `<button class="tab ${UI.ptab === k ? 'on' : ''}" data-act="ptab" data-t="${k}"><span class="i">${i}</span>${t}${k === 'approve' && pend ? ` <span class="pill red" style="padding:0 6px;font-size:11px">${pend}</span>` : ''}</button>`).join('')}</div></nav>`;
+}
+function insightFor(f, c) {
+  const p = prog(f, c.id), wk = weekKey(); const lw = p.log.filter(l => weekKey(new Date(l.ts)) === wk);
+  const st = nodeStates(f, c, c.grade); const cur = st.find(s => s.current);
+  const pend = Object.values(p.missions).filter(m => m.status === 'pending').length;
+  const ws = weekStars(f, c.id);
+  const bits = [];
+  if (!lw.length) bits.push(`${c.name} chưa học bài nào tuần này. Ngồi cùng con 10 phút đầu sẽ giúp con vào nhịp.`);
+  else bits.push(`${c.name} đã làm ${lw.length} bài tuần này${streakNow(p) >= 2 ? `, đang giữ chuỗi ${streakNow(p)} ngày` : ''}.`);
+  const weak = Object.entries(p.lessons).filter(([, v]) => v === 1).map(([k]) => k);
+  if (weak.length) { const m = weak[0].match(/g(\d)u(\d+)l(\d)/); if (m) bits.push(`Unit ${m[2]} lớp ${m[1]} mới được 1 sao, nên cho con luyện lại.`); }
+  if (pend) bits.push(`Có ${pend} nhiệm vụ đang chờ ba mẹ xác nhận.`);
+  if (ws >= capOf(f)) bits.push(`Con đã đủ ${capOf(f)} sao tuần này.`);
+  else if (cur && cur.type === 'unit') bits.push(`Bài tiếp theo: Unit ${cur.u.n} – ${cur.u.title}.`);
+  return bits.join(' ');
+}
+function vPHome(f) {
+  if (!f.children.length) return `<div class="card stack"><p style="font-weight:700">Chưa có hồ sơ con nào.</p><button class="btn jade" data-act="addChild">Thêm hồ sơ con</button></div>`;
+  const days = [...Array(7)].map((_, k) => addDays(new Date(), k - 6));
+  const wd = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  return f.children.map(c => {
+    const p = prog(f, c.id), ws = weekStars(f, c.id), cp = capOf(f);
+    const wk = weekKey(); const lw = p.log.filter(l => weekKey(new Date(l.ts)) === wk).length;
+    const mins = days.map(d => Math.round((p.secs[dayKey(d)] || 0) / 60)); const mx = Math.max(10, ...mins);
+    const minsWeek = Object.entries(p.secs).filter(([d]) => d >= wk).reduce((a, [, s]) => a + s, 0);
+    const st = nodeStates(f, c, c.grade); const doneN = st.filter(s => s.done).length;
+    return `<section class="card kid">
+      <div class="row">${ava(c.avatar, 'sm')}<div style="flex:1;min-width:0"><b class="h3" style="display:block">${esc(c.name)}</b><span class="tiny muted" style="font-weight:800">Lớp ${c.grade} · ${doneN}/${st.length} chặng</span></div><span class="statpill">🔥 ${streakNow(p)}</span></div>
+      <div><div class="row between tiny" style="font-weight:800"><span>Sao tuần này</span><span class="num">${ws}/${cp} · ${vnd(ws * STAR)}</span></div><div class="meter" style="margin-top:4px"><i style="width:${Math.round(ws / cp * 100)}%"></i></div></div>
+      <div class="kv"><div><b>${lw}</b><span>bài tuần này</span></div><div><b>${Math.round(minsWeek / 60)}</b><span>phút học</span></div><div><b>${wordsLearned(p)}</b><span>từ đã gặp</span></div></div>
+      <div><div class="tiny muted" style="font-weight:800;margin-bottom:6px">Số phút học 7 ngày qua</div><div class="bars">${days.map((d, k) => `<div class="b ${k === 6 ? 'today' : ''}" title="${mins[k]} phút"><i style="height:${Math.round(mins[k] / mx * 70)}px"></i><span>${k === 6 ? 'Nay' : wd[d.getDay()]}</span></div>`).join('')}</div></div>
+      <div class="say">${lumi('think', 40)}<div class="bubble tiny" style="font-weight:600">${esc(insightFor(f, c))}</div></div>
+    </section>`;
+  }).join('') + `<p class="sync">${syncLabel()}</p>`;
+}
+function vPApprove(f) {
+  const list = [];
+  f.children.forEach(c => { const p = prog(f, c.id); Object.entries(p.missions).forEach(([k, m]) => { if (m.status === 'pending') { const mm = k.match(/g(\d)u(\d+)/); const u = CUR[+mm[1]][+mm[2] - 1]; list.push({ c, k, m, u, g: +mm[1] }); } }); });
+  list.sort((a, b) => a.m.ts - b.m.ts);
+  const opt = UI.bonus || { cid: f.children[0]?.id, n: 2, reason: '' };
+  return `<div class="say">${kiki(56)}<div class="bubble" style="font-weight:600">Con bấm "đã làm xong" thì nhiệm vụ hiện ở đây. Ba mẹ kiểm tra rồi xác nhận để con nhận <b>2 sao</b>.</div></div>
+  <h2 class="h3">Chờ xác nhận (${list.length})</h2>
+  ${list.length ? list.map(x => `<div class="mission"><div class="hd">${ava(x.c.avatar, 'sm')}<div class="tx"><b>${esc(x.c.name)} · Unit ${x.u.n}: ${esc(x.u.title)}</b><span class="tiny muted">Lớp ${x.g} · gửi lúc ${new Date(x.m.ts).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: 'numeric', month: 'numeric' })}</span></div></div><p>${esc(x.u.mission)}</p>
+    <div class="row wrap"><button class="btn sm jade" data-act="approve" data-cid="${x.c.id}" data-key="${x.k}">Xác nhận +2 ⭐</button><button class="btn sm ghost" data-act="reject" data-cid="${x.c.id}" data-key="${x.k}">Chưa đạt, làm lại</button></div></div>`).join('') : '<div class="card muted" style="font-weight:700">Không có nhiệm vụ nào đang chờ.</div>'}
+  <h2 class="h3">Thưởng thêm sao</h2>
+  <form class="card stack" data-form="bonus">
+    <div class="field"><label>Cho con</label><div class="chips">${f.children.map(c => `<button type="button" class="chip ${opt.cid === c.id ? 'on' : ''}" data-act="bonusSet" data-k="cid" data-val="${c.id}">${c.avatar} ${esc(c.name)}</button>`).join('')}</div></div>
+    <div class="field"><label>Số sao</label><div class="chips">${[1, 2, 3, 5].map(n => `<button type="button" class="chip ${opt.n == n ? 'on' : ''}" style="--c:var(--gold)" data-act="bonusSet" data-k="n" data-val="${n}">${n} ⭐</button>`).join('')}</div></div>
+    <div class="field"><label for="b-reason">Lý do</label><input class="input" id="b-reason" name="reason" placeholder="VD: Tự đọc truyện tiếng Anh" value="${esc(opt.reason)}"></div>
+    <p class="tiny muted" style="font-weight:700">Sao thưởng thêm vẫn tính vào mức tối đa ${capOf(f)} sao/tuần.</p>
+    <button class="btn gold block" type="submit">Tặng sao</button>
+  </form>`;
+}
+function vPWallet(f) {
+  const weeks = [...Array(6)].map((_, k) => weekKey(addDays(new Date(), -7 * k)));
+  return `<div class="say">${bobo(56)}<div class="bubble" style="font-weight:600">Mỗi sao = <b>1.000đ</b>. Hệ thống tự dừng tính thưởng khi con đạt <b>${capOf(f)} sao/tuần</b>. Trao tiền xong, ba mẹ bấm "Đã trao" để ghi sổ.</div></div>`
+  + f.children.map(c => {
+    const up = unpaid(f, c.id), p = prog(f, c.id);
+    const conf = UI.confirm === 'pay:' + c.id;
+    return `<section class="card stack"><div class="row">${ava(c.avatar, 'sm')}<b class="h3" style="flex:1">${esc(c.name)}</b></div>
+      <div class="row between"><div><div class="eyebrow">Chưa trao</div><div class="money">${vnd(up * STAR)}</div><span class="tiny muted" style="font-weight:700">${up} sao</span></div>
+      ${up ? (conf ? '' : `<button class="btn sm jade" data-act="payAsk" data-cid="${c.id}">Đã trao thưởng</button>`) : '<span class="pill jade">Đã trao đủ</span>'}</div>
+      ${conf ? `<div class="demo stack" style="gap:8px">Xác nhận ba mẹ đã trao <b>${vnd(up * STAR)}</b> cho ${esc(c.name)}?<div class="row"><button class="btn sm jade" data-act="pay" data-cid="${c.id}">Xác nhận</button><button class="btn sm ghost" data-act="cancelConfirm">Hủy</button></div></div>` : ''}
+      <div style="overflow-x:auto"><table class="table"><thead><tr><th>Tuần</th><th class="r">Sao</th><th class="r">Tiền thưởng</th></tr></thead><tbody>
+      ${weeks.map(w => { const s = weekStars(f, c.id, w); const d = new Date(w + 'T00:00'); return `<tr><td>${w === weekKey() ? 'Tuần này' : 'Từ ' + d.getDate() + '/' + (d.getMonth() + 1)}</td><td class="r">${s}/${capOf(f)}</td><td class="r">${vnd(s * STAR)}</td></tr>`; }).join('')}
+      </tbody></table></div></section>`;
+  }).join('')
+  + `<h2 class="h3">Lịch sử trao thưởng</h2><section class="card ledger">${(f.payouts || []).length ? f.payouts.slice().reverse().slice(0, 12).map(x => { const c = childOf(f, x.cid); return `<div class="li"><span>🎁</span><span class="tx">${esc(c?.name || 'Con')}<small>${new Date(x.ts).toLocaleDateString('vi-VN')} · ${x.stars} sao</small></span><span class="n" style="color:var(--jade)">${vnd(x.amount)}</span></div>`; }).join('') : '<p class="muted">Chưa có lần trao thưởng nào.</p>'}</section>`;
+}
+function vPAccount(f) {
+  return `<h2 class="h3">Hồ sơ của con</h2>
+  <section class="card ledger">${f.children.map(c => `<div class="li">${ava(c.avatar, 'sm')}<span class="tx">${esc(c.name)}<small>Lớp ${c.grade} · PIN ••••</small></span><button class="btn sm ghost" data-act="editChild" data-cid="${c.id}">Sửa</button></div>`).join('')}</section>
+  <button class="btn block jade" data-act="addChild">+ Thêm hồ sơ con</button>
+  <h2 class="h3">Cài đặt thưởng & học</h2>
+  <section class="card stack">
+    <div class="field"><label for="cap">Mức sao tối đa mỗi tuần: <b class="num">${capOf(f)} sao = ${vnd(capOf(f) * STAR)}</b></label><input class="range" id="cap" type="range" min="10" max="50" step="5" value="${capOf(f)}" data-act-input="cap"><span class="tiny muted" style="font-weight:700">Tối đa 50 sao/tuần. Sao vượt mức được ghi là sao luyện tập, không tính tiền.</span></div>
+    <div class="divider"></div>
+    <div class="row between"><div style="min-width:0"><b>Mở khóa toàn bộ bài học</b><p class="tiny muted" style="font-weight:700">Cho con học vượt lớp, không cần học theo thứ tự</p></div><button class="switch ${f.unlockAll ? 'on' : ''}" data-act="toggleUnlock" role="switch" aria-checked="${!!f.unlockAll}" aria-label="Mở khóa toàn bộ"></button></div>
+  </section>
+  <h2 class="h3">Tài khoản ba mẹ</h2>
+  <form class="card stack" data-form="parentInfo">
+    <div class="field"><label for="a-name">Tên hiển thị</label><input class="input" id="a-name" name="name" value="${esc(f.parentName)}"></div>
+    <div class="field"><label>Đăng nhập bằng</label><input class="input" value="${esc(f.login)}" disabled></div>
+    <div class="field"><label for="a-ppin">Mã PIN ba mẹ (4 số)</label><input class="input" id="a-ppin" name="ppin" inputmode="numeric" maxlength="4" placeholder="Để trống nếu giữ nguyên"></div>
+    <div class="field"><label for="a-pass">Mật khẩu mới</label><input class="input" id="a-pass" name="pass" type="password" autocomplete="new-password" placeholder="Để trống nếu giữ nguyên"></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block" type="submit">Lưu thay đổi</button>
+  </form>
+  <details class="card"><summary style="font-weight:800;cursor:pointer">Cách tính sao & thưởng</summary><div class="stack tiny" style="margin-top:10px;font-weight:600">
+    <p>• Mỗi bài học được 1–3 sao theo tỉ lệ trả lời đúng lần đầu (≥90%: 3 sao, ≥70%: 2 sao). Làm lại chỉ được thêm phần sao vượt kỷ lục cũ.</p>
+    <p>• Nhiệm vụ thực tế: +2 sao khi ba mẹ xác nhận. Bài ôn tập: tối đa 3 sao.</p>
+    <p>• 1 sao = 1.000đ. Tuần tính từ thứ Hai đến Chủ nhật, tối đa ${capOf(f)} sao/tuần.</p>
+    <p>• Mỗi lớp đi theo đúng thứ tự Unit và Review của sách Global Success.</p></div></details>
+  ${FREE ? `<h2 class="h3">Sao lưu dữ liệu</h2>
+  <section class="card stack"><p class="tiny muted" style="font-weight:700">Dữ liệu chỉ nằm trong trình duyệt của máy này. Tải file sao lưu để chuyển sang máy khác hoặc phòng khi xóa lịch sử trình duyệt.</p>
+    <div class="row wrap"><button class="btn sm jade" data-act="exportData">⬇️ Tải file sao lưu</button><label class="btn sm ghost" for="importFile" style="cursor:pointer">⬆️ Khôi phục từ file</label><input type="file" id="importFile" accept="application/json,.json" hidden></div>
+    ${UI.confirm === 'import' ? `<div class="demo stack" style="gap:8px">File có <b>${UI.importData.n}</b> gia đình. Khôi phục sẽ thay tiến độ, sao và hồ sơ của gia đình đó trên máy này bằng bản trong file.<div class="row"><button class="btn sm jade" data-act="doImport">Khôi phục</button><button class="btn sm ghost" data-act="cancelConfirm">Hủy</button></div></div>` : ''}
+  </section>` : ''}
+  <button class="btn block ghost" data-act="logout">Đăng xuất</button>
+  <p class="sync">${syncLabel()}</p>`;
+}
+function childSheet(cid) {
+  return () => {
+    const f = fam(); const c = cid ? childOf(f, cid) : { name: '', grade: 1, avatar: '🐰', pin: '' };
+    const del = UI.confirm === 'del:' + cid;
+    return `<span class="grip"></span>${childForm(cid ? 'editChild' : 'addChild', c, cid ? 'Sửa hồ sơ của con' : 'Thêm hồ sơ con', cid ? 'Lưu' : 'Thêm con')}
+    ${cid ? (del ? `<div class="demo stack" style="gap:8px">Xóa hồ sơ <b>${esc(c.name)}</b> và toàn bộ tiến độ, sao của con? Không thể hoàn tác.<div class="row"><button class="btn sm" data-act="delChild" data-cid="${cid}">Xóa hồ sơ</button><button class="btn sm ghost" data-act="cancelConfirm">Hủy</button></div></div>` : `<button class="btn block ghost" style="color:var(--wrong)" data-act="delAsk" data-cid="${cid}">Xóa hồ sơ này</button>`) : ''}`;
+  };
+}
+
+/* ---------- actions ---------- */
+function validPin(s) { return /^\d{4}$/.test(s); }
+const normLogin = s => String(s || '').trim().toLowerCase().replace(/\s+/g, '');
+function findFamily(login) { const l = normLogin(login); return Object.values(STORE.families).find(f => f.login === l); }
+const ACT = {
+  go: d => go(d.v),
+  toChild: () => { if (DEV.familyId && STORE.families[DEV.familyId]) go('profiles'); else go('family'); },
+  startReg: () => { UI.reg = { step: 1, kids: [] }; UI.edit = null; go('register'); },
+  regBack: () => { UI.reg.step = 1; UI.edit = null; go('register'); },
+  demo: async () => { await seedDemo(); DEV.familyId = 'demo'; saveDev(); go('profiles'); },
+  forgetFamily: () => { DEV.familyId = null; DEV.session = null; saveDev(); go('welcome'); },
+  pinFor: d => go('pin', { pinFor: d.cid }),
+  pinKey: d => {
+    if (d.k === 'del') { UI.pin = UI.pin.slice(0, -1); UI.pinBad = false; return render(); }
+    if (UI.pin.length >= 4) return; UI.pin += d.k; UI.pinBad = false; render();
+    if (UI.pin.length === 4) setTimeout(checkPin, 120);
+  },
+  closeSheet: (d, t, e) => { if (e.target.closest('[data-stop]')) return; UI.sheet = null; UI.confirm = null; UI.edit = null; UI.err = ''; render(); },
+  tab: d => { UI.tab = d.t; render(); window.scrollTo(0, 0); },
+  ptab: d => { UI.ptab = d.t; UI.err = ''; UI.confirm = null; render(); window.scrollTo(0, 0); },
+  grade: d => { UI.grade = +d.g; render(); },
+  openNode: d => {
+    const f = fam(), c = curChild(); const s = nodeStates(f, c, +d.g)[+d.i];
+    if (!s.open) return toast(gradeLocked(f, c, +d.g) ? `Lớp ${d.g} đang khóa. Ba mẹ có thể mở trong mục Tài khoản.` : 'Học xong chặng trước để mở chặng này nhé!');
+    UI.sheet = unitSheet(+d.g, +d.i); render();
+  },
+  startLesson: d => { UI.sheet = null; startLesson(d.key, d.kind, +d.g, +d.i); },
+  say: d => say(d.t, d.slow === '1'),
+  choose: d => {
+    const L = UI.L, it = curItem(); if (L.state !== null) return; const o = it.opts[+d.k]; L.picked = o;
+    const ok = it.t === 'letter' ? o === it.answer : it.t === 'fill' ? o === it.answer : it.t === 'listenSent' ? o === it.sentence : o === it.w;
+    if (it.t === 'fill' || it.t === 'listenSent') say(it.sentence); else if (it.t !== 'listen') say(it.w.en);
+    answer(ok);
+  },
+  build: d => { const L = UI.L; if (L.state !== null) return; const id = +d.id; if (!L.built.includes(id)) { L.built.push(id); const it = curItem(); if (it.t === 'order') { const tk = it.tiles.find(t => t.id === id); say(tk.x); } } render(); },
+  unbuild: d => { const L = UI.L; if (L.state !== null) return; L.built.splice(+d.k, 1); render(); },
+  checkBuild: () => {
+    const L = UI.L, it = curItem();
+    const s = it.t === 'spell' ? L.built.map(id => it.tiles.find(t => t.id === id).ch).join('') : L.built.map(id => it.tiles.find(t => t.id === id).x).join(' ');
+    const ok = it.t === 'spell' ? s === it.w.en.toLowerCase() : s === it.target;
+    say(it.t === 'spell' ? it.w.en : it.target); answer(ok);
+  },
+  next: () => nextItem(),
+  quitLesson: () => { UI.confirm = 'quit'; render(); },
+  cancelQuit: () => { UI.confirm = null; render(); },
+  doQuit: () => { try { speechSynthesis.cancel(); } catch (e) {} UI.L = null; go('child'); },
+  backMap: d => { const r = UI.result; go('child', { tab: 'learn' }); if (d.sheet && r) { UI.sheet = unitSheet(r.g, r.i); render(); } },
+  missionDone: d => {
+    const f = fam(), c = curChild(), p = prog(f, c.id); if (p.missions[d.key]) return;
+    p.missions[d.key] = { status: 'pending', ts: Date.now() }; saveFam(f); toast('Đã gửi cho ba mẹ! Chờ xác nhận để nhận 2 sao nhé.');
+  },
+  switchUser: () => { DEV.session = null; saveDev(); go('profiles'); },
+  toParentPin: () => go('pin', { pinFor: '__parent' }),
+  approve: d => {
+    const f = fam(), p = prog(f, d.cid), m = p.missions[d.key]; if (!m || m.status !== 'pending') return;
+    const mm = d.key.match(/g(\d)u(\d+)/); const r = award(f, d.cid, 2, `Nhiệm vụ Unit ${mm[2]} · Lớp ${mm[1]}`);
+    m.status = 'approved'; m.approvedAt = Date.now(); saveFam(f);
+    toast(r.counted ? `Đã xác nhận · +${r.counted} sao cho ${childOf(f, d.cid).name}` : `Đã xác nhận · tuần này con đã đủ ${capOf(f)} sao`);
+  },
+  reject: d => { const f = fam(), p = prog(f, d.cid); delete p.missions[d.key]; saveFam(f); toast('Đã trả lại nhiệm vụ để con làm lại.'); },
+  bonusSet: d => { const f = fam(); const r = $('#b-reason')?.value || ''; UI.bonus = Object.assign({ cid: f.children[0]?.id, n: 2, reason: '' }, UI.bonus, { reason: r, [d.k]: d.k === 'n' ? +d.val : d.val }); render(); },
+  payAsk: d => { UI.confirm = 'pay:' + d.cid; render(); },
+  cancelConfirm: () => { UI.confirm = null; render(); },
+  pay: d => {
+    const f = fam(), p = prog(f, d.cid); let s = 0; p.ledger.forEach(e => { if (!e.paid) { s += e.counted; e.paid = true; } });
+    (f.payouts ||= []).push({ id: uid(), ts: Date.now(), cid: d.cid, stars: s, amount: s * STAR }); UI.confirm = null; saveFam(f); toast(`Đã ghi sổ trao ${vnd(s * STAR)}`);
+  },
+  toggleUnlock: () => { const f = fam(); f.unlockAll = !f.unlockAll; saveFam(f); render(); },
+  addChild: () => { UI.edit = null; UI.editCid = null; UI.err = ''; UI.sheet = childSheet(null); render(); },
+  editChild: d => { UI.edit = null; UI.editCid = d.cid; UI.err = ''; UI.confirm = null; UI.sheet = childSheet(d.cid); render(); },
+  delAsk: d => { UI.confirm = 'del:' + d.cid; render(); },
+  delChild: d => { const f = fam(); f.children = f.children.filter(c => c.id !== d.cid); delete f.progress[d.cid]; UI.sheet = null; UI.confirm = null; saveFam(f); toast('Đã xóa hồ sơ.'); },
+  editSet: (d, t) => {
+    const form = t.closest('form');
+    UI.edit = Object.assign({}, UI.edit, { name: form?.querySelector('[name=name]')?.value, pin: form?.querySelector('[name=pin]')?.value, [d.k]: d.k === 'grade' ? +d.val : d.val });
+    render();
+  },
+  logout: () => { DEV.session = null; saveDev(); go('welcome'); },
+  exportData: () => {
+    const f = fam(); const data = JSON.stringify({ app: 'lumi-english', v: 1, exportedAt: new Date().toISOString(), families: { [f.id]: f } }, null, 1);
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+    a.download = `lumi-sao-luu-${dayKey()}.json`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    toast('Đã tải file sao lưu.');
+  },
+  doImport: () => {
+    const d = UI.importData; if (!d) return;
+    for (const [fid, rf] of Object.entries(d.families)) { rf.updatedAt = Date.now(); STORE.families[fid] = rf; }
+    persist(); UI.importData = null; UI.confirm = null; toast('Đã khôi phục dữ liệu.');
+  }
+};
+function checkPin() {
+  const f = STORE.families[DEV.familyId]; if (!f) return go('welcome');
+  if (UI.pinFor === '__parent') {
+    if (UI.pin === f.parentPin) { DEV.session = { type: 'parent', fid: f.id }; saveDev(); return go('parent', { ptab: 'home' }); }
+  } else { const c = childOf(f, UI.pinFor); if (c && UI.pin === c.pin) { DEV.session = { type: 'child', fid: f.id, cid: c.id }; saveDev(); return go('child', { tab: 'learn', grade: c.grade }); } }
+  UI.pin = ''; UI.pinBad = true; beep(false); render();
+}
+const FORMS = {
+  parentLogin: async fd => {
+    const f = findFamily(fd.get('login'));
+    if (!f || f.passHash !== await hashPw(fd.get('pass'))) { UI.err = 'Sai số điện thoại/email hoặc mật khẩu.'; return render(); }
+    DEV.familyId = f.id; DEV.session = { type: 'parent', fid: f.id }; saveDev(); go('parent', { ptab: 'home' });
+  },
+  family: fd => { const f = findFamily(fd.get('login')); if (!f) { UI.err = 'Không tìm thấy tài khoản này trên máy. Ba mẹ hãy đăng nhập hoặc tạo tài khoản trước.'; return render(); } DEV.familyId = f.id; saveDev(); go('profiles'); },
+  reg1: async fd => {
+    const name = fd.get('name').trim(), login = normLogin(fd.get('login')), pass = fd.get('pass'), ppin = fd.get('ppin').trim();
+    UI.reg.name = name; UI.reg.login = fd.get('login');
+    if (!name) UI.err = 'Nhập tên hiển thị cho tài khoản.';
+    else if (!/^(\+?\d{9,12}|[^@\s]+@[^@\s]+\.[^@\s]+)$/.test(login)) UI.err = 'Nhập số điện thoại (9–12 số) hoặc email hợp lệ.';
+    else if (findFamily(login)) UI.err = 'Số điện thoại/email này đã có tài khoản. Hãy đăng nhập.';
+    else if (pass.length < 6) UI.err = 'Mật khẩu cần ít nhất 6 ký tự.';
+    else if (!validPin(ppin)) UI.err = 'Mã PIN ba mẹ gồm đúng 4 chữ số.';
+    else { UI.reg = Object.assign(UI.reg, { step: 2, login, passHash: await hashPw(pass), ppin, kids: [] }); UI.edit = null; UI.err = ''; return go('register'); }
+    render();
+  },
+  reg2: (fd, form) => {
+    const r = UI.reg; const c = readChild(fd, form); if (!c) return render();
+    const id = uid(); const f = { id: 'f' + uid(), parentName: r.name, login: r.login, passHash: r.passHash, parentPin: r.ppin, weeklyCap: 50, unlockAll: false, createdAt: Date.now(), children: [{ id, ...c }], progress: {}, payouts: [] };
+    STORE.families[f.id] = f; saveFam(f);
+    DEV.familyId = f.id; DEV.session = { type: 'parent', fid: f.id }; saveDev(); UI.edit = null;
+    go('parent', { ptab: 'home' }); toast(`Đã tạo tài khoản! Con đăng nhập bằng mã PIN ${c.pin}.`);
+  },
+  addChild: (fd, form) => { const f = fam(); const c = readChild(fd, form); if (!c) return render(); f.children.push({ id: uid(), ...c }); UI.sheet = null; UI.edit = null; saveFam(f); toast(`Đã thêm ${c.name}.`); },
+  editChild: (fd, form) => {
+    const f = fam(); const c = childOf(f, UI.editCid); const v = readChild(fd, form); if (!c || !v) return render();
+    Object.assign(c, v); UI.sheet = null; UI.edit = null; saveFam(f); toast('Đã lưu hồ sơ.');
+  },
+  bonus: fd => {
+    const f = fam(), o = Object.assign({ cid: f.children[0]?.id, n: 2 }, UI.bonus); const reason = (fd.get('reason') || '').trim() || 'Ba mẹ thưởng';
+    if (!o.cid) return; const r = award(f, o.cid, o.n, '🎁 ' + reason); UI.bonus = { cid: o.cid, n: 2, reason: '' }; saveFam(f);
+    toast(r.counted ? `Đã tặng ${r.counted} sao cho ${childOf(f, o.cid).name}` : `Tuần này ${childOf(f, o.cid).name} đã đủ ${capOf(f)} sao.`);
+  },
+  parentInfo: async fd => {
+    const f = fam(); const name = fd.get('name').trim(), ppin = fd.get('ppin').trim(), pass = fd.get('pass');
+    if (!name) { UI.err = 'Tên hiển thị không được để trống.'; return render(); }
+    if (ppin && !validPin(ppin)) { UI.err = 'Mã PIN ba mẹ gồm đúng 4 chữ số.'; return render(); }
+    if (pass && pass.length < 6) { UI.err = 'Mật khẩu cần ít nhất 6 ký tự.'; return render(); }
+    f.parentName = name; if (ppin) f.parentPin = ppin; if (pass) f.passHash = await hashPw(pass); UI.err = ''; saveFam(f); toast('Đã lưu thay đổi.');
+  }
+};
+function readChild(fd, form) {
+  const name = (fd.get('name') || '').trim(), pin = (fd.get('pin') || '').trim();
+  const editing = form?.dataset.form === 'editChild';
+  const orig = editing ? childOf(fam(), UI.editCid) : null;
+  const grade = UI.edit?.grade || orig?.grade || 1, avatar = UI.edit?.avatar || orig?.avatar || '🐰';
+  if (!name) { UI.err = 'Nhập tên của con.'; return null; }
+  if (!validPin(pin)) { UI.err = 'Mã PIN của con gồm đúng 4 chữ số.'; return null; }
+  UI.err = ''; return { name, pin, grade, avatar };
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-act]'); if (!t) return;
+  if (t.tagName === 'INPUT') return;
+  const a = ACT[t.dataset.act]; if (!a) return;
+  if (t.type === 'submit' && t.form) return;
+  if (t.dataset.act === 'closeSheet' && e.target.closest('[data-stop]')) return;
+  e.preventDefault(); a(t.dataset, t, e);
+});
+document.addEventListener('submit', e => {
+  const form = e.target.closest('form[data-form]'); if (!form) return; e.preventDefault();
+  const h = FORMS[form.dataset.form]; if (h) h(new FormData(form), form);
+});
+document.addEventListener('input', e => {
+  if (e.target.dataset.actInput === 'cap') { const f = fam(); f.weeklyCap = +e.target.value; const lbl = e.target.previousElementSibling.querySelector('b'); if (lbl) lbl.textContent = `${f.weeklyCap} sao = ${vnd(f.weeklyCap * STAR)}`; }
+});
+document.addEventListener('change', e => {
+  if (e.target.id === 'importFile' && e.target.files[0]) {
+    e.target.files[0].text().then(t => { try { const d = JSON.parse(t); if (d.app !== 'lumi-english' || !d.families) throw 0; UI.importData = { families: d.families, n: Object.keys(d.families).length }; UI.confirm = 'import'; render(); } catch (er) { toast('File không đúng định dạng sao lưu của Lumi.'); } });
+    return;
+  } if (e.target.dataset.actInput === 'cap') { const f = fam(); saveFam(f); render(); } });
+document.addEventListener('keydown', e => {
+  if (UI.view === 'pin' && /^[0-9]$/.test(e.key)) ACT.pinKey({ k: e.key });
+  else if (UI.view === 'pin' && e.key === 'Backspace') ACT.pinKey({ k: 'del' });
+  else if (UI.view === 'lesson' && e.key === 'Enter' && (document.activeElement === document.body || !document.activeElement) && (UI.L.state !== null || !curItem().scored) && !UI.confirm) nextItem();
+});
+
+/* ---------- boot ---------- */
+(async function boot() {
+  loadLocal();
+  await seedDemo();
+  const s = DEV.session; const f = s && STORE.families[s.fid];
+  if (f && s.type === 'child' && childOf(f, s.cid)) { UI.view = 'child'; UI.grade = childOf(f, s.cid).grade; }
+  else if (f && s.type === 'parent') UI.view = 'parent';
+  else { DEV.session = null; UI.view = 'welcome'; }
+  render();
+  initRemote();
+})();
+</script></body></html>

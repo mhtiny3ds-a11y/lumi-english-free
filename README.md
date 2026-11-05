@@ -26,11 +26,23 @@ git push -u origin main
 ## Dữ liệu được lưu ở đâu
 
 - Tài khoản, tiến độ và sao được lưu trong **trình duyệt của từng máy** (localStorage). Không có máy chủ nào nhận dữ liệu.
-- Mỗi máy có dữ liệu riêng. Muốn chuyển sang máy khác, ba mẹ vào **Tài khoản → Sao lưu dữ liệu → Tải file sao lưu**, rồi trên máy mới chọn **Khôi phục từ file**.
+- Mỗi máy có dữ liệu riêng. Muốn chuyển sang máy khác, ba mẹ vào **Tài khoản → Sao lưu dữ liệu → Tải file sao lưu**, rồi trên máy mới bấm **Khôi phục từ file sao lưu** ngay ở màn hình đầu hoặc màn đăng nhập.
 - Nếu xóa lịch sử hoặc dữ liệu trang web trong trình duyệt, dữ liệu sẽ mất. Ba mẹ nên tải file sao lưu định kỳ.
 - Mật khẩu được băm (SHA-256) trước khi lưu. Tuy vậy, đây là app dùng nội bộ trong gia đình hoặc lớp học, không phải hệ thống bảo mật nhiều người dùng.
 
+## Bảo vệ khu vực ba mẹ
+
+- Khu vực ba mẹ **tự khóa** khi mở lại app hoặc sau **10 phút** không thao tác. Muốn vào lại phải nhập mật khẩu hoặc mã PIN ba mẹ, nên con không tự duyệt nhiệm vụ hay tặng sao được.
+- Nút **🎒 Cho con học** ở đầu khu vực ba mẹ chuyển về màn chọn hồ sơ để con nhập PIN.
+- **Quên mật khẩu:** ở màn đăng nhập, nhập số điện thoại/email và mã PIN ba mẹ để đặt mật khẩu mới. Nhập sai PIN 5 lần sẽ bị khóa 1 phút.
+
+## Giọng đọc
+
+App dùng giọng đọc tiếng Anh có sẵn trong máy. Nếu máy chưa có, bài học sẽ hiện hướng dẫn cài cho Android, iPhone và Windows. Trong lúc chờ cài, bài nghe hiện chữ để con vẫn làm được.
+
 ## Tài khoản mẫu
+
+Khung "Mở gia đình mẫu" tự ẩn khi máy đã có tài khoản thật.
 
 Bấm **Mở gia đình mẫu** ở màn hình đầu để xem thử.
 

@@ -637,9 +637,20 @@ async function seedDemo() {
 }
 
 /* ---------- speech + sound ---------- */
-let VOICE = null;
-function pickVoice() { try { const vs = speechSynthesis.getVoices(); VOICE = vs.find(v => /^en[-_]US/i.test(v.lang) && /samantha|google us|aria|jenny|female/i.test(v.name)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; } catch (e) {} }
-try { speechSynthesis.onvoiceschanged = pickVoice; pickVoice(); } catch (e) {}
+let VOICE = null, VOICE_STATE = 'unknown', VOICE_TIP = false;
+function pickVoice() { try { const vs = speechSynthesis.getVoices(); if (vs.length) VOICE_STATE = vs.some(v => /^en/i.test(v.lang)) ? 'ok' : 'none'; VOICE = vs.find(v => /^en[-_]US/i.test(v.lang) && /samantha|google us|aria|jenny|female/i.test(v.name)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en/i.test(v.lang)) || null; } catch (e) {} }
+try { speechSynthesis.onvoiceschanged = () => { const was = VOICE_STATE; pickVoice(); if (was !== VOICE_STATE && UI.view === 'lesson') render(); }; pickVoice(); } catch (e) { VOICE_STATE = 'none'; }
+if (!('speechSynthesis' in window)) VOICE_STATE = 'none';
+setTimeout(() => { if (VOICE_STATE === 'unknown') { pickVoice(); if (VOICE_STATE === 'unknown') VOICE_STATE = 'none'; } }, 3000);
+const noVoice = () => VOICE_STATE === 'none';
+function voiceTip() {
+  if (!noVoice()) return '';
+  return `<div class="demo stack" style="gap:6px"><b>🔇 Máy này chưa có giọng đọc tiếng Anh nên nút 🔊 có thể không ra tiếng.</b>
+  ${VOICE_TIP ? `<span>• <b>Android:</b> Cài đặt → Quản lý chung / Hệ thống → Ngôn ngữ → Chuyển văn bản thành giọng nói → chọn Google, tải "English (US)".</span>
+  <span>• <b>iPhone/iPad:</b> Cài đặt → Trợ năng → Nội dung được đọc → Giọng nói → English → tải một giọng.</span>
+  <span>• <b>Windows:</b> Cài đặt → Thời gian & ngôn ngữ → Giọng nói → Thêm giọng → English (United States).</span>
+  <span>Cài xong, mở lại trình duyệt. Trong lúc chờ, bài nghe sẽ hiện chữ để con vẫn làm được.</span>` : `<button class="link" style="text-align:left" data-act="voiceTip">Xem cách cài giọng đọc</button>`}</div>`;
+}
 function say(t, slow) { try { const u = new SpeechSynthesisUtterance(t); u.lang = 'en-US'; if (VOICE) u.voice = VOICE; u.rate = slow ? 0.6 : 0.85; u.pitch = 1.05; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch (e) {} }
 let AC = null;
 function beep(ok) {
@@ -661,6 +672,7 @@ function render() {
   const v = UI.view;
   if (v === 'welcome') html = vWelcome();
   else if (v === 'parentLogin') html = vParentLogin();
+  else if (v === 'forgot') html = vForgot();
   else if (v === 'register') html = vRegister();
   else if (v === 'family') html = vFamilyFind();
   else if (v === 'profiles') html = vProfiles();
@@ -672,9 +684,11 @@ function render() {
   app.className = (v === 'child' || v === 'parent') ? '' : 'bare';
   app.innerHTML = html + (UI.sheet ? `<div class="scrim" data-act="closeSheet"><div class="sheet" data-stop="1">${UI.sheet()}</div></div>` : '') + (UI.toast ? `<div class="toast" role="status">${esc(UI.toast)}</div>` : '');
   const af = app.querySelector('[autofocus]'); if (af && !('ontouchstart' in window)) af.focus();
+  if (typeof syncGuard === 'function') syncGuard();
 }
 
 /* ---------- welcome / auth ---------- */
+const hasRealFamily = () => Object.values(STORE.families).some(f => !f.demo);
 function vWelcome() {
   const f = DEV.familyId && STORE.families[DEV.familyId];
   return `<div class="hero">
@@ -689,8 +703,14 @@ function vWelcome() {
     <button class="choice" data-act="go" data-v="parentLogin"><span class="ic" style="background:var(--jade-soft)">👨‍👩‍👧</span><span><b>Ba mẹ đăng nhập</b><span class="muted tiny">Theo dõi tiến độ, duyệt nhiệm vụ, trao thưởng</span></span></button>
     <button class="choice" data-act="startReg"><span class="ic" style="background:color-mix(in srgb,var(--red) 14%,var(--surface))">✨</span><span><b>Tạo tài khoản gia đình</b><span class="muted tiny">Miễn phí · thêm nhiều con, mỗi con một mã PIN</span></span></button>
   </div>
-  <div class="demo">Muốn xem thử? <button class="link" data-act="demo">Mở gia đình mẫu</button> · ba mẹ: <b>demo</b> / <b>123456</b> · Bông lớp 1: PIN <b>1111</b> · Tí lớp 3: PIN <b>2222</b></div>
+  ${hasRealFamily() ? '' : `<div class="demo">Muốn xem thử? <button class="link" data-act="demo">Mở gia đình mẫu</button> · ba mẹ: <b>demo</b> / <b>123456</b> · Bông lớp 1: PIN <b>1111</b> · Tí lớp 3: PIN <b>2222</b></div>`}
+  ${FREE ? `<div class="stack" style="gap:8px"><p class="tiny muted" style="text-align:center;font-weight:700">Dùng máy mới? Khôi phục tài khoản từ file sao lưu:</p>${restoreBlock(false)}</div>` : ''}
   <p class="sync">${syncLabel()}</p>`;
+}
+function restoreBlock(withExport) {
+  if (!FREE) return '';
+  return `<div class="row wrap" style="justify-content:${withExport ? 'flex-start' : 'center'}">${withExport ? '<button class="btn sm jade" data-act="exportData">⬇️ Tải file sao lưu</button>' : ''}<label class="btn sm ghost" for="importFile" style="cursor:pointer">⬆️ Khôi phục từ file sao lưu</label><input type="file" id="importFile" accept="application/json,.json" hidden></div>
+  ${UI.confirm === 'import' ? `<div class="demo stack" style="gap:8px">File có tài khoản <b>${esc(UI.importData.names)}</b>. Khôi phục sẽ thay tiến độ, sao và hồ sơ của gia đình đó trên máy này bằng bản trong file.<div class="row"><button class="btn sm jade" data-act="doImport">Khôi phục</button><button class="btn sm ghost" data-act="cancelConfirm">Hủy</button></div></div>` : ''}`;
 }
 function backBtn(v = 'welcome') { return `<div class="row"><button class="x" data-act="go" data-v="${v}" aria-label="Quay lại">←</button></div>`; }
 function vParentLogin() {
@@ -702,7 +722,22 @@ function vParentLogin() {
     <div class="field"><label for="pl-pass">Mật khẩu</label><input class="input" id="pl-pass" name="pass" type="password" autocomplete="current-password"></div>
     ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
     <button class="btn block" type="submit">Đăng nhập</button>
-    <p class="tiny muted">Chưa có tài khoản? <button type="button" class="link" data-act="startReg">Tạo tài khoản gia đình</button></p>
+    <div class="row between wrap"><button type="button" class="link tiny" data-act="go" data-v="forgot">Quên mật khẩu?</button><button type="button" class="link tiny" data-act="startReg">Tạo tài khoản mới</button></div>
+  </form>
+  ${FREE ? `<section class="card stack"><p class="tiny muted" style="font-weight:700">Tài khoản tạo trên máy khác? Dữ liệu bản miễn phí nằm riêng trên từng máy. Trên máy cũ vào <b>Tài khoản → Tải file sao lưu</b>, rồi khôi phục ở đây.</p>${restoreBlock(false)}</section>` : ''}`;
+}
+function vForgot() {
+  const locked = UI.forgotLock && Date.now() < UI.forgotLock;
+  return `${backBtn('parentLogin')}
+  <div class="say">${lumi('think', 64)}<div class="bubble">Không sao! Dùng mã PIN ba mẹ (4 số) để đặt mật khẩu mới nhé.</div></div>
+  <form class="card stack" data-form="forgot">
+    <h1 class="h2">Đặt lại mật khẩu</h1>
+    <div class="field"><label for="fg-login">Số điện thoại hoặc email</label><input class="input" id="fg-login" name="login" autocomplete="username" autofocus></div>
+    <div class="field"><label for="fg-pin">Mã PIN ba mẹ</label><input class="input" id="fg-pin" name="ppin" inputmode="numeric" maxlength="4"></div>
+    <div class="field"><label for="fg-pass">Mật khẩu mới (ít nhất 6 ký tự)</label><input class="input" id="fg-pass" name="pass" type="password" autocomplete="new-password"></div>
+    ${UI.err ? `<p class="err">${esc(UI.err)}</p>` : ''}
+    <button class="btn block" type="submit" ${locked ? 'disabled' : ''}>${locked ? 'Thử lại sau 1 phút' : 'Đặt mật khẩu mới'}</button>
+    <p class="tiny muted" style="font-weight:700">Quên cả mã PIN ba mẹ? Bản miễn phí không có máy chủ nên không lấy lại được. Hãy tạo tài khoản mới hoặc khôi phục từ file sao lưu.</p>
   </form>`;
 }
 function vRegister() {
@@ -896,14 +931,16 @@ function fillItem(u, p) {
     const al = allowed(p, u); if (al.length < 2) return null; const w = pick(al); const r = realize(p, w);
     const others = shuffle(al.filter(x => x !== w)).slice(0, 3).map(x => slotForm(p, x));
     const opts = shuffle([r.surface, ...others]);
-    return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: r.surface, opts, scored: true };
+    const key = ['{aw}', '{ws}', '{W}', '{w}'].find(k => p.en.includes(k)); const at = p.en.indexOf(key);
+    const before = realize({ en: p.en.slice(0, at), vi: '' }, w).en, after = realize({ en: p.en.slice(at + key.length), vi: '' }, w).en;
+    return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: r.surface, before, after, opts, scored: true };
   }
   const r = realize(p); const words = u.words.slice().sort((a, b) => b.en.length - a.en.length);
   for (const w of words) {
-    const m = r.en.match(new RegExp('\\b' + reEsc(w.en) + '\\b', 'i'));
-    if (m) { const upper = m[0][0] !== m[0][0].toLowerCase() && w.en[0] === w.en[0].toLowerCase(); const fx = s => upper ? cap1(s) : s;
+    const all = [...r.en.matchAll(new RegExp('\\b' + reEsc(w.en) + '\\b', 'gi'))]; const m = all[all.length - 1];
+    if (m) { const before = r.en.slice(0, m.index), after = r.en.slice(m.index + m[0].length); const upper = m[0][0] !== m[0][0].toLowerCase() && w.en[0] === w.en[0].toLowerCase(); const fx = s => upper ? cap1(s) : s;
       const opts = shuffle([m[0], ...distractWords(u, w, 3).map(x => fx(x.en))]);
-      return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: m[0], opts, scored: true }; }
+      return { t: 'fill', w, sentence: r.en, vi: r.vi, answer: m[0], before, after, opts, scored: true }; }
   }
   return null;
 }
@@ -954,10 +991,8 @@ function startLesson(key, kind, g, i) {
 function curItem() { return UI.L.items[UI.L.idx]; }
 function autoSpeak() {
   const it = curItem(); if (!it) return;
-  setTimeout(() => {
-    if (it.t === 'card' || it.t === 'listen') say(it.w.en);
-    else if (it.t === 'pattern' || it.t === 'listenSent') say(it.sentence);
-  }, 250);
+  if (it.t === 'card' || it.t === 'listen') say(it.w.en);
+  else if (it.t === 'pattern' || it.t === 'listenSent') say(it.sentence);
 }
 const PRAISE = ['Giỏi quá!', 'Tuyệt vời!', 'Đúng rồi!', 'Excellent!', 'Great job!', 'Siêu ghê!', 'Well done!'];
 const COMFORT = ['Gần đúng rồi!', 'Không sao đâu!', 'Mình thử lại sau nhé!', 'Cố lên nào!'];
@@ -981,7 +1016,7 @@ function vLesson() {
       break;
     case 'listen':
       title = 'Nghe và chọn hình đúng';
-      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.w.en, 'round')}${spSlow(it.w.en)}</div>
+      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.w.en, 'round')}${spSlow(it.w.en)}</div>${noVoice() ? `<p class="word" style="text-align:center;font-size:32px">${esc(it.w.en)}</p>` : ''}
         <div class="opts">${it.opts.map((o, k) => `<button class="opt pic ${optCls(o, o === it.w)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''} aria-label="Lựa chọn ${k + 1}">${emo(o.emo)}</button>`).join('')}</div>`;
       break;
     case 'pic':
@@ -1011,8 +1046,8 @@ function vLesson() {
     }
     case 'fill': {
       title = 'Chọn từ điền vào chỗ trống';
-      const parts = it.sentence.split(it.answer); const shown = answered ? `<span class="gap">${esc(it.answer)}</span>` : '<span class="gap">&nbsp;</span>';
-      q = `<div class="card flash" style="padding:18px"><div class="big" style="font-size:64px">${emo(it.w.emo)}</div><div class="sent">${esc(parts[0])}${shown}${esc(parts.slice(1).join(it.answer))}</div><div class="mean">${esc(it.vi)}</div>${answered ? `<div class="row">${sp(it.sentence)}</div>` : ''}</div>
+      const shown = answered ? `<span class="gap">${esc(it.answer)}</span>` : '<span class="gap">&nbsp;</span>';
+      q = `<div class="card flash" style="padding:18px"><div class="big" style="font-size:64px">${emo(it.w.emo)}</div><div class="sent">${esc(it.before)}${shown}${esc(it.after)}</div><div class="mean">${esc(it.vi)}</div>${answered ? `<div class="row">${sp(it.sentence)}</div>` : ''}</div>
         <div class="opts">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.answer)}" style="min-height:64px" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>`;
       break;
     }
@@ -1026,7 +1061,7 @@ function vLesson() {
       break;
     case 'listenSent':
       title = 'Nghe và chọn câu đúng';
-      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.sentence, 'round')}${spSlow(it.sentence)}</div>
+      q = `<div class="row" style="justify-content:center;gap:14px">${sp(it.sentence, 'round')}${spSlow(it.sentence)}</div>${noVoice() && !answered ? `<p class="mean" style="text-align:center">${esc(it.vi)}</p>` : ''}
         <div class="opts one">${it.opts.map((o, k) => `<button class="opt ${optCls(o, o === it.sentence)}" data-act="choose" data-k="${k}" ${answered ? 'disabled' : ''}>${esc(o)}</button>`).join('')}</div>
         ${answered ? `<p class="mean" style="text-align:center">${esc(it.vi)}</p>` : ''}`;
       break;
@@ -1039,7 +1074,7 @@ function vLesson() {
     foot = `<div class="feedback ${ok ? 'ok' : 'no'}" role="status"><div class="in"><div class="msg">${lumi(ok ? 'cheer' : 'oops', 54)}<div><b>${ok ? pick(PRAISE) : pick(COMFORT)}</b><span class="tiny" style="font-weight:700">${right}</span></div></div><button class="btn block ${ok ? 'jade' : ''}" data-act="next">Tiếp tục</button></div></div>`;
   }
   return `<div class="player"><div class="ptop"><button class="x" data-act="quitLesson" aria-label="Thoát bài học">✕</button><div class="prog" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><span class="tiny muted num" style="font-weight:800">${L.idx + 1}/${L.items.length}</span></div>
-  <div class="eyebrow">${esc(L.title)}</div><h1 class="qtitle">${title}</h1>${q}</div>${foot}
+  ${['card', 'pattern', 'listen', 'listenSent'].includes(it.t) ? voiceTip() : ''}<div class="eyebrow">${esc(L.title)}</div><h1 class="qtitle">${title}</h1>${q}</div>${foot}
   ${UI.confirm === 'quit' ? `<div class="scrim"><div class="sheet"><span class="grip"></span><div class="say">${lumi('oops', 56)}<div class="bubble">Con muốn dừng bài này à? Bài chưa xong sẽ không được tính sao.</div></div><button class="btn block jade" data-act="cancelQuit">Học tiếp</button><button class="btn block ghost" data-act="doQuit">Dừng lại</button></div></div>` : ''}`;
 }
 function answer(ok) {
@@ -1101,7 +1136,7 @@ function vParent() {
   else body = vPAccount(f);
   const pend = f.children.reduce((a, c) => a + Object.values(prog(f, c.id).missions).filter(m => m.status === 'pending').length, 0);
   const tabs = [['home', '📊', 'Tổng quan'], ['approve', '✅', 'Duyệt'], ['wallet', '💰', 'Thưởng'], ['account', '⚙️', 'Tài khoản']];
-  return `<div class="pheader">${lumi('happy', 48)}<div style="flex:1;min-width:0"><div class="eyebrow">Khu vực ba mẹ</div><h1 class="h2" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(f.parentName)}</h1></div>${f.demo ? '<span class="pill gold">Mẫu</span>' : ''}</div>`
+  return `<div class="pheader">${lumi('happy', 48)}<div style="flex:1;min-width:0"><div class="eyebrow">Khu vực ba mẹ</div><h1 class="h2" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(f.parentName)}</h1></div><button class="btn sm gold" data-act="toKids">🎒 Cho con học</button></div>`
     + body + `<nav class="tabbar" aria-label="Điều hướng ba mẹ"><div class="in">${tabs.map(([k, i, t]) => `<button class="tab ${UI.ptab === k ? 'on' : ''}" data-act="ptab" data-t="${k}"><span class="i">${i}</span>${t}${k === 'approve' && pend ? ` <span class="pill red" style="padding:0 6px;font-size:11px">${pend}</span>` : ''}</button>`).join('')}</div></nav>`;
 }
 function insightFor(f, c) {
@@ -1120,6 +1155,10 @@ function insightFor(f, c) {
   return bits.join(' ');
 }
 function vPHome(f) {
+  const fresh = UI.fresh ? `<section class="card stack" style="border-color:var(--jade)"><div class="say">${lumi('cheer', 56)}<div class="bubble">Tài khoản đã sẵn sàng! Đưa máy cho con, bấm <b>Cho con vào học</b>, con chọn tên mình và nhập mã PIN.</div></div><button class="btn block jade" data-act="toKids">🎒 Cho con vào học</button><button class="btn block ghost" data-act="addChild">+ Thêm hồ sơ con khác</button></section>` : '';
+  return fresh + vPHomeInner(f);
+}
+function vPHomeInner(f) {
   if (!f.children.length) return `<div class="card stack"><p style="font-weight:700">Chưa có hồ sơ con nào.</p><button class="btn jade" data-act="addChild">Thêm hồ sơ con</button></div>`;
   const days = [...Array(7)].map((_, k) => addDays(new Date(), k - 6));
   const wd = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
@@ -1198,8 +1237,7 @@ function vPAccount(f) {
     <p>• Mỗi lớp đi theo đúng thứ tự Unit và Review của sách Global Success.</p></div></details>
   ${FREE ? `<h2 class="h3">Sao lưu dữ liệu</h2>
   <section class="card stack"><p class="tiny muted" style="font-weight:700">Dữ liệu chỉ nằm trong trình duyệt của máy này. Tải file sao lưu để chuyển sang máy khác hoặc phòng khi xóa lịch sử trình duyệt.</p>
-    <div class="row wrap"><button class="btn sm jade" data-act="exportData">⬇️ Tải file sao lưu</button><label class="btn sm ghost" for="importFile" style="cursor:pointer">⬆️ Khôi phục từ file</label><input type="file" id="importFile" accept="application/json,.json" hidden></div>
-    ${UI.confirm === 'import' ? `<div class="demo stack" style="gap:8px">File có <b>${UI.importData.n}</b> gia đình. Khôi phục sẽ thay tiến độ, sao và hồ sơ của gia đình đó trên máy này bằng bản trong file.<div class="row"><button class="btn sm jade" data-act="doImport">Khôi phục</button><button class="btn sm ghost" data-act="cancelConfirm">Hủy</button></div></div>` : ''}
+    ${restoreBlock(true)}
   </section>` : ''}
   <button class="btn block ghost" data-act="logout">Đăng xuất</button>
   <p class="sync">${syncLabel()}</p>`;
@@ -1232,7 +1270,7 @@ const ACT = {
   },
   closeSheet: (d, t, e) => { if (e.target.closest('[data-stop]')) return; UI.sheet = null; UI.confirm = null; UI.edit = null; UI.err = ''; render(); },
   tab: d => { UI.tab = d.t; render(); window.scrollTo(0, 0); },
-  ptab: d => { UI.ptab = d.t; UI.err = ''; UI.confirm = null; render(); window.scrollTo(0, 0); },
+  ptab: d => { UI.ptab = d.t; UI.fresh = false; UI.err = ''; UI.confirm = null; render(); window.scrollTo(0, 0); },
   grade: d => { UI.grade = +d.g; render(); },
   openNode: d => {
     const f = fam(), c = curChild(); const s = nodeStates(f, c, +d.g)[+d.i];
@@ -1291,6 +1329,8 @@ const ACT = {
     render();
   },
   logout: () => { DEV.session = null; saveDev(); go('welcome'); },
+  toKids: () => { DEV.session = null; saveDev(); UI.fresh = false; go('profiles'); },
+  voiceTip: () => { VOICE_TIP = true; render(); },
   exportData: () => {
     const f = fam(); const data = JSON.stringify({ app: 'lumi-english', v: 1, exportedAt: new Date().toISOString(), families: { [f.id]: f } }, null, 1);
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
@@ -1300,7 +1340,9 @@ const ACT = {
   doImport: () => {
     const d = UI.importData; if (!d) return;
     for (const [fid, rf] of Object.entries(d.families)) { rf.updatedAt = Date.now(); STORE.families[fid] = rf; }
-    persist(); UI.importData = null; UI.confirm = null; toast('Đã khôi phục dữ liệu.');
+    const ids = Object.keys(d.families); persist(); UI.importData = null; UI.confirm = null;
+    if (UI.view !== 'parent') { DEV.familyId = ids[0]; saveDev(); go('parentLogin'); toast('Đã khôi phục! Ba mẹ đăng nhập bằng mật khẩu cũ, hoặc cho con vào học.'); }
+    else toast('Đã khôi phục dữ liệu.');
   }
 };
 function checkPin() {
@@ -1313,7 +1355,8 @@ function checkPin() {
 const FORMS = {
   parentLogin: async fd => {
     const f = findFamily(fd.get('login'));
-    if (!f || f.passHash !== await hashPw(fd.get('pass'))) { UI.err = 'Sai số điện thoại/email hoặc mật khẩu.'; return render(); }
+    if (!f) { UI.err = FREE ? 'Máy này chưa có tài khoản đó. Nếu đã tạo trên máy khác, hãy khôi phục từ file sao lưu bên dưới.' : 'Không tìm thấy tài khoản này.'; return render(); }
+    if (f.passHash !== await hashPw(fd.get('pass'))) { UI.err = 'Mật khẩu chưa đúng. Bấm "Quên mật khẩu?" nếu cần đặt lại.'; return render(); }
     DEV.familyId = f.id; DEV.session = { type: 'parent', fid: f.id }; saveDev(); go('parent', { ptab: 'home' });
   },
   family: fd => { const f = findFamily(fd.get('login')); if (!f) { UI.err = 'Không tìm thấy tài khoản này trên máy. Ba mẹ hãy đăng nhập hoặc tạo tài khoản trước.'; return render(); } DEV.familyId = f.id; saveDev(); go('profiles'); },
@@ -1333,7 +1376,7 @@ const FORMS = {
     const id = uid(); const f = { id: 'f' + uid(), parentName: r.name, login: r.login, passHash: r.passHash, parentPin: r.ppin, weeklyCap: 50, unlockAll: false, createdAt: Date.now(), children: [{ id, ...c }], progress: {}, payouts: [] };
     STORE.families[f.id] = f; saveFam(f);
     DEV.familyId = f.id; DEV.session = { type: 'parent', fid: f.id }; saveDev(); UI.edit = null;
-    go('parent', { ptab: 'home' }); toast(`Đã tạo tài khoản! Con đăng nhập bằng mã PIN ${c.pin}.`);
+    go('parent', { ptab: 'home', fresh: true }); toast(`Đã tạo tài khoản! Con đăng nhập bằng mã PIN ${c.pin}.`);
   },
   addChild: (fd, form) => { const f = fam(); const c = readChild(fd, form); if (!c) return render(); f.children.push({ id: uid(), ...c }); UI.sheet = null; UI.edit = null; saveFam(f); toast(`Đã thêm ${c.name}.`); },
   editChild: (fd, form) => {
@@ -1344,6 +1387,14 @@ const FORMS = {
     const f = fam(), o = Object.assign({ cid: f.children[0]?.id, n: 2 }, UI.bonus); const reason = (fd.get('reason') || '').trim() || 'Ba mẹ thưởng';
     if (!o.cid) return; const r = award(f, o.cid, o.n, '🎁 ' + reason); UI.bonus = { cid: o.cid, n: 2, reason: '' }; saveFam(f);
     toast(r.counted ? `Đã tặng ${r.counted} sao cho ${childOf(f, o.cid).name}` : `Tuần này ${childOf(f, o.cid).name} đã đủ ${capOf(f)} sao.`);
+  },
+  forgot: async fd => {
+    if (UI.forgotLock && Date.now() < UI.forgotLock) return;
+    const f = findFamily(fd.get('login')), ppin = (fd.get('ppin') || '').trim(), pass = fd.get('pass') || '';
+    if (!f || f.demo) { UI.err = 'Máy này chưa có tài khoản đó.'; return render(); }
+    if (ppin !== f.parentPin) { UI.forgotTries = (UI.forgotTries || 0) + 1; if (UI.forgotTries >= 5) { UI.forgotLock = Date.now() + 60000; UI.forgotTries = 0; setTimeout(render, 60500); } UI.err = 'Mã PIN ba mẹ chưa đúng.'; return render(); }
+    if (pass.length < 6) { UI.err = 'Mật khẩu mới cần ít nhất 6 ký tự.'; return render(); }
+    f.passHash = await hashPw(pass); saveFam(f); UI.forgotTries = 0; go('parentLogin'); toast('Đã đặt mật khẩu mới. Mời ba mẹ đăng nhập.');
   },
   parentInfo: async fd => {
     const f = fam(); const name = fd.get('name').trim(), ppin = fd.get('ppin').trim(), pass = fd.get('pass');
@@ -1381,7 +1432,7 @@ document.addEventListener('input', e => {
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'importFile' && e.target.files[0]) {
-    e.target.files[0].text().then(t => { try { const d = JSON.parse(t); if (d.app !== 'lumi-english' || !d.families) throw 0; UI.importData = { families: d.families, n: Object.keys(d.families).length }; UI.confirm = 'import'; render(); } catch (er) { toast('File không đúng định dạng sao lưu của Lumi.'); } });
+    e.target.files[0].text().then(t => { try { const d = JSON.parse(t); if (d.app !== 'lumi-english' || !d.families) throw 0; UI.importData = { families: d.families, n: Object.keys(d.families).length, names: Object.values(d.families).map(x => x.parentName).join(', ') }; UI.confirm = 'import'; render(); } catch (er) { toast('File không đúng định dạng sao lưu của Lumi.'); } });
     return;
   } if (e.target.dataset.actInput === 'cap') { const f = fam(); saveFam(f); render(); } });
 document.addEventListener('keydown', e => {
@@ -1390,14 +1441,39 @@ document.addEventListener('keydown', e => {
   else if (UI.view === 'lesson' && e.key === 'Enter' && (document.activeElement === document.body || !document.activeElement) && (UI.L.state !== null || !curItem().scored) && !UI.confirm) nextItem();
 });
 
+/* ---------- parent area auto-lock (10 phút không thao tác) ---------- */
+let LAST_ACT = Date.now();
+['pointerdown', 'keydown', 'input'].forEach(ev => document.addEventListener(ev, () => { LAST_ACT = Date.now(); }, true));
+setInterval(() => {
+  if (DEV.session?.type === 'parent' && Date.now() - LAST_ACT > 10 * 60 * 1000) { DEV.session = null; saveDev(); go('profiles'); toast('Khu vực ba mẹ đã tự khóa sau 10 phút không dùng.'); }
+}, 20000);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && DEV.session?.type === 'parent' && Date.now() - LAST_ACT > 10 * 60 * 1000) { DEV.session = null; saveDev(); go('profiles'); } });
+
+/* ---------- Android back button ---------- */
+let GUARD = false;
+function isRoot() { return !UI.sheet && !UI.confirm && (UI.view === 'welcome' || (UI.view === 'child' && UI.tab === 'learn') || (UI.view === 'parent' && UI.ptab === 'home')); }
+function handleBack() {
+  if (UI.view === 'lesson') { UI.confirm = 'quit'; render(); return; }
+  if (UI.sheet || UI.confirm) { UI.sheet = null; UI.confirm = null; UI.edit = null; UI.err = ''; render(); return; }
+  const v = UI.view;
+  if (v === 'child') { UI.tab = 'learn'; render(); return; }
+  if (v === 'parent') { UI.ptab = 'home'; render(); return; }
+  if (v === 'result') return go('child', { tab: 'learn' });
+  if (v === 'pin') return go('profiles');
+  if (v === 'forgot') return go('parentLogin');
+  if (v === 'register' && UI.reg.step === 2) { UI.reg.step = 1; return go('register'); }
+  go('welcome');
+}
+if (FREE) window.addEventListener('popstate', () => { GUARD = false; if (!isRoot()) handleBack(); syncGuard(); });
+function syncGuard() { if (!FREE) return; try { if (!isRoot() && !GUARD) { history.pushState({ lumi: 1 }, ''); GUARD = true; } } catch (e) {} }
+
 /* ---------- boot ---------- */
 (async function boot() {
   loadLocal();
   await seedDemo();
   const s = DEV.session; const f = s && STORE.families[s.fid];
   if (f && s.type === 'child' && childOf(f, s.cid)) { UI.view = 'child'; UI.grade = childOf(f, s.cid).grade; }
-  else if (f && s.type === 'parent') UI.view = 'parent';
-  else { DEV.session = null; UI.view = 'welcome'; }
+  else { DEV.session = null; saveDev(); UI.view = (DEV.familyId && STORE.families[DEV.familyId]) ? 'profiles' : 'welcome'; }
   render();
   initRemote();
 })();

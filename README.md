@@ -1,17 +1,20 @@
 # Lumi English: bản miễn phí
 
-Web app học tiếng Anh cho học sinh tiểu học, lớp 1 đến lớp 5, bám theo bộ sách **Global Success**. App miễn phí hoàn toàn, không quảng cáo, không cần máy chủ.
+Web app học tiếng Anh cho học sinh tiểu học, lớp 1 đến lớp 5, **bám sát khung chương trình chuẩn** môn Tiếng Anh tiểu học. App miễn phí hoàn toàn, không quảng cáo, không cần máy chủ.
+
+> **Lưu ý:** Lumi English là ứng dụng độc lập. Thứ tự bài học tham khảo bộ sách Tiếng Anh Global Success, nhưng Lumi **không phải ứng dụng chính thức** của Nhà xuất bản Giáo dục Việt Nam hay của bộ sách, và không có liên kết với các đơn vị này. Nội dung luyện tập do Lumi tự biên soạn.
 
 ## Gồm những gì
 
 - `index.html`: toàn bộ app, gồm giao diện, dữ liệu 92 Unit và mã chạy.
 - `manifest.webmanifest`: cho phép "Thêm vào màn hình chính" trên điện thoại.
 - `.nojekyll`: để GitHub Pages phục vụ file nguyên trạng.
+- `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `icon-maskable-512.png`, `favicon.png`, `lumi-owl.svg`: icon cú Lumi, dùng khi "Thêm vào màn hình chính" trên iPhone và Android, và làm icon tab trình duyệt.
 
 ## Đưa lên GitHub Pages
 
 1. Tạo một repository mới trên GitHub, ví dụ `lumi-english`.
-2. Tải 3 file trong thư mục này lên nhánh `main`: chọn **Add file → Upload files**, rồi kéo thả.
+2. Tải tất cả các file trong thư mục này lên nhánh `main`: chọn **Add file → Upload files**, rồi kéo thả.
 3. Vào **Settings → Pages**. Ở mục **Source**, chọn **Deploy from a branch**, nhánh `main`, thư mục `/ (root)`, rồi bấm **Save**.
 4. Sau khoảng 1 phút, app chạy tại `https://<tên-tài-khoản>.github.io/lumi-english/`.
 
@@ -53,6 +56,10 @@ Bấm **Mở gia đình mẫu** ở màn hình đầu để xem thử.
 - Ba mẹ: `demo` / `123456`, mã PIN ba mẹ `0000`
 - Bông (lớp 1): PIN `1111`
 - Tí (lớp 3): PIN `2222`
+
+## Ủng hộ Lumi
+
+Ở màn **Ba mẹ đăng nhập** và trong **Khu vực ba mẹ → Tài khoản** có mục "Donate Lumi ly cafe cho tỉnh táo nếu ba mẹ thấy ổn nè ☕", kèm mã VietQR (MB Bank · TAO MINH HIEN · 141431319191). Mọi sự ủng hộ Lumi là hoàn toàn tự nguyện để duy trì và phát triển ứng dụng miễn phí, không đi kèm nghĩa vụ hay dịch vụ thương mại. Mã QR nằm trong `src/donate.js` ở mã nguồn.
 
 ## Sửa nội dung bài học
 

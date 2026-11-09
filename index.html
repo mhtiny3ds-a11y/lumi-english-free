@@ -1196,7 +1196,7 @@ function insightFor(f, c) {
 }
 function vPHome(f) {
   const fresh = UI.fresh ? `<section class="card stack" style="border-color:var(--jade)"><div class="say">${lumi('cheer', 56)}<div class="bubble">Tài khoản đã sẵn sàng! Đưa máy cho con, bấm <b>Cho con vào học</b>, con chọn tên mình và nhập mã PIN.</div></div><button class="btn block jade" data-act="toKids">🎒 Cho con vào học</button><button class="btn block ghost" data-act="addChild">+ Thêm hồ sơ con khác</button></section>` : '';
-  return fresh + vPHomeInner(f);
+  return fresh + vPHomeInner(f) + donateBlock();
 }
 function vPHomeInner(f) {
   if (!f.children.length) return `<div class="card stack"><p style="font-weight:700">Chưa có hồ sơ con nào.</p><button class="btn jade" data-act="addChild">Thêm hồ sơ con</button></div>`;
@@ -1280,7 +1280,6 @@ function vPAccount(f) {
   <section class="card stack"><p class="tiny muted" style="font-weight:700">Dữ liệu chỉ nằm trong trình duyệt của máy này. Tải file sao lưu để chuyển sang máy khác hoặc phòng khi xóa lịch sử trình duyệt.</p>
     ${restoreBlock(true)}
   </section>` : ''}
-  ${donateBlock()}
   <button class="btn block ghost" data-act="logout">Đăng xuất</button>
   <p class="sync">${syncLabel()}</p>`;
 }

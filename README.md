@@ -66,7 +66,7 @@ Bấm **Mở gia đình mẫu** ở màn hình đầu để xem thử.
 
 ## Ủng hộ Lumi
 
-Ở màn **Ba mẹ đăng nhập** và cuối tab **Khu vực ba mẹ → Tổng quan** có mục "Donate Lumi ly cafe cho tỉnh táo nếu ba mẹ thấy ổn nè ☕", kèm mã VietQR (MB Bank · TAO MINH HIEN · 141431319191). Mọi sự ủng hộ Lumi là hoàn toàn tự nguyện để duy trì và phát triển ứng dụng miễn phí, không đi kèm nghĩa vụ hay dịch vụ thương mại. Mã QR nằm trong `src/donate.js` ở mã nguồn.
+Ở màn **Ba mẹ đăng nhập** và cuối tab **Khu vực ba mẹ → Tổng quan** có mục "Tiếp lửa để Team Lumi thêm động lực đồng hành và phát triển cùng con nha ba mẹ ☕", kèm mã VietQR (MB Bank · TAO MINH HIEN · 141431319191). Ba mẹ chọn mức 39.000đ, 59.000đ, 99.000đ (mã có sẵn số tiền và nội dung "Thank you Lumi") hoặc "Tùy tâm" (tự nhập số tiền). Nút **Tải mã QR về máy** lưu ảnh mã để ba mẹ chọn "quét từ ảnh" trong app ngân hàng. Mọi sự ủng hộ Lumi là hoàn toàn tự nguyện để duy trì và phát triển ứng dụng miễn phí, không đi kèm nghĩa vụ hay dịch vụ thương mại. Mã QR nằm trong `src/donate.js`; mã có số tiền được tạo bằng `tools/vietqr.py`.
 
 ## Sửa nội dung bài học
 
